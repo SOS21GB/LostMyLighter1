@@ -23,5 +23,10 @@ namespace LostMyLighter.Classes
         public int NumberOfSearchers { get { return _numberOfSearchers; } }
         public int NumberOfMarchaller { get { return _numberOfMarchaller; } }
         public int LostLighters { get { return _lostLighters; } }
+
+        public User()
+        {
+
+        }
     }
 }
