@@ -50,7 +50,7 @@ namespace LostMyLighter.Classes
         {
             string titel = "Create User";
             PageHeader(titel);
-            //här lägger vi flödet för skapandet av ny användare
+            //här lägger vi flödet för skapandet av ny användare            
         }
 
         static void MainMenu()
