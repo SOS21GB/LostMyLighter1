@@ -61,10 +61,10 @@ namespace LostMyLighter.Classes
             {
                 PageHeader(title);
                 Console.WriteLine();
-                Console.WriteLine("1. Search marschalls.");
+                Console.WriteLine("1. Find marschalls.");
                 Console.WriteLine("2. Add marschall.");
                 Console.WriteLine("3. View profile.");
-                Console.WriteLine("4. Log out.");
+                Console.WriteLine("4. Quit.");
                 Console.WriteLine();
                 Console.WriteLine("------------------------------------------------");
 
@@ -82,7 +82,7 @@ namespace LostMyLighter.Classes
                             ViewProfile();
                             return;
                         case 4:
-                            LogOut();
+                            QuitApp();
                             return;
                     }
                 }
@@ -113,11 +113,11 @@ namespace LostMyLighter.Classes
             //här lägger vi hela flödet för AddMarschall-sidan
         }
 
-        static void LogOut()
+        static void QuitApp()
         {
             Console.Clear();
             Console.WriteLine("*************Logging out******************");
-            //här loggas man ut och kommer tillbaka till inlogg/create user
+            
         }
     }
 }
