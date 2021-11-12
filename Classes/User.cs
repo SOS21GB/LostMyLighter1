@@ -8,6 +8,8 @@ namespace LostMyLighter.Classes
 {
     class User
     {
+        public static Dictionary<int, User> Users = new();
+
         private int _id;
         private string _userName;
         private int _age; 
@@ -31,9 +33,9 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Age: {0}", Age);
             Console.WriteLine("Adress: {0}", Adress);
             Console.WriteLine("Searches: {0}", NumberOfSearches);
-            Console.WriteLine("Marchallers found {0}", NumberOfMarchaller);
+            Console.WriteLine("Marchallers found: {0}", NumberOfMarchaller);
             Console.WriteLine("Lost Lighters: {0}", LostLighters);
-
+            Console.WriteLine("------------------------------------------------");
         }
 
         public User()
@@ -46,6 +48,9 @@ namespace LostMyLighter.Classes
             this.UserName = username;
             this.Age = age;
             this.Adress = adress;
+            _id = Users.Count + 1;
+            Users.Add(_id, this);
+
         }
 
     }
