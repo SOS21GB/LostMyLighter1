@@ -177,7 +177,27 @@ namespace LostMyLighter.Classes
         static void ViewProfile()
         {
             string titel = "Profile";
-            PageHeader(titel);
+
+            while (true)
+            {
+                PageHeader(titel);
+                CurrUser.DisplayUserInfo();
+                Console.WriteLine("1. Edit Profile.");
+                Console.WriteLine("2. Go Back.");
+
+                if(int.TryParse(Console.ReadLine(), out int choice))
+                {
+
+                    //CurrUser.EditProfile();
+
+                    return;
+                }
+
+                ErrorMessage();
+            }
+            
+
+
 
         }
 
