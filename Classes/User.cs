@@ -38,11 +38,6 @@ namespace LostMyLighter.Classes
             Console.WriteLine("------------------------------------------------");
         }
 
-        public User()
-        {
-
-        }
-
         public User(string username, int age, string adress)
         {
             this.UserName = username;
