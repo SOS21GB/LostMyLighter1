@@ -92,8 +92,29 @@ namespace LostMyLighter.Classes
         static void CreateUser()
         {
             string titel = "Create User";
+            string name;
+            int age;
+            string adress;
             PageHeader(titel);
-            //här lägger vi flödet för skapandet av ny användare            
+
+            Console.Write("Enter Name: ");
+            name = Console.ReadLine();            
+            while (true) 
+            {
+                Console.Write("Enter Age: ");
+                if (int.TryParse(Console.ReadLine(), out age))
+                {
+                    break;
+                }
+                ErrorMessage();
+                PageHeader(titel);
+            }
+
+            Console.Write("Enter Adress: ");
+            adress = Console.ReadLine();
+            PageHeader(titel);
+            User newUser = new(name, age, adress);         
+
         }
 
         static void MainMenu()

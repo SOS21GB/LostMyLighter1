@@ -38,6 +38,15 @@ namespace LostMyLighter.Classes
             Console.WriteLine("------------------------------------------------");
         }
 
+        public void CreatedUserInfo()
+        {
+            Console.WriteLine("ID: {0}", Id);
+            Console.WriteLine("Name: {0}", UserName);
+            Console.WriteLine("Age: {0}", Age);
+            Console.WriteLine("Adress: {0}", Adress);
+            Console.WriteLine("------------------------------------------------");
+        }
+
         public User(string username, int age, string adress)
         {
             this.UserName = username;
@@ -45,7 +54,7 @@ namespace LostMyLighter.Classes
             this.Adress = adress;
             _id = Users.Count + 1;
             Users.Add(_id, this);
-
+            CreatedUserInfo();
         }
 
     }

@@ -7,7 +7,6 @@ namespace LostMyLighter
     {
         static void Main(string[] args)
         {
-
             PageManager.StartApp();
 
         }
