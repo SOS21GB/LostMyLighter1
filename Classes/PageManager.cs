@@ -8,10 +8,20 @@ namespace LostMyLighter.Classes
 {
     static class PageManager
     {
+
+        public static User CurrUser;
+
         public static void StartApp()
         {
-            //här lägger vi sedan login/create user först
-            MainMenu();
+            if(CurrUser != null)
+            {
+                MainMenu();
+            }
+            else
+            {
+                GuestMenu();
+            }
+            
         }
 
         /// <summary>
@@ -38,6 +48,39 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
+
+        static void GuestMenu()
+        {     
+            string titel = "Welcome";
+
+            while (true)
+            {
+                PageHeader(titel);
+
+                Console.WriteLine("1. Log in");
+                Console.WriteLine("2. Create User");
+
+                if (int.TryParse(Console.ReadLine(), out int choice))
+                {
+                    switch (choice)
+                    {
+                        case 1:
+                            LogIn();
+                            return;
+                        case 2:
+                            CreateUser();
+                            return;
+
+                    }
+                }
+
+                PageHeader(titel);
+                ErrorMessage();
+            }
+          
+
+        }
+
 
         static void LogIn()
         {
@@ -97,6 +140,7 @@ namespace LostMyLighter.Classes
         {
             string titel = "Profile";
             PageHeader(titel);
+
         }
 
         static void SearchMarschalls()
