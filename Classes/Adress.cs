@@ -20,7 +20,7 @@ namespace LostMyLighter.Classes
 
         public Adress(string streetName, string place, int zipCode)
         {
-            this.streetName = streetName;
+            this.StreetName = streetName;
             this.Place = place;
             this.ZipCode = zipCode;
             Adresser.Add(_streetName, this);
