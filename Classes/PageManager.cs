@@ -85,8 +85,25 @@ namespace LostMyLighter.Classes
         static void LogIn()
         {
             string titel = "Log in";
+
+            while (true)
+            {
             PageHeader(titel);
-            //här lägger vi flödet för inlogg
+                //här lägger vi flödet för inlogg
+                Console.WriteLine("Enter ID: ");
+                if (int.TryParse(Console.ReadLine(), out int userid))
+                {
+                    if (User.Users.ContainsKey(userid))
+                    {
+                        CurrUser = User.Users[userid];
+                        Console.WriteLine("Successfully logged in! ");
+                        Task.Delay(1000);
+                        MainMenu();
+                        return;
+                    }
+                }
+                ErrorMessage();
+            }
         }
 
         static void CreateUser()
