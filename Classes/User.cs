@@ -24,7 +24,7 @@ namespace LostMyLighter.Classes
         public string Adress { get { return _adress; } set { _adress = value; } }
         public int NumberOfSearches { get { return _numberOfSearches; } }
         public int NumberOfMarchaller { get { return _numberOfMarchaller; } }
-        public int LostLighters { get { return _lostLighters; } }
+        public int LostLighters { get { return _lostLighters; } set { _lostLighters = value; } }
 
         public void DisplayUserInfo()
         {
@@ -55,6 +55,55 @@ namespace LostMyLighter.Classes
             _id = Users.Count + 1;
             Users.Add(_id, this);
             CreatedUserInfo();
+        }
+        public void EditUser ()
+        {
+            Console.WriteLine("You may now choose to change the following information\n 1. Name \n 2. Age\n 3. Adress \n 4. Found a lighter");
+            Console.WriteLine("Please enter the number corresponding to the action you would like to take: ");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            while (true)
+            {
+                switch (choice)
+                {
+                    case 1:
+                        {
+                            Console.WriteLine("Your current username is: {0}", this.UserName);
+                            Console.WriteLine("Please enter your new username: ");
+                            this.UserName = Console.ReadLine();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.WriteLine("Your current age is: {0}", this.Age);
+                            Console.WriteLine("Please enter your new age & may i say, happy birthday!: ");
+                            this.Age = Convert.ToInt32(Console.ReadLine());
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.WriteLine("Your current adress is: {0}", this.Adress);
+                            Console.WriteLine("Please enter your new adress below: ");
+                            this.Adress = Console.ReadLine();
+                            break;
+                        }
+                    case 4:
+                        {
+                            Console.WriteLine("So you've found a lighter have you? Good work dumdum. \n Please enter the amount of lighters you've \n found below my friend: ");
+                            this.LostLighters += Convert.ToInt32(Console.ReadLine());
+                            break;
+                        }
+                }
+                Console.WriteLine("Would you like to change another aspect of your profile? \n Please enter your answer as Y/N below: ");
+                char choice2 = Convert.ToChar(Console.ReadLine());
+                if (choice2 == 'Y')
+                {
+                }
+                else
+                {
+                    break;
+                }
+            }
+
         }
 
     }
