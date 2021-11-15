@@ -70,7 +70,7 @@ namespace LostMyLighter.Classes
                 Console.WriteLine("Please enter the number corresponding to the information you'd like to change: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
-              
+
                 switch (choice)
                 {
                     case 1:
@@ -84,9 +84,22 @@ namespace LostMyLighter.Classes
                         {
                             Console.WriteLine("Your current age is: {0}", this.Age);
                             Console.WriteLine("Please enter your new age & may i say, happy birthday!: ");
-                            this.Age = Convert.ToInt32(Console.ReadLine());
+                            while (true)
+                            {
+                               
+                                if (int.TryParse(Console.ReadLine(), out int age))
+                                {
+                                    Console.WriteLine("Your new age has been changed to: {0}!", age);
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Wrong input pal, Try again!");
+                                }
+                            }
                             break;
                         }
+                        
                     case 3:
                         {
                             Console.WriteLine("Your current adress is: {0}", this.Adress);
@@ -94,6 +107,7 @@ namespace LostMyLighter.Classes
                             this.Adress = Console.ReadLine();
                             break;
                         }
+                
                     case 4:
                         {
                             while (true)
