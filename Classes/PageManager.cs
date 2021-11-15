@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace LostMyLighter.Classes
 {
     static class PageManager
     {
-
         public static User CurrUser;
 
         public static void StartApp()
@@ -20,8 +20,7 @@ namespace LostMyLighter.Classes
             else
             {
                 GuestMenu();
-            }
-            
+            }       
         }
 
         /// <summary>
@@ -45,17 +44,16 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Input not valid");
             Console.WriteLine();
             Console.WriteLine("------------------------------------------------");
-            Console.WriteLine("Press any key to continue");
-            Console.ReadKey();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
         }
 
         static void GuestMenu()
         {     
-            string titel = "Welcome";
+            string title = "Welcome";
 
             while (true)
             {
-                PageHeader(titel);
+                PageHeader(title);
 
                 Console.WriteLine("1. Log in");
                 Console.WriteLine("2. Create User");
@@ -70,25 +68,22 @@ namespace LostMyLighter.Classes
                         case 2:
                             CreateUser();
                             return;
-
                     }
                 }
 
-                PageHeader(titel);
+                PageHeader(title);
                 ErrorMessage();
             }
-          
-
         }
 
 
         static void LogIn()
         {
-            string titel = "Log in";
+            string title = "Log in";
 
             while (true)
             {
-            PageHeader(titel);
+                PageHeader(title);
                 //här lägger vi flödet för inlogg
                 Console.WriteLine("Enter ID: ");
                 if (int.TryParse(Console.ReadLine(), out int userid))
@@ -97,7 +92,7 @@ namespace LostMyLighter.Classes
                     {
                         CurrUser = User.Users[userid];
                         Console.WriteLine("Successfully logged in! ");
-                        Task.Delay(1000);
+                        Thread.Sleep(TimeSpan.FromSeconds(2));
                         MainMenu();
                         return;
                     }
@@ -108,14 +103,15 @@ namespace LostMyLighter.Classes
 
         static void CreateUser()
         {
-            string titel = "Create User";
+            string title = "Create User";
             string name;
             int age;
             string adress;
-            PageHeader(titel);
 
+            PageHeader(title);
             Console.Write("Enter Name: ");
             name = Console.ReadLine();            
+            
             while (true) 
             {
                 Console.Write("Enter Age: ");
@@ -124,14 +120,46 @@ namespace LostMyLighter.Classes
                     break;
                 }
                 ErrorMessage();
-                PageHeader(titel);
+                PageHeader(title);
             }
 
             Console.Write("Enter Adress: ");
             adress = Console.ReadLine();
-            PageHeader(titel);
-            User newUser = new(name, age, adress);         
 
+            PageHeader(title);
+            CurrUser = new(name, age, adress);
+
+            while (true)
+            {
+                Console.WriteLine("1. Log In");
+                Console.WriteLine("2. Go Back");
+                Console.WriteLine("3. Quit App" );
+
+                if(int.TryParse(Console.ReadLine(), out int choice))
+                {
+                    switch (choice)
+                    {
+                        case 1:
+                            PageHeader(title);
+                            Console.WriteLine("Successfully logged in! ");
+                            Thread.Sleep(TimeSpan.FromSeconds(2));
+                            MainMenu();
+                            return;
+                        case 2:
+                            GuestMenu();
+                            return;
+                        case 3:
+                            QuitApp();
+                            return;
+                    }
+                }
+                Console.Clear();
+                PageHeader(title);
+                ErrorMessage();
+
+                PageHeader(title);
+                CurrUser.CreatedUserInfo();
+            }
         }
 
         static void MainMenu()
@@ -171,40 +199,42 @@ namespace LostMyLighter.Classes
                 PageHeader(title);
                 ErrorMessage();
             }
-
         }
 
         static void ViewProfile()
         {
-            string titel = "Profile";
+            string title = "Profile";
 
             while (true)
             {
-                PageHeader(titel);
+                PageHeader(title);
                 CurrUser.DisplayUserInfo();
                 Console.WriteLine("1. Edit Profile.");
                 Console.WriteLine("2. Go Back.");
 
                 if(int.TryParse(Console.ReadLine(), out int choice))
                 {
-
-                    //CurrUser.EditProfile();
-
-                    return;
+                    switch (choice)
+                    {
+                        case 1:
+                            CurrUser.EditUser();
+                            ViewProfile();
+                            return;
+                        case 2:
+                            MainMenu();
+                            return;
+                    }                    
                 }
 
+                PageHeader(title);
                 ErrorMessage();
             }
-            
-
-
-
         }
 
         static void SearchMarschalls()
         { 
-            string titel = "Search";
-            PageHeader(titel);
+            string title = "Search";
+            PageHeader(title);
             //här lägger vi hela flödet för Search-sidan
         }
 
@@ -219,7 +249,8 @@ namespace LostMyLighter.Classes
         {
             Console.Clear();
             Console.WriteLine("*************Logging out******************");
-            
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+            Console.Clear();
         }
     }
 }
