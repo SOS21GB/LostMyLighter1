@@ -46,13 +46,33 @@ namespace LostMyLighter.Classes
                              " | ||      |\n" +
                              " | || jgs  |\n" +
                              " '---------'";
-            switch(symbol)
+            
+            string brokenlighter = "  _    \n" +
+                                   " | |  \n" +
+                                   " | |  \n" +
+                                   " | |  \n" +
+                                   " | |  \n" +
+                                   " | |    )\n" +
+                                   " | |   .(\n" +
+                                   " )* | _(, ')\n" +
+                                   " |**o______ |\n" +
+                                   " |**        |\n" +
+                                   " |***       |\n" +
+                                   " |****      |\n" +
+                                   " |*****     |\n" +
+                                   " |******s   |\n" +
+                                   " '********--'";
+
+            switch (symbol)
             {
                 case 1:
                     Console.WriteLine(marchall);
                     return;
                 case 2:
                     Console.WriteLine(lighter);
+                    return;
+                case 3:
+                    Console.WriteLine(brokenlighter);
                     return;
 
             }
@@ -65,7 +85,7 @@ namespace LostMyLighter.Classes
         /// Component to be placed on top of each page, containing the page's title
         /// </summary>
         /// <param name="title"></param>
-        static void PageHeader(string title)
+        public static void PageHeader(string title)
         {
             Console.Clear();
             Console.WriteLine("------------------------------------------------");

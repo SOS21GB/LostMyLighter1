@@ -109,8 +109,12 @@ namespace LostMyLighter.Classes
                 }
             }
         }
+
         public void LostLighter()
         {
+            string title = "lost Lighter";
+            PageManager.PageHeader(title);
+            PageManager.Symbols(3);
             Console.WriteLine("Oh so you lost a lighter now did you dumdum? \n Please enter the amount of lighters you lost this time below {0}:  ", this.UserName);
             int lightersLost = Convert.ToInt32(Console.ReadLine());
             this.LostLighters -= lightersLost;
