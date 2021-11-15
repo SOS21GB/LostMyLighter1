@@ -36,7 +36,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Adress: {0}", Adress);
             Console.WriteLine("Searches: {0}", NumberOfSearches);
             Console.WriteLine("Marchallers found: {0}", NumberOfMarchaller);
-            Console.WriteLine("Lost Lighters: {0}", LostLighters);
+            Console.WriteLine("Lighters: {0}", LostLighters);
             Console.WriteLine("------------------------------------------------");
         }
 
@@ -60,6 +60,9 @@ namespace LostMyLighter.Classes
             CreatedUserInfo();
         }
 
+        
+
+
 
         public bool IsRightPassword(string input)
         {
@@ -69,21 +72,20 @@ namespace LostMyLighter.Classes
       
         public void EditUser ()
 
-        static string title = "Edit User";
+
         public  void EditUser ()
 
         {
-
-           
+          
+            string title = "Edit User";
             PageManager.PageHeader(title);
-        
             while (true)
             {
                 Console.WriteLine("\n 1. Name \n 2. Age\n 3. Adress \n 4. Found a lighter");
                 Console.WriteLine("Please enter the number corresponding to the information you'd like to change: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
-              
+
                 switch (choice)
                 {
                     case 1:
@@ -97,9 +99,22 @@ namespace LostMyLighter.Classes
                         {
                             Console.WriteLine("Your current age is: {0}", this.Age);
                             Console.WriteLine("Please enter your new age & may i say, happy birthday!: ");
-                            this.Age = Convert.ToInt32(Console.ReadLine());
+                            while (true)
+                            {
+                               
+                                if (int.TryParse(Console.ReadLine(), out int age))
+                                {
+                                    Console.WriteLine("Your new age has been changed to: {0}!", age);
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Wrong input pal, Try again!");
+                                }
+                            }
                             break;
                         }
+                        
                     case 3:
                         {
                             Console.WriteLine("Your current adress is: {0}", this.Adress);
@@ -107,10 +122,23 @@ namespace LostMyLighter.Classes
                             this.Adress = Console.ReadLine();
                             break;
                         }
+                
                     case 4:
                         {
-                            Console.WriteLine("So you've found a lighter have you? Good work dumdum. \n Please enter the amount of lighters you've \n found below my friend: ");
-                            this.LostLighters += Convert.ToInt32(Console.ReadLine());
+                            while (true)
+                            {
+                                Console.WriteLine("So you've found a lighter have you? Good work dumdum. \nPlease enter the amount of lighters you've \nfound below my friend: ");
+                                if (int.TryParse(Console.ReadLine(), out int lightersfound))
+                                {
+                                    this.LostLighters += lightersfound;
+                                    Console.WriteLine("You have successfully added {0} lighters pal! GJ!",lightersfound);
+                                    break;
+                                }
+                              else
+                                {
+                                    Console.WriteLine("Wrong input friend,try again!");
+                                }      
+                            }
                             break;
                         }
 
@@ -118,7 +146,7 @@ namespace LostMyLighter.Classes
                 }
                 Console.WriteLine("Would you like to change another aspect of your profile? \n Please enter your answer as Y/N below: ");
                 char choice2 = Convert.ToChar(Console.ReadLine());
-                if (choice2 == 'Y')
+                if (choice2 == 'Y' || choice2 =='y')
                 {
                 }
                 else
@@ -128,11 +156,14 @@ namespace LostMyLighter.Classes
             }
         }
       
-        public void LostLighter()
+         public void LostLighter()
         {
+            title = "Lost Lighter";
+            PageManager.PageHeader(title);
             while (true)
             {
-                Console.WriteLine("Oh so you lost a lighter now did you dumdum? \n Please enter the amount of lighters you lost this time below {0}:  ", this.UserName);
+                
+                Console.WriteLine("Oh so you lost a lighter now did you dumdum? \nPlease enter the amount of lighters you lost this time below {0}:  ", this.UserName);
                 if (int.TryParse(Console.ReadLine(), out int lighterslost))
                 {
                     this.LostLighters -= lighterslost;

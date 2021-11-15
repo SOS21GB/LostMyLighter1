@@ -237,8 +237,9 @@ namespace LostMyLighter.Classes
                 Console.WriteLine();
                 Console.WriteLine("1. Find marschalls.");
                 Console.WriteLine("2. Add marschall.");
-                Console.WriteLine("3. View profile.");
-                Console.WriteLine("4. Quit.");
+                Console.WriteLine("3. Add a lost/found lighter.");
+                Console.WriteLine("4. View profile.");
+                Console.WriteLine("5. Quit.");
                 Console.WriteLine();
                 Console.WriteLine("------------------------------------------------");
 
@@ -253,9 +254,41 @@ namespace LostMyLighter.Classes
                             AddMarschall();
                             return;
                         case 3:
+                            {
+                                 title = "Lighters";
+                                while (true)
+                                {
+                                    PageHeader(title);
+                                    Console.WriteLine("Would you like to add a new lighter to your collection or did you lose a lighter idjut?");
+                                    Console.WriteLine("1. Add a new lighter \n2. Add a lost lighter");
+                                    int.TryParse(Console.ReadLine(), out int choice3);
+                                    if (choice3 == 1)
+                                    {
+                                        Console.WriteLine("Select the amount of lighters you've found: ");
+                                        int.TryParse(Console.ReadLine(), out int lightersfound);
+                                        CurrUser.LostLighters += lightersfound;
+                                       Console.WriteLine("You have successfully added {0} lighters pal! GJ!", lightersfound);
+                                        Thread.Sleep(TimeSpan.FromSeconds(2));
+                                        break;
+                                    }
+                                    else if (choice3 == 2)
+                                    {
+                                        CurrUser.LostLighter();
+                                        Thread.Sleep(TimeSpan.FromSeconds(2));
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Wrong input, try again bro!");
+                                    }
+                                }
+                                MainMenu();
+                                return;
+                            }
+                        case 4:
                             ViewProfile();
                             return;
-                        case 4:
+                        case 5:
                             QuitApp();
                             return;
                     }
