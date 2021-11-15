@@ -57,11 +57,11 @@ namespace LostMyLighter.Classes
             Users.Add(_id, this);
             CreatedUserInfo();
         }
-        static string title = "Edit User";
+        static string title = "";
         public  void EditUser ()
         {
 
-           
+            title = "EditUser";
             PageManager.PageHeader(title);
         
             while (true)
@@ -143,9 +143,12 @@ namespace LostMyLighter.Classes
       
          public void LostLighter()
         {
+            title = "Lost Lighter";
+            PageManager.PageHeader(title);
             while (true)
             {
-                Console.WriteLine("Oh so you lost a lighter now did you dumdum? \n Please enter the amount of lighters you lost this time below {0}:  ", this.UserName);
+                
+                Console.WriteLine("Oh so you lost a lighter now did you dumdum? \nPlease enter the amount of lighters you lost this time below {0}:  ", this.UserName);
                 if (int.TryParse(Console.ReadLine(), out int lighterslost))
                 {
                     this.LostLighters -= lighterslost;
