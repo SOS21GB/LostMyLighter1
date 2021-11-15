@@ -203,7 +203,9 @@ namespace LostMyLighter.Classes
                 case 1:
                     Console.Clear();
                     Console.WriteLine("Clumsy. You lost a lighter!");
-                    Thread.Sleep(TimeSpan.FromSeconds(2));
+                    this._lostLighters--;
+                    PageManager.PausSleep(2);
+
                     return;
                 case 2:
                 case 3:
@@ -215,6 +217,7 @@ namespace LostMyLighter.Classes
                 case 9:
                     Console.Clear();
                     Console.WriteLine("What a wonderful day.");
+                    PageManager.PausSleep(2);
                     return;
 
                 case 10:
@@ -222,6 +225,7 @@ namespace LostMyLighter.Classes
                     Console.WriteLine("Lucky! You found a lighter!");
                     PageManager.Symbols(2);
                     this._lostLighters++;
+                    PageManager.PausSleep(2);
                     return;
             }
 
