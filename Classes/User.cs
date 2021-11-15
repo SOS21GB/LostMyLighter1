@@ -35,7 +35,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Adress: {0}", Adress);
             Console.WriteLine("Searches: {0}", NumberOfSearches);
             Console.WriteLine("Marchallers found: {0}", NumberOfMarchaller);
-            Console.WriteLine("Lost Lighters: {0}", LostLighters);
+            Console.WriteLine("Lighters: {0}", LostLighters);
             Console.WriteLine("------------------------------------------------");
         }
 
@@ -96,8 +96,20 @@ namespace LostMyLighter.Classes
                         }
                     case 4:
                         {
-                            Console.WriteLine("So you've found a lighter have you? Good work dumdum. \n Please enter the amount of lighters you've \n found below my friend: ");
-                            this.LostLighters += Convert.ToInt32(Console.ReadLine());
+                            while (true)
+                            {
+                                Console.WriteLine("So you've found a lighter have you? Good work dumdum. \nPlease enter the amount of lighters you've \nfound below my friend: ");
+                                if (int.TryParse(Console.ReadLine(), out int lightersfound))
+                                {
+                                    this.LostLighters += lightersfound;
+                                    Console.WriteLine("You have successfully added {0} lighters pal! GJ!",lightersfound);
+                                    break;
+                                }
+                              else
+                                {
+                                    Console.WriteLine("Wrong input friend,try again!");
+                                }      
+                            }
                             break;
                         }
 
@@ -105,7 +117,7 @@ namespace LostMyLighter.Classes
                 }
                 Console.WriteLine("Would you like to change another aspect of your profile? \n Please enter your answer as Y/N below: ");
                 char choice2 = Convert.ToChar(Console.ReadLine());
-                if (choice2 == 'Y')
+                if (choice2 == 'Y' || choice2 =='y')
                 {
                 }
                 else
@@ -115,7 +127,7 @@ namespace LostMyLighter.Classes
             }
         }
       
-        public void LostLighter()
+         public void LostLighter()
         {
             while (true)
             {
