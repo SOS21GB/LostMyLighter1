@@ -202,6 +202,7 @@ namespace LostMyLighter.Classes
                 case 1:
                     Console.Clear();
                     Console.WriteLine("Clumsy. You lost a lighter!");
+                    PageManager.Symbols(3);
                     Thread.Sleep(TimeSpan.FromSeconds(2));
                     return;
                 case 2:
