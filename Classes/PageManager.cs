@@ -232,7 +232,7 @@ namespace LostMyLighter.Classes
                             AddMarschall();
                             return;
                         case 3:
-                            ViewProfile();
+                            ViewProfile();                            
                             return;
                         case 4:
                             QuitApp();
