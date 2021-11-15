@@ -201,7 +201,7 @@ namespace LostMyLighter.Classes
             {
                 case 1:
                     Console.Clear();
-                    Console.WriteLine("Clumsy. You lost a lighter!"
+                    Console.WriteLine("Clumsy. You lost a lighter!");
                     this._lostLighters--;
                     PageManager.Symbols(3);    
                     PageManager.PausSleep(2);
