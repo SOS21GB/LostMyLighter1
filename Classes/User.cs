@@ -114,12 +114,25 @@ namespace LostMyLighter.Classes
                 }
             }
         }
+      
         public void LostLighter()
         {
-            Console.WriteLine("Oh so you lost a lighter now did you dumdum? \n Please enter the amount of lighters you lost this time below {0}:  ", this.UserName);
-            int lightersLost = Convert.ToInt32(Console.ReadLine());
-            this.LostLighters -= lightersLost;
-            Console.WriteLine("You have successfully added {0} lighters to the pile of losses my friend. YaY!",lightersLost);
+            while (true)
+            {
+                Console.WriteLine("Oh so you lost a lighter now did you dumdum? \n Please enter the amount of lighters you lost this time below {0}:  ", this.UserName);
+                if (int.TryParse(Console.ReadLine(), out int lighterslost))
+                {
+                    this.LostLighters -= lighterslost;
+                    Console.WriteLine("You have successfully added {0} lighters to the pile of losses my friend. YaY!", lighterslost);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Wrong input, try try again");
+
+                }
+            }
+           
         }
     }
 }
