@@ -126,17 +126,33 @@ namespace LostMyLighter.Classes
             while (true)
             {
                 PageHeader(title);
-                //här lägger vi flödet för inlogg
                 Console.WriteLine("Enter ID: ");
                 if (int.TryParse(Console.ReadLine(), out int userid))
                 {
                     if (User.Users.ContainsKey(userid))
                     {
-                        CurrUser = User.Users[userid];
-                        Console.WriteLine("Successfully logged in! ");
-                        Thread.Sleep(TimeSpan.FromSeconds(2));
-                        MainMenu();
-                        return;
+
+                        PageHeader(title);
+                        Console.WriteLine("Enter Password: ");
+                        string passwordEntered = Console.ReadLine();
+                        if (User.Users[userid].IsRightPassword(passwordEntered))
+                        {
+
+                            CurrUser = User.Users[userid];
+                            Console.WriteLine("Successfully logged in! ");   
+                            Thread.Sleep(TimeSpan.FromSeconds(2));
+                            MainMenu();
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Wrong Password !! ");
+                            Thread.Sleep(TimeSpan.FromSeconds(2));
+                            LogIn();
+                            return;
+                        }
+
+                       
                     }
                 }
                 ErrorMessage();
@@ -146,6 +162,7 @@ namespace LostMyLighter.Classes
         static void CreateUser()
         {
             string title = "Create User";
+            string password;
             string name;
             int age;
             string adress;
@@ -168,8 +185,12 @@ namespace LostMyLighter.Classes
             Console.Write("Enter Adress: ");
             adress = Console.ReadLine();
 
+            Console.Write("Enter new password: ");
+            password = Console.ReadLine();
+
+
             PageHeader(title);
-            CurrUser = new(name, age, adress);
+            CurrUser = new(name, age, adress, password);
 
             while (true)
             {
