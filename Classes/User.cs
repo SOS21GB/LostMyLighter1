@@ -57,17 +57,20 @@ namespace LostMyLighter.Classes
             Users.Add(_id, this);
             CreatedUserInfo();
         }
-      
-        public void EditUser ()
+        static string title = "Edit User";
+        public  void EditUser ()
         {
-            
-            Console.WriteLine("-------------------- Edit User--------------------");
-            Console.WriteLine(" ------------------------------------------------ ");
-            Console.WriteLine("You may now choose to change the following information\n 1. Name \n 2. Age\n 3. Adress \n 4. Found a lighter");
-            Console.WriteLine("Please enter the number corresponding to the action you would like to take: ");
-            int choice = Convert.ToInt32(Console.ReadLine());
+
+           
+            PageManager.PageHeader(title);
+        
             while (true)
             {
+                Console.WriteLine("\n 1. Name \n 2. Age\n 3. Adress \n 4. Found a lighter");
+                Console.WriteLine("Please enter the number corresponding to the information you'd like to change: ");
+                int choice = Convert.ToInt32(Console.ReadLine());
+
+              
                 switch (choice)
                 {
                     case 1:
@@ -97,6 +100,8 @@ namespace LostMyLighter.Classes
                             this.LostLighters += Convert.ToInt32(Console.ReadLine());
                             break;
                         }
+
+                        
                 }
                 Console.WriteLine("Would you like to change another aspect of your profile? \n Please enter your answer as Y/N below: ");
                 char choice2 = Convert.ToChar(Console.ReadLine());
