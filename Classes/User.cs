@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,6 +60,7 @@ namespace LostMyLighter.Classes
             CreatedUserInfo();
         }
 
+
         public bool IsRightPassword(string input)
         {
 
@@ -67,15 +68,22 @@ namespace LostMyLighter.Classes
         }
       
         public void EditUser ()
+
+        static string title = "Edit User";
+        public  void EditUser ()
+
         {
-            
-            Console.WriteLine("-------------------- Edit User--------------------");
-            Console.WriteLine(" ------------------------------------------------ ");
-            Console.WriteLine("You may now choose to change the following information\n 1. Name \n 2. Age\n 3. Adress \n 4. Found a lighter");
-            Console.WriteLine("Please enter the number corresponding to the action you would like to take: ");
-            int choice = Convert.ToInt32(Console.ReadLine());
+
+           
+            PageManager.PageHeader(title);
+        
             while (true)
             {
+                Console.WriteLine("\n 1. Name \n 2. Age\n 3. Adress \n 4. Found a lighter");
+                Console.WriteLine("Please enter the number corresponding to the information you'd like to change: ");
+                int choice = Convert.ToInt32(Console.ReadLine());
+
+              
                 switch (choice)
                 {
                     case 1:
@@ -105,6 +113,8 @@ namespace LostMyLighter.Classes
                             this.LostLighters += Convert.ToInt32(Console.ReadLine());
                             break;
                         }
+
+                        
                 }
                 Console.WriteLine("Would you like to change another aspect of your profile? \n Please enter your answer as Y/N below: ");
                 char choice2 = Convert.ToChar(Console.ReadLine());
@@ -117,12 +127,25 @@ namespace LostMyLighter.Classes
                 }
             }
         }
+      
         public void LostLighter()
         {
-            Console.WriteLine("Oh so you lost a lighter now did you dumdum? \n Please enter the amount of lighters you lost this time below {0}:  ", this.UserName);
-            int lightersLost = Convert.ToInt32(Console.ReadLine());
-            this.LostLighters -= lightersLost;
-            Console.WriteLine("You have successfully added {0} lighters to the pile of losses my friend. YaY!",lightersLost);
+            while (true)
+            {
+                Console.WriteLine("Oh so you lost a lighter now did you dumdum? \n Please enter the amount of lighters you lost this time below {0}:  ", this.UserName);
+                if (int.TryParse(Console.ReadLine(), out int lighterslost))
+                {
+                    this.LostLighters -= lighterslost;
+                    Console.WriteLine("You have successfully added {0} lighters to the pile of losses my friend. YaY!", lighterslost);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Wrong input, try try again");
+
+                }
+            }
+           
         }
     }
 }

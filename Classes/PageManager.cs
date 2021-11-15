@@ -65,7 +65,7 @@ namespace LostMyLighter.Classes
         /// Component to be placed on top of each page, containing the page's title
         /// </summary>
         /// <param name="title"></param>
-        static void PageHeader(string title)
+        public static void PageHeader(string title)
         {
             Console.Clear();
             Console.WriteLine("------------------------------------------------");
@@ -266,7 +266,7 @@ namespace LostMyLighter.Classes
             }
         }
 
-        static void ViewProfile()
+       public static void ViewProfile()
         {
             string title = "Profile";
 
