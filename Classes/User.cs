@@ -167,15 +167,15 @@ namespace LostMyLighter.Classes
             }
         }
 
+
       
          public void LostLighter()
         {
             string title = "Lost Lighter";
             PageManager.PageHeader(title);
+            PageManager.Symbols(3);
             while (true)
             {
-
-                
                 Console.WriteLine("Oh so you lost a lighter now did you dumdum? \nPlease enter the amount of lighters you lost this time below {0}:  ", this._userName);
                 
               if (int.TryParse(Console.ReadLine(), out int lighterslost))
@@ -190,7 +190,6 @@ namespace LostMyLighter.Classes
 
                 }
             }
-
         }
 
         public void RandomLostorFoundLighter()
