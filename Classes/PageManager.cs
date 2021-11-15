@@ -23,6 +23,44 @@ namespace LostMyLighter.Classes
             }
             
         }
+        
+        
+        public static void Symbols(int symbol) 
+        {
+            string marchall = "*****\n" +
+                              "*   *\n" +
+                              "* * *\n" +
+                              "*   *\n" +
+                              "*****";
+            string lighter = "  _    \n" +
+                             " | |  \n" +
+                             " | |  \n" +
+                             " | |  \n" +
+                             " | |  \n" +
+                             " | |    )\n" +
+                             " | |   .(\n" +
+                             " ) | _(, ')\n" +
+                             " | o______ |\n" +
+                             " |         |\n" +
+                             " | ||      |\n" +
+                             " | ||      |\n" +
+                             " | ||      |\n" +
+                             " | || jgs  |\n" +
+                             " '---------'";
+            switch(symbol)
+            {
+                case 1:
+                    Console.WriteLine(marchall);
+                    return;
+                case 2:
+                    Console.WriteLine(lighter);
+                    return;
+
+            }
+            
+            
+        }
+        
 
         /// <summary>
         /// Component to be placed on top of each page, containing the page's title
@@ -56,6 +94,8 @@ namespace LostMyLighter.Classes
             while (true)
             {
                 PageHeader(titel);
+                Symbols(1);
+                Symbols(2);
 
                 Console.WriteLine("1. Log in");
                 Console.WriteLine("2. Create User");
@@ -141,6 +181,8 @@ namespace LostMyLighter.Classes
             while (true)
             {
                 PageHeader(title);
+                Symbols(1);
+                Symbols(2);
                 Console.WriteLine();
                 Console.WriteLine("1. Find marschalls.");
                 Console.WriteLine("2. Add marschall.");
