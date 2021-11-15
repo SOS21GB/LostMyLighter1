@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,7 @@ namespace LostMyLighter.Classes
         public static Dictionary<int, User> Users = new();
 
         private int _id;
+        private string _password;
         private string _userName;
         private int _age; 
         private string _adress;
@@ -48,22 +49,36 @@ namespace LostMyLighter.Classes
             Console.WriteLine("------------------------------------------------");
         }
 
-        public User(string username, int age, string adress)
+        public User(string username, int age, string adress, string password)
         {
             this.UserName = username;
+            this._password = password;
             this.Age = age;
             this.Adress = adress;
             _id = Users.Count + 1;
             Users.Add(_id, this);
             CreatedUserInfo();
         }
-        static string title = "";
-        public  void EditUser ()
+
+        
+
+
+
+        public bool IsRightPassword(string input)
         {
 
-            title = "EditUser";
+            return _password == input;
+        }
+      
+        public void EditUser ()
+
+
+        public  void EditUser ()
+
+        {
+          
+            string title = "Edit User";
             PageManager.PageHeader(title);
-        
             while (true)
             {
                 Console.WriteLine("\n 1. Name \n 2. Age\n 3. Adress \n 4. Found a lighter");
