@@ -170,7 +170,7 @@ namespace LostMyLighter.Classes
 
       
          public void LostLighter()
-        {
+         {
             string title = "Lost Lighter";
             PageManager.PageHeader(title);
             PageManager.Symbols(3);
@@ -190,46 +190,8 @@ namespace LostMyLighter.Classes
 
                 }
             }
-        }
+         }
 
-        public void RandomLostorFoundLighter()
-        {
-            Random rnd = new Random();
-            int lighter = rnd.Next(1, 11);
-
-            switch (lighter)
-            {
-                case 1:
-                    Console.Clear();
-                    Console.WriteLine("Clumsy. You lost a lighter!");
-                    this._lostLighters--;
-                    PageManager.Symbols(3);    
-                    PageManager.PausSleep(2);
-
-                    return;
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                    Console.Clear();
-                    Console.WriteLine("What a wonderful day.");
-                    PageManager.PausSleep(2);
-                    return;
-
-                case 10:
-                    Console.Clear();
-                    Console.WriteLine("Lucky! You found a lighter!");
-                    PageManager.Symbols(2);
-                    this._lostLighters++;
-                    PageManager.PausSleep(2);
-                    return;
-            }
-
-        }
         
     }
 }
