@@ -307,7 +307,7 @@ namespace LostMyLighter.Classes
                                 return;
                             }
                         case 4:                            
-                            ViewProfile();                      
+                            ViewProfile();
                             return;
                         case 5:
                             QuitApp();
