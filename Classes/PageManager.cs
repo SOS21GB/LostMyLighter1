@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
+
 namespace LostMyLighter.Classes
 {
     static class PageManager
@@ -148,7 +149,7 @@ namespace LostMyLighter.Classes
             string title = "Create User";
             string name;
             int age;
-            string adress;
+            Adress adress;
 
             PageHeader(title);
             Console.Write("Enter Name: ");
@@ -166,7 +167,7 @@ namespace LostMyLighter.Classes
             }
 
             Console.Write("Enter Adress: ");
-            adress = Console.ReadLine();
+            //adress = Console.ReadLine();
 
             PageHeader(title);
             CurrUser = new(name, age, adress);
@@ -203,6 +204,7 @@ namespace LostMyLighter.Classes
                 CurrUser.CreatedUserInfo();
             }
         }
+        //CreateAdress()
 
         static void MainMenu()
         {
