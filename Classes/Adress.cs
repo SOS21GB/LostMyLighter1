@@ -28,5 +28,13 @@ namespace LostMyLighter.Classes
             this.ZipCode = zipCode;
             Adresser.Add(this);           
         }
+        public void DisplayAdress()
+        {
+            Console.WriteLine("Streetname: {0}", StreetName);
+            Console.WriteLine("Streetnumber: {0}", StreetNumber);
+            Console.WriteLine("City: {0}", City);
+            Console.WriteLine("Zipcode: {0}", ZipCode);
+
+        }
     }
 }
