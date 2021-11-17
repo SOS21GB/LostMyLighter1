@@ -21,7 +21,7 @@ namespace LostMyLighter.Classes
             { PageName.MainMenu, new MainMenu() },
             { PageName.ViewProfile, new ViewProfile() },
             //{ PageName.CreateUser, new CreateUser() },
-            //{ PageName.LogIn, new LogIn() },
+            { PageName.LogIn, new LogInMenu() },
             //{ PageName.AddRemoveLighter, new AddRemoveLighter() },
             //{ PageName.FindMarschalls, new FindMarschalls() },
             //{ PageName.AddMarschall, new AddMarschall() },
@@ -38,7 +38,6 @@ namespace LostMyLighter.Classes
             if (CurrUser != null)
             {
                 AllPages[PageName.MainMenu].LoadPage(out nextPage);
-
             }
 
             else
@@ -381,10 +380,19 @@ namespace LostMyLighter.Classes
             //här lägger vi hela flödet för AddMarschall-sidan
         }
 
+        public static void LogOut()
+        {
+            
+            PageHeader("Lost My Lighter");
+            Console.WriteLine("Logging out...");
+            CurrUser = null;
+            PausSleep(3);
+        }
+
         static void QuitApp()
         {
-            Console.Clear();
-            Console.WriteLine("*************Logging out******************");
+            PageHeader("Lost My Lighter");
+            Console.WriteLine("Exiting App...");
             PausSleep(3);
             Console.Clear();
         }
