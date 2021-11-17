@@ -212,7 +212,7 @@ namespace LostMyLighter.Classes
 
             PageHeader(title);
             adress = CreateAdress();
-            CurrUser = new(name, age, adress);
+            CurrUser = new(name, age, adress, password);
 
 
             while (true)

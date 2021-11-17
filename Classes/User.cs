@@ -37,7 +37,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("ID: {0}", _id);
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
-            Console.WriteLine("Adress: {0}", _userAdress);
+            Console.WriteLine("Adress: {0}", _adress);
             Console.WriteLine("Searches: {0}", _numberOfSearches);
             Console.WriteLine("Marchallers found: {0}", _numberOfMarchaller);
             Console.WriteLine("Lighters: {0}", _lostLighters);
@@ -50,17 +50,17 @@ namespace LostMyLighter.Classes
             Console.WriteLine("ID: {0}", _id);
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
-            Console.WriteLine("Adress: {0}", _userAdress);
+            Console.WriteLine("Adress: {0}", _adress);
             Console.WriteLine("------------------------------------------------");
         }
 
-        public User(string username, int age, Andress adress, string password)
+        public User(string username, int age, Adress adress, string password)
         {
 
             this._userName = username;
             this._password = password;  
             this._age = age;
-            this._userAdress = adress;
+            this._adress = adress;
 
 
 
@@ -127,7 +127,7 @@ namespace LostMyLighter.Classes
                     case 3:
                         {
 
-                            Console.WriteLine("Your current adress is: {0}", this._userAdress);
+                            Console.WriteLine("Your current adress is: {0}", this._adress);
                             Console.WriteLine("Please enter your new adress below: ");
                             //this.UserAdress = Console.ReadLine();
 
