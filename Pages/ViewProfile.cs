@@ -38,7 +38,8 @@ namespace LostMyLighter.Pages
                     }
                 }
 
-             
+                Header(_title);
+                ErrorMessage();
             }
         }
     }

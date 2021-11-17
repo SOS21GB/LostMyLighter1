@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace LostMyLighter.Pages
 {
     class StartMenu : Page
@@ -17,11 +18,10 @@ namespace LostMyLighter.Pages
         {
             while (true)
             {
-                Header(_title);
+
                 //Symbols(1);
                 //Symbols(2);
-
-
+                Header(_title);
                 Console.WriteLine("1. Log in");
                 Console.WriteLine("2. Create User");
                 Console.WriteLine("3. Quit");
@@ -41,6 +41,9 @@ namespace LostMyLighter.Pages
                             return;
                     }
                 }
+
+                Header(_title);
+                ErrorMessage();
             }
         }
 

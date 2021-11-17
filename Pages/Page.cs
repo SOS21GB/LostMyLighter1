@@ -24,7 +24,18 @@ namespace LostMyLighter.Pages
             Console.WriteLine("------------------------------------------------");
         }
 
-     
+        /// <summary>
+        /// Call this method to let the user know that the input was not accepted
+        /// </summary>
+        protected static void ErrorMessage()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Input not valid");
+            Console.WriteLine();
+            Console.WriteLine("------------------------------------------------");
+            PageManager.PausSleep(2);
+        }
+
     }
 
     enum PageName { None, StartMenu, CreateUser, LogIn, MainMenu, ViewProfile, AddRemoveLighter, FindMarschalls, AddMarschall}

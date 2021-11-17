@@ -28,7 +28,7 @@ namespace LostMyLighter.Classes
         public static void RunApp()
         {
             PageName nextPage;
-            CurrUser = User.Users[1];
+            //CurrUser = User.Users[1];
 
             if (CurrUser != null)
             {
@@ -306,7 +306,7 @@ namespace LostMyLighter.Classes
                         case 3:
 
                             {
-                                 title = "Lighters";
+                                title = "Lighters";
                                 while (true)
                                 {
                                     PageHeader(title);

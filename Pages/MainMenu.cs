@@ -56,7 +56,10 @@ namespace LostMyLighter.Pages
                             nextPage = PageName.None;
                             return;                               
                     }
-                }                
+                }
+                
+                Header(_title);
+                ErrorMessage();
             }
         }
     }
