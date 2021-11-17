@@ -14,8 +14,8 @@ namespace LostMyLighter.Classes
         private int _id;
         private string _password;
         private string _userName;
-        private int _age;
-        private string _adress;
+        private int _age; 
+        private Adress _adress;
         private int _numberOfSearches;
         private int _numberOfMarchaller;
         private int _lostLighters;
@@ -24,7 +24,7 @@ namespace LostMyLighter.Classes
         public int Id { get { return _id; } }
         public string UserName { get { return _userName; } set { _userName = value; } }
         public int Age { get { return _age; } set { _age = value; } }
-        public string Adress { get { return _adress; } set { _adress = value; } }
+        public Adress UserAdress { get { return _adress; } set { _adress = value; } }
         public int NumberOfSearches { get { return _numberOfSearches; } }
         public int NumberOfMarchaller { get { return _numberOfMarchaller; } }
         */
@@ -34,11 +34,10 @@ namespace LostMyLighter.Classes
         public void DisplayUserInfo()
         {
 
-
             Console.WriteLine("ID: {0}", _id);
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
-            Console.WriteLine("Adress: {0}", _adress);
+            Console.WriteLine("Adress: {0}", _userAdress);
             Console.WriteLine("Searches: {0}", _numberOfSearches);
             Console.WriteLine("Marchallers found: {0}", _numberOfMarchaller);
             Console.WriteLine("Lighters: {0}", _lostLighters);
@@ -47,20 +46,22 @@ namespace LostMyLighter.Classes
 
         public void CreatedUserInfo()
         {
+
             Console.WriteLine("ID: {0}", _id);
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
-            Console.WriteLine("Adress: {0}", _adress);
+            Console.WriteLine("Adress: {0}", _userAdress);
             Console.WriteLine("------------------------------------------------");
         }
 
-        public User(string username, int age, string adress, string password)
+        public User(string username, int age, Andress adress, string password)
         {
 
             this._userName = username;
             this._password = password;  
             this._age = age;
-            this._adress = adress;
+            this._userAdress = adress;
+
 
 
             _id = Users.Count + 1;
@@ -125,9 +126,11 @@ namespace LostMyLighter.Classes
                         
                     case 3:
                         {
-                            Console.WriteLine("Your current adress is: {0}", this._adress);
+
+                            Console.WriteLine("Your current adress is: {0}", this._userAdress);
                             Console.WriteLine("Please enter your new adress below: ");
-                            this._adress = Console.ReadLine();
+                            //this.UserAdress = Console.ReadLine();
+
                             break;
                         }
                 

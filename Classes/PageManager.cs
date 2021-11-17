@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
+
 namespace LostMyLighter.Classes
 {
     static class PageManager
@@ -185,7 +186,7 @@ namespace LostMyLighter.Classes
             string password;
             string name;
             int age;
-            string adress;
+            Adress adress;
 
             PageHeader(title);
             Console.Write("Enter Name: ");
@@ -194,7 +195,7 @@ namespace LostMyLighter.Classes
             while (true) 
             {
                 Console.Write("Enter Age: ");
-                if (int.TryParse(Console.ReadLine(), out age))
+                if (int.TryParse(Console.ReadLine(), out age))   
                 {
                     break;
                 }
@@ -203,14 +204,16 @@ namespace LostMyLighter.Classes
             }
 
             Console.Write("Enter Adress: ");
-            adress = Console.ReadLine();
+            //adress = Console.ReadLine();
 
             Console.Write("Enter new password: ");
             password = Console.ReadLine();
 
 
             PageHeader(title);
-            CurrUser = new(name, age, adress, password);
+            adress = CreateAdress();
+            CurrUser = new(name, age, adress);
+
 
             while (true)
             {
@@ -243,6 +246,40 @@ namespace LostMyLighter.Classes
                 PageHeader(title);
                 CurrUser.CreatedUserInfo();
             }
+        }
+       static Adress CreateAdress() 
+        {
+
+            string title = "Create Adress";
+            string streetNumber;
+            string streetName;
+            string city;
+            int zipCode;
+
+            PageHeader(title);
+            Console.Write("Enter Streetnumber: ");
+            streetNumber = Console.ReadLine();
+
+            Console.WriteLine("Enter Streetname");
+            streetName = Console.ReadLine();
+
+            Console.WriteLine("Enter city");
+            city = Console.ReadLine();
+
+            while (true)
+            {
+                Console.Write("Enter Zipcode: ");
+                if (int.TryParse(Console.ReadLine(), out zipCode))
+                {
+                    break;
+                }
+                ErrorMessage();
+                PageHeader(title);
+            }
+
+
+
+            return new Adress(streetName, streetNumber, city, zipCode);
         }
 
         static void MainMenu()
