@@ -158,7 +158,7 @@ namespace LostMyLighter.Classes
             while (true) 
             {
                 Console.Write("Enter Age: ");
-                if (int.TryParse(Console.ReadLine(), out age))
+                if (int.TryParse(Console.ReadLine(), out age))   
                 {
                     break;
                 }
@@ -170,6 +170,7 @@ namespace LostMyLighter.Classes
             //adress = Console.ReadLine();
 
             PageHeader(title);
+            adress = CreateAdress();
             CurrUser = new(name, age, adress);
 
             while (true)
@@ -204,7 +205,40 @@ namespace LostMyLighter.Classes
                 CurrUser.CreatedUserInfo();
             }
         }
-        //CreateAdress()
+       static Adress CreateAdress() 
+        {
+
+            string title = "Create Adress";
+            string streetNumber;
+            string streetName;
+            string city;
+            int zipCode;
+
+            PageHeader(title);
+            Console.Write("Enter Streetnumber: ");
+            streetNumber = Console.ReadLine();
+
+            Console.WriteLine("Enter Streetname");
+            streetName = Console.ReadLine();
+
+            Console.WriteLine("Enter city");
+            city = Console.ReadLine();
+
+            while (true)
+            {
+                Console.Write("Enter Zipcode: ");
+                if (int.TryParse(Console.ReadLine(), out zipCode))
+                {
+                    break;
+                }
+                ErrorMessage();
+                PageHeader(title);
+            }
+
+
+
+            return new Adress(streetName, streetNumber, city, zipCode);
+        }
 
         static void MainMenu()
         {
