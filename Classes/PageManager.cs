@@ -59,8 +59,8 @@ namespace LostMyLighter.Classes
             {
 
                 PageHeader(title);
-                Symbols(1);
-                Symbols(2);
+                SymbolPrint.Symbols(1);
+                SymbolPrint.Symbols(2);
 
 
                 Console.WriteLine("1. Log in");
@@ -147,16 +147,14 @@ namespace LostMyLighter.Classes
                 ErrorMessage();
                 PageHeader(title);
             }
+                        
+            adress = CreateAdress();
 
-            Console.Write("Enter Adress: ");
-            //adress = Console.ReadLine();
-
-            Console.Write("Enter new password: ");
+            Console.Write("Enter new password for user: ");
             password = Console.ReadLine();
 
 
-            PageHeader(title);
-            adress = CreateAdress();
+            PageHeader(title);            
             CurrUser = new(name, age, adress, password);
 
 
@@ -194,21 +192,18 @@ namespace LostMyLighter.Classes
         }
        static Adress CreateAdress() 
         {
-
-            string title = "Create Adress";
             string streetNumber;
             string streetName;
             string city;
             int zipCode;
 
-            PageHeader(title);
+            Console.Write("Enter Streetname: ");
+            streetName = Console.ReadLine();
+            
             Console.Write("Enter Streetnumber: ");
             streetNumber = Console.ReadLine();
 
-            Console.WriteLine("Enter Streetname");
-            streetName = Console.ReadLine();
-
-            Console.WriteLine("Enter city");
+            Console.Write("Enter city: ");
             city = Console.ReadLine();
 
             while (true)
@@ -219,7 +214,6 @@ namespace LostMyLighter.Classes
                     break;
                 }
                 ErrorMessage();
-                PageHeader(title);
             }
 
 
@@ -233,8 +227,8 @@ namespace LostMyLighter.Classes
 
             while (true)
             {
-                Symbols(1);
-                Symbols(2);
+                SymbolPrint.Symbols(1);
+                SymbolPrint.Symbols(2);
                 PageHeader(title);
                 Console.WriteLine();
                 Console.WriteLine("1. Find marschalls.");

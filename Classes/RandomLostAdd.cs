@@ -49,7 +49,7 @@ namespace LostMyLighter.Classes
             PageManager.PageHeader(title);
             Console.WriteLine("Clumsy! You lost a lighter!");
             PageManager.CurrUser.LostLighters--;
-            PageManager.Symbols(3);
+            SymbolPrint.Symbols(3);
             PageManager.PausSleep(2);
         }
 
@@ -58,7 +58,7 @@ namespace LostMyLighter.Classes
             PageManager.PageHeader(title);
             Console.WriteLine("You just realized that you lost a lighter!");
             PageManager.CurrUser.LostLighters--;
-            PageManager.Symbols(3);
+            SymbolPrint.Symbols(3);
             PageManager.PausSleep(2);
         }
 
@@ -66,7 +66,7 @@ namespace LostMyLighter.Classes
         {
             PageManager.PageHeader(title);
             Console.WriteLine("Lucky! You found a lighter!");
-            PageManager.Symbols(2);
+            SymbolPrint.Symbols(2);
             PageManager.CurrUser.LostLighters++;
             PageManager.PausSleep(2);
         }
