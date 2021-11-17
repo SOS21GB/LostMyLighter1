@@ -4,19 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace LostMyLighter.Classes
 {
     class RandomLostAdd
     {
         public static void LostOrFoundLighter()
         {
-            System.Random rnd = new System.Random();
+            System.Random rnd = new();
             int lighter = rnd.Next(1, 11);
 
             switch (lighter)
             {
                 case 1:
-                    RollOne();
+                    if (PageManager.CurrUser.LostLighters > 0)
+                    {
+                        RollOne();
+                    }
+                    else
+                    {
+                        RollOneZeroLighters();
+                    }
                     return;
                 case 2:
                 case 3:
@@ -35,10 +43,20 @@ namespace LostMyLighter.Classes
 
         }
 
+        static string title = "On the streets.";
         public static void RollOne()
         {
-            Console.Clear();
-            Console.WriteLine("Clumsy. You lost a lighter!");
+            PageManager.PageHeader(title);
+            Console.WriteLine("Clumsy! You lost a lighter!");
+            PageManager.CurrUser.LostLighters--;
+            PageManager.Symbols(3);
+            PageManager.PausSleep(2);
+        }
+
+        public static void RollOneZeroLighters()
+        {
+            PageManager.PageHeader(title);
+            Console.WriteLine("You just realized that you lost a lighter!");
             PageManager.CurrUser.LostLighters--;
             PageManager.Symbols(3);
             PageManager.PausSleep(2);
@@ -46,7 +64,7 @@ namespace LostMyLighter.Classes
 
         public static void RollTen()
         {
-            Console.Clear();
+            PageManager.PageHeader(title);
             Console.WriteLine("Lucky! You found a lighter!");
             PageManager.Symbols(2);
             PageManager.CurrUser.LostLighters++;
@@ -55,7 +73,7 @@ namespace LostMyLighter.Classes
 
         public static void RollBetween()
         {
-            Console.Clear();
+            PageManager.PageHeader(title);
             Console.WriteLine("What a wonderful day.");
             PageManager.PausSleep(2);
         }

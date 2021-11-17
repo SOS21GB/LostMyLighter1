@@ -251,9 +251,9 @@ namespace LostMyLighter.Classes
 
             while (true)
             {
-                PageHeader(title);
                 Symbols(1);
                 Symbols(2);
+                PageHeader(title);
                 Console.WriteLine();
                 Console.WriteLine("1. Find marschalls.");
                 Console.WriteLine("2. Add marschall.");
@@ -262,6 +262,7 @@ namespace LostMyLighter.Classes
                 Console.WriteLine("5. Quit.");
                 Console.WriteLine();
                 Console.WriteLine("------------------------------------------------");
+
 
                 if (int.TryParse(Console.ReadLine(), out int userInput))
                 {
@@ -306,7 +307,8 @@ namespace LostMyLighter.Classes
                                 MainMenu();
                                 return;
                             }
-                        case 4:                            
+                        case 4:
+                            RandomLostAdd.LostOrFoundLighter();
                             ViewProfile();
                             return;
                         case 5:
