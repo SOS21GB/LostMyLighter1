@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using LostMyLighter.Pages;
 
+
 namespace LostMyLighter.Classes
 {
     static class PageManager
@@ -57,59 +58,6 @@ namespace LostMyLighter.Classes
         }
         
         
-        public static void Symbols(int symbol) 
-        {
-            string marchall = "*****\n" +
-                              "*   *\n" +
-                              "* * *\n" +
-                              "*   *\n" +
-                              "*****";
-            string lighter = "  _    \n" +
-                             " | |  \n" +
-                             " | |  \n" +
-                             " | |  \n" +
-                             " | |  \n" +
-                             " | |    )\n" +
-                             " | |   .(\n" +
-                             " ) | _(, ')\n" +
-                             " | o______ |\n" +
-                             " |         |\n" +
-                             " | ||      |\n" +
-                             " | ||      |\n" +
-                             " | ||      |\n" +
-                             " | || jgs  |\n" +
-                             " '---------'";
-            
-            string brokenlighter = "  _    \n" +
-                                   " | |  \n" +
-                                   " | |  \n" +
-                                   " | |  \n" +
-                                   " | |  \n" +
-                                   " | |    )\n" +
-                                   " | |   .(\n" +
-                                   " )* | _(, ')\n" +
-                                   " |**o______ |\n" +
-                                   " |**        |\n" +
-                                   " |***       |\n" +
-                                   " |****      |\n" +
-                                   " |*****     |\n" +
-                                   " |******s   |\n" +
-                                   " '********--'";
-
-            switch (symbol)
-            {
-                case 1:
-                    Console.WriteLine(marchall);
-                    return;
-                case 2:
-                    Console.WriteLine(lighter);
-                    return;
-                case 3:
-                    Console.WriteLine(brokenlighter);
-                    return;
-            }        
-        }
-        
 
         /// <summary>
         /// Component to be placed on top of each page, containing the page's title
@@ -143,8 +91,8 @@ namespace LostMyLighter.Classes
             {
 
                 PageHeader(title);
-                Symbols(1);
-                Symbols(2);
+                SymbolPrint.Symbols(1);
+                SymbolPrint.Symbols(2);
 
 
                 Console.WriteLine("1. Log in");
@@ -215,7 +163,7 @@ namespace LostMyLighter.Classes
             string password;
             string name;
             int age;
-            string adress;
+            Adress adress;
 
             PageHeader(title);
             Console.Write("Enter Name: ");
@@ -224,23 +172,23 @@ namespace LostMyLighter.Classes
             while (true) 
             {
                 Console.Write("Enter Age: ");
-                if (int.TryParse(Console.ReadLine(), out age))
+                if (int.TryParse(Console.ReadLine(), out age))   
                 {
                     break;
                 }
                 ErrorMessage();
                 PageHeader(title);
             }
+                        
+            adress = CreateAdress();
 
-            Console.Write("Enter Adress: ");
-            adress = Console.ReadLine();
-
-            Console.Write("Enter new password: ");
+            Console.Write("Enter new password for user: ");
             password = Console.ReadLine();
 
 
-            PageHeader(title);
+            PageHeader(title);            
             CurrUser = new(name, age, adress, password);
+
 
             while (true)
             {
@@ -274,6 +222,36 @@ namespace LostMyLighter.Classes
                 CurrUser.CreatedUserInfo();
             }
         }
+       static Adress CreateAdress() 
+        {
+            string streetNumber;
+            string streetName;
+            string city;
+            int zipCode;
+
+            Console.Write("Enter Streetname: ");
+            streetName = Console.ReadLine();
+            
+            Console.Write("Enter Streetnumber: ");
+            streetNumber = Console.ReadLine();
+
+            Console.Write("Enter city: ");
+            city = Console.ReadLine();
+
+            while (true)
+            {
+                Console.Write("Enter Zipcode: ");
+                if (int.TryParse(Console.ReadLine(), out zipCode))
+                {
+                    break;
+                }
+                ErrorMessage();
+            }
+
+
+
+            return new Adress(streetName, streetNumber, city, zipCode);
+        }
 
         static void MainMenu()
         {
@@ -281,9 +259,9 @@ namespace LostMyLighter.Classes
 
             while (true)
             {
+                SymbolPrint.Symbols(1);
+                SymbolPrint.Symbols(2);
                 PageHeader(title);
-                Symbols(1);
-                Symbols(2);
                 Console.WriteLine();
                 Console.WriteLine("1. Find marschalls.");
                 Console.WriteLine("2. Add marschall.");
@@ -292,6 +270,7 @@ namespace LostMyLighter.Classes
                 Console.WriteLine("5. Quit.");
                 Console.WriteLine();
                 Console.WriteLine("------------------------------------------------");
+
 
                 if (int.TryParse(Console.ReadLine(), out int userInput))
                 {
@@ -337,6 +316,7 @@ namespace LostMyLighter.Classes
                                 return;
                             }
                         case 4:
+                            RandomLostAdd.LostOrFoundLighter();
                             ViewProfile();
                             return;
                         case 5:

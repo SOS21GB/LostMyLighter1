@@ -14,8 +14,8 @@ namespace LostMyLighter.Classes
         private int _id;
         private string _password;
         private string _userName;
-        private int _age;
-        private string _adress;
+        private int _age; 
+        private Adress _adress;
         private int _numberOfSearches;
         private int _numberOfMarchaller;
         private int _lostLighters;
@@ -24,7 +24,7 @@ namespace LostMyLighter.Classes
         public int Id { get { return _id; } }
         public string UserName { get { return _userName; } set { _userName = value; } }
         public int Age { get { return _age; } set { _age = value; } }
-        public string Adress { get { return _adress; } set { _adress = value; } }
+        public Adress UserAdress { get { return _adress; } set { _adress = value; } }
         public int NumberOfSearches { get { return _numberOfSearches; } }
         public int NumberOfMarchaller { get { return _numberOfMarchaller; } }
         */
@@ -33,7 +33,6 @@ namespace LostMyLighter.Classes
 
         public void DisplayUserInfo()
         {
-
 
             Console.WriteLine("ID: {0}", _id);
             Console.WriteLine("Name: {0}", _userName);
@@ -47,6 +46,7 @@ namespace LostMyLighter.Classes
 
         public void CreatedUserInfo()
         {
+
             Console.WriteLine("ID: {0}", _id);
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
@@ -54,13 +54,14 @@ namespace LostMyLighter.Classes
             Console.WriteLine("------------------------------------------------");
         }
 
-        public User(string username, int age, string adress, string password)
+        public User(string username, int age, Adress adress, string password)
         {
 
             this._userName = username;
             this._password = password;  
             this._age = age;
             this._adress = adress;
+
 
 
             _id = Users.Count + 1;
@@ -125,9 +126,11 @@ namespace LostMyLighter.Classes
                         
                     case 3:
                         {
+
                             Console.WriteLine("Your current adress is: {0}", this._adress);
                             Console.WriteLine("Please enter your new adress below: ");
-                            this._adress = Console.ReadLine();
+                            //this.UserAdress = Console.ReadLine();
+
                             break;
                         }
                 
@@ -170,10 +173,10 @@ namespace LostMyLighter.Classes
 
       
          public void LostLighter()
-        {
+         {
             string title = "Lost Lighter";
             PageManager.PageHeader(title);
-            PageManager.Symbols(3);
+            SymbolPrint.Symbols(3);
             while (true)
             {
                 Console.WriteLine("Oh so you lost a lighter now did you dumdum? \nPlease enter the amount of lighters you lost this time below {0}:  ", this._userName);
@@ -190,46 +193,9 @@ namespace LostMyLighter.Classes
 
                 }
             }
-        }
+         }
 
-        public void RandomLostorFoundLighter()
-        {
-            Random rnd = new Random();
-            int lighter = rnd.Next(1, 11);
 
-            switch (lighter)
-            {
-                case 1:
-                    Console.Clear();
-                    Console.WriteLine("Clumsy. You lost a lighter!");
-                    this._lostLighters--;
-                    PageManager.Symbols(3);    
-                    PageManager.PausSleep(2);
-
-                    return;
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                    Console.Clear();
-                    Console.WriteLine("What a wonderful day.");
-                    PageManager.PausSleep(2);
-                    return;
-
-                case 10:
-                    Console.Clear();
-                    Console.WriteLine("Lucky! You found a lighter!");
-                    PageManager.Symbols(2);
-                    this._lostLighters++;
-                    PageManager.PausSleep(2);
-                    return;
-            }
-
-        }
         
     }
 }

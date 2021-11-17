@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using LostMyLighter.Classes;
 
 namespace LostMyLighter
@@ -8,7 +8,9 @@ namespace LostMyLighter
         static void Main(string[] args)
         {
             Testing.PremadeUsers();
+
             PageManager.RunApp();
+
 
         }
 
