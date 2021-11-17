@@ -47,13 +47,33 @@ namespace LostMyLighter.Classes
                              " | ||      |\n" +
                              " | || jgs  |\n" +
                              " '---------'";
-            switch(symbol)
+            
+            string brokenlighter = "  _    \n" +
+                                   " | |  \n" +
+                                   " | |  \n" +
+                                   " | |  \n" +
+                                   " | |  \n" +
+                                   " | |    )\n" +
+                                   " | |   .(\n" +
+                                   " )* | _(, ')\n" +
+                                   " |**o______ |\n" +
+                                   " |**        |\n" +
+                                   " |***       |\n" +
+                                   " |****      |\n" +
+                                   " |*****     |\n" +
+                                   " |******s   |\n" +
+                                   " '********--'";
+
+            switch (symbol)
             {
                 case 1:
                     Console.WriteLine(marchall);
                     return;
                 case 2:
                     Console.WriteLine(lighter);
+                    return;
+                case 3:
+                    Console.WriteLine(brokenlighter);
                     return;
 
             }
@@ -66,7 +86,7 @@ namespace LostMyLighter.Classes
         /// Component to be placed on top of each page, containing the page's title
         /// </summary>
         /// <param name="title"></param>
-        static void PageHeader(string title)
+        public static void PageHeader(string title)
         {
             Console.Clear();
             Console.WriteLine("------------------------------------------------");
@@ -83,7 +103,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Input not valid");
             Console.WriteLine();
             Console.WriteLine("------------------------------------------------");
-            Thread.Sleep(TimeSpan.FromSeconds(2));
+            PausSleep(2);
         }
 
         static void GuestMenu()
@@ -127,17 +147,33 @@ namespace LostMyLighter.Classes
             while (true)
             {
                 PageHeader(title);
-                //här lägger vi flödet för inlogg
                 Console.WriteLine("Enter ID: ");
                 if (int.TryParse(Console.ReadLine(), out int userid))
                 {
                     if (User.Users.ContainsKey(userid))
                     {
-                        CurrUser = User.Users[userid];
-                        Console.WriteLine("Successfully logged in! ");
-                        Thread.Sleep(TimeSpan.FromSeconds(2));
-                        MainMenu();
-                        return;
+
+                        PageHeader(title);
+                        Console.WriteLine("Enter Password: ");
+                        string passwordEntered = Console.ReadLine();
+                        if (User.Users[userid].IsRightPassword(passwordEntered))
+                        {
+
+                            CurrUser = User.Users[userid];
+                            Console.WriteLine("Successfully logged in! ");
+                            PausSleep(2);
+                            MainMenu();
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Wrong Password !! ");
+                            PausSleep(2);
+                            LogIn();
+                            return;
+                        }
+
+                       
                     }
                 }
                 ErrorMessage();
@@ -147,6 +183,7 @@ namespace LostMyLighter.Classes
         static void CreateUser()
         {
             string title = "Create User";
+            string password;
             string name;
             int age;
             Adress adress;
@@ -169,9 +206,14 @@ namespace LostMyLighter.Classes
             Console.Write("Enter Adress: ");
             //adress = Console.ReadLine();
 
+            Console.Write("Enter new password: ");
+            password = Console.ReadLine();
+
+
             PageHeader(title);
             adress = CreateAdress();
             CurrUser = new(name, age, adress);
+
 
             while (true)
             {
@@ -186,7 +228,7 @@ namespace LostMyLighter.Classes
                         case 1:
                             PageHeader(title);
                             Console.WriteLine("Successfully logged in! ");
-                            Thread.Sleep(TimeSpan.FromSeconds(2));
+                            PausSleep(2);
                             MainMenu();
                             return;
                         case 2:
@@ -246,16 +288,18 @@ namespace LostMyLighter.Classes
 
             while (true)
             {
-                PageHeader(title);
                 Symbols(1);
                 Symbols(2);
+                PageHeader(title);
                 Console.WriteLine();
                 Console.WriteLine("1. Find marschalls.");
                 Console.WriteLine("2. Add marschall.");
-                Console.WriteLine("3. View profile.");
-                Console.WriteLine("4. Quit.");
+                Console.WriteLine("3. Add a lost/found lighter.");
+                Console.WriteLine("4. View profile.");
+                Console.WriteLine("5. Quit.");
                 Console.WriteLine();
                 Console.WriteLine("------------------------------------------------");
+
 
                 if (int.TryParse(Console.ReadLine(), out int userInput))
                 {
@@ -268,9 +312,43 @@ namespace LostMyLighter.Classes
                             AddMarschall();
                             return;
                         case 3:
+
+                            {
+                                 title = "Lighters";
+                                while (true)
+                                {
+                                    PageHeader(title);
+                                    Console.WriteLine("Would you like to add a new lighter to your collection or did you lose a lighter idjut?");
+                                    Console.WriteLine("1. Add a new lighter \n2. Add a lost lighter");
+                                    int.TryParse(Console.ReadLine(), out int choice3);
+                                    if (choice3 == 1)
+                                    {
+                                        Console.WriteLine("Select the amount of lighters you've found: ");
+                                        int.TryParse(Console.ReadLine(), out int lightersfound);
+                                        CurrUser.LostLighters += lightersfound;
+                                       Console.WriteLine("You have successfully added {0} lighters pal! GJ!", lightersfound);
+                                        PausSleep(2);
+                                        break;
+                                    }
+                                    else if (choice3 == 2)
+                                    {
+                                        CurrUser.LostLighter();
+                                        PausSleep(2);
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Wrong input, try again bro!");
+                                    }
+                                }
+                                MainMenu();
+                                return;
+                            }
+                        case 4:
+                            RandomLostAdd.LostOrFoundLighter();
                             ViewProfile();
                             return;
-                        case 4:
+                        case 5:
                             QuitApp();
                             return;
                     }
@@ -281,7 +359,7 @@ namespace LostMyLighter.Classes
             }
         }
 
-        static void ViewProfile()
+       public static void ViewProfile()
         {
             string title = "Profile";
 
@@ -329,8 +407,14 @@ namespace LostMyLighter.Classes
         {
             Console.Clear();
             Console.WriteLine("*************Logging out******************");
-            Thread.Sleep(TimeSpan.FromSeconds(3));
+            PausSleep(3);
             Console.Clear();
+        }
+
+        public static void PausSleep(int paus)
+        {
+            
+            Thread.Sleep(TimeSpan.FromSeconds(paus));
         }
     }
 }
