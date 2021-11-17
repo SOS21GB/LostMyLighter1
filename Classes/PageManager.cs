@@ -4,23 +4,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using LostMyLighter.Classes.Pages;
 
 namespace LostMyLighter.Classes
 {
     static class PageManager
     {
         public static User CurrUser;
+        public static Dictionary<string, Page> AllPages = new();
+
+        static void SetUpPages()
+        {
+            new StartMenu();
+            new MainMenu();
+            new ViewProfile();
+        }
 
         public static void StartApp()
         {
-            if(CurrUser != null)
+           
+            SetUpPages();
+
+
+            string nextPage;
+
+            if (CurrUser != null)
             {
-                MainMenu();
+                AllPages["Main Menu"].LoadPage(out nextPage);
+
             }
+
             else
             {
-                GuestMenu();
-            }       
+                AllPages["Lost My Lighter"].LoadPage(out nextPage);
+            }
+            
+            while (true)
+            {
+                if (nextPage != null)
+                {
+
+                    AllPages[nextPage].LoadPage(out nextPage);
+                }
+                else
+                {
+                    QuitApp();
+                    break;
+                }
+
+            }
+
+            
+       
+
         }
         
         
