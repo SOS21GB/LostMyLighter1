@@ -173,7 +173,7 @@ namespace LostMyLighter.Classes
         {
             string title = "Lost Lighter";
             PageManager.PageHeader(title);
-            PageManager.Symbols(3);
+            SymbolPrint.Symbols(3);
             while (true)
             {
                 Console.WriteLine("Oh so you lost a lighter now did you dumdum? \nPlease enter the amount of lighters you lost this time below {0}:  ", this._userName);
@@ -202,7 +202,7 @@ namespace LostMyLighter.Classes
                 case 1:
                     Console.Clear();
                     Console.WriteLine("Clumsy. You lost a lighter!");
-                    PageManager.Symbols(3);
+                    SymbolPrint.Symbols(3);
                     Thread.Sleep(TimeSpan.FromSeconds(2));
                     return;
                 case 2:
@@ -220,7 +220,7 @@ namespace LostMyLighter.Classes
                 case 10:
                     Console.Clear();
                     Console.WriteLine("Lucky! You found a lighter!");
-                    PageManager.Symbols(2);
+                    SymbolPrint.Symbols(2);
                     this._lostLighters++;
                     return;
             }
