@@ -401,6 +401,12 @@ namespace LostMyLighter.Classes
         {
             
             Thread.Sleep(TimeSpan.FromSeconds(paus));
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(false);
+            }
+            
         }
+        
     }
 }
