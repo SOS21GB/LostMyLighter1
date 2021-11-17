@@ -229,7 +229,7 @@ namespace LostMyLighter.Classes
                 CurrUser.CreatedUserInfo();
             }
         }
-       static Adress CreateAdress() 
+       public static Adress CreateAdress() 
         {
             string streetNumber;
             string streetName;
