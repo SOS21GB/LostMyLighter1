@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using LostMyLighter.Pages;
 
 
 namespace LostMyLighter.Classes
@@ -12,26 +13,64 @@ namespace LostMyLighter.Classes
     {
         public static User CurrUser;
 
-        public static void StartApp()
+        public static Marschall CurrMarschall;
+
+        public static Dictionary<PageName, Page> AllPages = new()
         {
-            if(CurrUser != null)
+            { PageName.StartMenu, new StartMenu() },
+            { PageName.MainMenu, new MainMenu() },
+            { PageName.ViewProfile, new ViewProfile() },
+            //{ PageName.CreateUser, new CreateUser() },
+            //{ PageName.LogIn, new LogIn() },
+            //{ PageName.AddRemoveLighter, new AddRemoveLighter() },
+            //{ PageName.FindMarschalls, new FindMarschalls() },
+            //{ PageName.AddMarschall, new AddMarschall() },
+        };
+
+
+
+
+        public static void RunApp()
+        {
+            PageName nextPage;
+            //CurrUser = User.Users[1];
+
+            if (CurrUser != null)
             {
-                MainMenu();
+                AllPages[PageName.MainMenu].LoadPage(out nextPage);
+
             }
+
             else
             {
-                GuestMenu();
-            }       
+                AllPages[PageName.StartMenu].LoadPage(out nextPage);
+            }
+            
+            while (true)
+            {
+                if (nextPage != PageName.None)
+                {
+
+                    AllPages[nextPage].LoadPage(out nextPage);
+                }
+                else
+                {
+                    QuitApp();
+                    break;
+                }
+            }
         }
         
         
-
 
         /// <summary>
         /// Component to be placed on top of each page, containing the page's title
         /// </summary>
         /// <param name="title"></param>
+
+
         public static void PageHeader(string title)
+ 
         {
             Console.Clear();
             Console.WriteLine("------------------------------------------------");
@@ -190,7 +229,7 @@ namespace LostMyLighter.Classes
                 CurrUser.CreatedUserInfo();
             }
         }
-       static Adress CreateAdress() 
+       public static Adress CreateAdress() 
         {
             string streetNumber;
             string streetName;
@@ -253,7 +292,7 @@ namespace LostMyLighter.Classes
                         case 3:
 
                             {
-                                 title = "Lighters";
+                                title = "Lighters";
                                 while (true)
                                 {
                                     PageHeader(title);
@@ -332,6 +371,7 @@ namespace LostMyLighter.Classes
             string title = "Search";
             PageHeader(title);
             //här lägger vi hela flödet för Search-sidan
+
         }
 
         static void AddMarschall()

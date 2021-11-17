@@ -36,5 +36,18 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Zipcode: {0}", ZipCode);
 
         }
+        public void EditAdress()
+        {
+            Console.WriteLine("Enter your new adress");
+            this._streetName = Console.ReadLine();
+            Console.WriteLine("Enter your streetnumber");
+            this._streetNumber = Console.ReadLine();
+            Console.WriteLine("Enter your city");
+            this._city = Console.ReadLine();
+            Console.WriteLine("Enter your zipcode");
+            this._zipCode = Convert.ToInt32(Console.ReadLine());
+
+        }
+
     }
 }
