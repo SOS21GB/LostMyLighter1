@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
+
 namespace LostMyLighter.Classes
 {
     static class PageManager
@@ -47,7 +48,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Input not valid");
             Console.WriteLine();
             Console.WriteLine("------------------------------------------------");
-            Thread.Sleep(TimeSpan.FromSeconds(2));
+            PausSleep(2);
         }
 
         static void GuestMenu()
@@ -104,15 +105,15 @@ namespace LostMyLighter.Classes
                         {
 
                             CurrUser = User.Users[userid];
-                            Console.WriteLine("Successfully logged in! ");   
-                            Thread.Sleep(TimeSpan.FromSeconds(2));
+                            Console.WriteLine("Successfully logged in! ");
+                            PausSleep(2);
                             MainMenu();
                             return;
                         }
                         else
                         {
                             Console.WriteLine("Wrong Password !! ");
-                            Thread.Sleep(TimeSpan.FromSeconds(2));
+                            PausSleep(2);
                             LogIn();
                             return;
                         }
@@ -130,7 +131,7 @@ namespace LostMyLighter.Classes
             string password;
             string name;
             int age;
-            string adress;
+            Adress adress;
 
             PageHeader(title);
             Console.Write("Enter Name: ");
@@ -139,7 +140,7 @@ namespace LostMyLighter.Classes
             while (true) 
             {
                 Console.Write("Enter Age: ");
-                if (int.TryParse(Console.ReadLine(), out age))
+                if (int.TryParse(Console.ReadLine(), out age))   
                 {
                     break;
                 }
@@ -148,14 +149,16 @@ namespace LostMyLighter.Classes
             }
 
             Console.Write("Enter Adress: ");
-            adress = Console.ReadLine();
+            //adress = Console.ReadLine();
 
             Console.Write("Enter new password: ");
             password = Console.ReadLine();
 
 
             PageHeader(title);
+            adress = CreateAdress();
             CurrUser = new(name, age, adress, password);
+
 
             while (true)
             {
@@ -170,7 +173,7 @@ namespace LostMyLighter.Classes
                         case 1:
                             PageHeader(title);
                             Console.WriteLine("Successfully logged in! ");
-                            Thread.Sleep(TimeSpan.FromSeconds(2));
+                            PausSleep(2);
                             MainMenu();
                             return;
                         case 2:
@@ -189,6 +192,40 @@ namespace LostMyLighter.Classes
                 CurrUser.CreatedUserInfo();
             }
         }
+       static Adress CreateAdress() 
+        {
+
+            string title = "Create Adress";
+            string streetNumber;
+            string streetName;
+            string city;
+            int zipCode;
+
+            PageHeader(title);
+            Console.Write("Enter Streetnumber: ");
+            streetNumber = Console.ReadLine();
+
+            Console.WriteLine("Enter Streetname");
+            streetName = Console.ReadLine();
+
+            Console.WriteLine("Enter city");
+            city = Console.ReadLine();
+
+            while (true)
+            {
+                Console.Write("Enter Zipcode: ");
+                if (int.TryParse(Console.ReadLine(), out zipCode))
+                {
+                    break;
+                }
+                ErrorMessage();
+                PageHeader(title);
+            }
+
+
+
+            return new Adress(streetName, streetNumber, city, zipCode);
+        }
 
         static void MainMenu()
         {
@@ -196,9 +233,9 @@ namespace LostMyLighter.Classes
 
             while (true)
             {
-                PageHeader(title);
                 Symbols(1);
                 Symbols(2);
+                PageHeader(title);
                 Console.WriteLine();
                 Console.WriteLine("1. Find marschalls.");
                 Console.WriteLine("2. Add marschall.");
@@ -207,6 +244,7 @@ namespace LostMyLighter.Classes
                 Console.WriteLine("5. Quit.");
                 Console.WriteLine();
                 Console.WriteLine("------------------------------------------------");
+
 
                 if (int.TryParse(Console.ReadLine(), out int userInput))
                 {
@@ -234,13 +272,13 @@ namespace LostMyLighter.Classes
                                         int.TryParse(Console.ReadLine(), out int lightersfound);
                                         CurrUser.LostLighters += lightersfound;
                                        Console.WriteLine("You have successfully added {0} lighters pal! GJ!", lightersfound);
-                                        Thread.Sleep(TimeSpan.FromSeconds(2));
+                                        PausSleep(2);
                                         break;
                                     }
                                     else if (choice3 == 2)
                                     {
                                         CurrUser.LostLighter();
-                                        Thread.Sleep(TimeSpan.FromSeconds(2));
+                                        PausSleep(2);
                                         break;
                                     }
                                     else
@@ -252,6 +290,7 @@ namespace LostMyLighter.Classes
                                 return;
                             }
                         case 4:
+                            RandomLostAdd.LostOrFoundLighter();
                             ViewProfile();
                             return;
                         case 5:
@@ -313,8 +352,14 @@ namespace LostMyLighter.Classes
         {
             Console.Clear();
             Console.WriteLine("*************Logging out******************");
-            Thread.Sleep(TimeSpan.FromSeconds(3));
+            PausSleep(3);
             Console.Clear();
+        }
+
+        public static void PausSleep(int paus)
+        {
+            
+            Thread.Sleep(TimeSpan.FromSeconds(paus));
         }
     }
 }
