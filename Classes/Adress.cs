@@ -20,7 +20,7 @@ namespace LostMyLighter.Classes
         public string City { get { return _city; } set { _city = value; } }
         public int ZipCode { get { return _zipCode; } set { _zipCode = value; } }
 
-        public Adress(string streetName, string city, int zipCode, string streetNumber)
+        public Adress(string streetName, string streetNumber, string city, int zipCode)
         {
             this.StreetNumber = streetNumber;
             this.StreetName = streetName;
