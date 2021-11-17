@@ -56,7 +56,7 @@ namespace LostMyLighter.Classes
         public static void RollOneZeroLighters()
         {
             PageManager.PageHeader(title);
-            Console.WriteLine("You just realized that you lost a lighter!");
+            Console.WriteLine("You just realized that you lost a lighter the other day!");
             PageManager.CurrUser.LostLighters--;
             SymbolPrint.Symbols(3);
             PageManager.PausSleep(2);
