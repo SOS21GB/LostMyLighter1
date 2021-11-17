@@ -176,7 +176,7 @@ namespace LostMyLighter.Classes
          {
             string title = "Lost Lighter";
             PageManager.PageHeader(title);
-            PageManager.Symbols(3);
+            SymbolPrint.Symbols(3);
             while (true)
             {
                 Console.WriteLine("Oh so you lost a lighter now did you dumdum? \nPlease enter the amount of lighters you lost this time below {0}:  ", this._userName);
@@ -194,6 +194,7 @@ namespace LostMyLighter.Classes
                 }
             }
          }
+
 
         
     }
