@@ -15,6 +15,7 @@ namespace LostMyLighter.Classes
         private string _brand;
         private int _burnTime;
         private DateTime _timeRegistered;
+        private Adress _marschallAdress;
 
 
 
@@ -25,12 +26,12 @@ namespace LostMyLighter.Classes
 
 
 
-        public Marschall(string brand, int burnTime)
+        public Marschall(string brand, int burnTime, Adress adress)
         {
             this.Brand = brand;
             this.BurnTime = burnTime;
             this._timeRegistered = DateTime.Now;
-
+            this._marschallAdress = adress;
 
             Marschalls.Add(this);
 
@@ -102,12 +103,12 @@ namespace LostMyLighter.Classes
 
             string brand;
             int burnTime;
-            Adress adress;     // Lägga till "ADd ADress" Metoden o den här klassen 
 
 
 
             Console.Write("Enter brand: ");
             brand = Console.ReadLine();
+            Adress adress = PageManager.CreateAdress();    
 
             while (true)
             {
@@ -118,6 +119,9 @@ namespace LostMyLighter.Classes
                 }
 
             }
+
+            new Marschall(brand, burnTime, adress);
+
 
         }
     }
