@@ -12,6 +12,9 @@ namespace LostMyLighter.Classes
     static class PageManager
     {
         public static User CurrUser;
+
+        public static Marschall CurrMarschall;
+
         public static Dictionary<PageName, Page> AllPages = new()
         {
             { PageName.StartMenu, new StartMenu() },
@@ -23,6 +26,7 @@ namespace LostMyLighter.Classes
             //{ PageName.FindMarschalls, new FindMarschalls() },
             //{ PageName.AddMarschall, new AddMarschall() },
         };
+
 
 
 
@@ -63,7 +67,10 @@ namespace LostMyLighter.Classes
         /// Component to be placed on top of each page, containing the page's title
         /// </summary>
         /// <param name="title"></param>
+
+
         public static void PageHeader(string title)
+ 
         {
             Console.Clear();
             Console.WriteLine("------------------------------------------------");
@@ -365,6 +372,7 @@ namespace LostMyLighter.Classes
             string title = "Search";
             PageHeader(title);
             //här lägger vi hela flödet för Search-sidan
+
         }
 
         static void AddMarschall()
