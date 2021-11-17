@@ -316,7 +316,6 @@ namespace LostMyLighter.Classes
                                 return;
                             }
                         case 4:
-                            RandomLostAdd.LostOrFoundLighter();
                             ViewProfile();
                             return;
                         case 5:

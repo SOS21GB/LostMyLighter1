@@ -28,6 +28,7 @@ namespace LostMyLighter.Classes
         public int NumberOfSearches { get { return _numberOfSearches; } }
         public int NumberOfMarchaller { get { return _numberOfMarchaller; } }
         */
+        public Adress UserAdress { get { return _adress; } }
         public int LostLighters { get { return _lostLighters; } set { _lostLighters = value; } }
         
 
@@ -127,9 +128,7 @@ namespace LostMyLighter.Classes
                     case 3:
                         {
 
-                            Console.WriteLine("Your current adress is: {0}", this._adress);
-                            Console.WriteLine("Please enter your new adress below: ");
-                            //this.UserAdress = Console.ReadLine();
+                            PageManager.CurrUser.UserAdress.EditAdress();
 
                             break;
                         }
