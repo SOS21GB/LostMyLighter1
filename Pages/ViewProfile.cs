@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LostMyLighter.Classes;
 
-namespace LostMyLighter.Classes.Pages
+
+namespace LostMyLighter.Pages
 {
     class ViewProfile : Page
     {
+        public ViewProfile()
+        {
+            _title = "View Profile";
+        }
 
-        public override void LoadPage(out string nextPage)
+        public override void LoadPage(out PageName nextPage)
         {
             while (true)
             {
@@ -24,22 +30,16 @@ namespace LostMyLighter.Classes.Pages
                     {
                         case 1:
                             //PageManager.CurrUser.EditUser();
-                            nextPage = null;
+                            nextPage = PageName.None;
                             return;
                         case 2:
-                            nextPage = "Main Menu";
+                            nextPage = PageName.MainMenu;
                             return;
                     }
                 }
 
              
             }
-        }
-
-        public ViewProfile()
-        {
-            _title = "View Profile";
-            PageManager.AllPages.Add(_title, this);
         }
     }
 }

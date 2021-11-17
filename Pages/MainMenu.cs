@@ -5,17 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace LostMyLighter.Classes.Pages
+namespace LostMyLighter.Pages
 {
     class MainMenu : Page
     {
         public MainMenu()
         {
             _title = "Main Menu";
-            PageManager.AllPages.Add(_title, this);
         }
 
-        public override void LoadPage(out string nextPage)
+        public override void LoadPage(out PageName nextPage)
         {
             while (true)
             {
@@ -37,24 +36,24 @@ namespace LostMyLighter.Classes.Pages
                     {
                         case 1:
                             //SearchMarschalls();
-                            nextPage = null;
+                            nextPage = PageName.FindMarschalls;
                             return;
                         case 2:
                             //AddMarschall();
-                            nextPage = null;
+                            nextPage = PageName.AddMarschall;
                             return;
                         case 3:
 
                             //Add/RemoveLIghter
-                            nextPage = null;
+                            nextPage = PageName.AddRemoveLighter;
                             return;
                         case 4:
                             // ViewProfile();
-                            nextPage = "View Profile";
+                            nextPage = PageName.ViewProfile;
                             return;
                         case 5:
                             // QuitApp();
-                            nextPage = null;
+                            nextPage = PageName.None;
                             return;                               
                     }
                 }                

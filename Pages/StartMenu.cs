@@ -4,21 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LostMyLighter.Classes.Pages
+namespace LostMyLighter.Pages
 {
     class StartMenu : Page
     {
         public StartMenu()
         {
             _title = "Lost My Lighter";
-            PageManager.AllPages.Add(_title, this);
         }
 
-        public override void LoadPage(out string nextPage)
+        public override void LoadPage(out PageName nextPage)
         {
             while (true)
             {
-
                 Header(_title);
                 //Symbols(1);
                 //Symbols(2);
@@ -33,13 +31,13 @@ namespace LostMyLighter.Classes.Pages
                     switch (choice)
                     {
                         case 1:
-                            nextPage = "LogIn";
+                            nextPage = PageName.LogIn;
                             return;
                         case 2:
-                            nextPage = null;
+                            nextPage = PageName.CreateUser;
                             return;
                         case 3:
-                            nextPage = null;
+                            nextPage = PageName.None;
                             return;
                     }
                 }

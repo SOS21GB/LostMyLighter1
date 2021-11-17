@@ -8,7 +8,7 @@ namespace LostMyLighter
         static void Main(string[] args)
         {
             Testing.PremadeUsers();
-            PageManager.StartApp();
+            PageManager.RunApp();
 
         }
 

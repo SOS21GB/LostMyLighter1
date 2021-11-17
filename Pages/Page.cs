@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LostMyLighter.Classes.Pages;
+using LostMyLighter.Classes;
 
-namespace LostMyLighter.Classes.Pages
+namespace LostMyLighter.Pages
 {
     abstract class Page
     {
         protected string _title = "none";
 
-        public virtual void LoadPage(out string nextPage)
+        public virtual void LoadPage(out PageName nextPage)
         {
-            nextPage = null;
+            nextPage = PageName.None;
         }
 
         static public void Header(string title)
@@ -24,8 +24,8 @@ namespace LostMyLighter.Classes.Pages
             Console.WriteLine("------------------------------------------------");
         }
 
-
+     
     }
 
-    enum PageName { }
+    enum PageName { None, StartMenu, CreateUser, LogIn, MainMenu, ViewProfile, AddRemoveLighter, FindMarschalls, AddMarschall}
 }

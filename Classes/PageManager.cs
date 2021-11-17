@@ -4,44 +4,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using LostMyLighter.Classes.Pages;
+using LostMyLighter.Pages;
 
 namespace LostMyLighter.Classes
 {
     static class PageManager
     {
         public static User CurrUser;
-        public static Dictionary<string, Page> AllPages = new();
-
-        static void SetUpPages()
+        public static Dictionary<PageName, Page> AllPages = new()
         {
-            new StartMenu();
-            new MainMenu();
-            new ViewProfile();
-        }
+            { PageName.StartMenu, new StartMenu() },
+            { PageName.MainMenu, new MainMenu() },
+            { PageName.ViewProfile, new ViewProfile() },
+            //{ PageName.CreateUser, new CreateUser() },
+            //{ PageName.LogIn, new LogIn() },
+            //{ PageName.AddRemoveLighter, new AddRemoveLighter() },
+            //{ PageName.FindMarschalls, new FindMarschalls() },
+            //{ PageName.AddMarschall, new AddMarschall() },
+        };
 
-        public static void StartApp()
+
+
+        public static void RunApp()
         {
-           
-            SetUpPages();
-
-
-            string nextPage;
+            PageName nextPage;
+            CurrUser = User.Users[1];
 
             if (CurrUser != null)
             {
-                AllPages["Main Menu"].LoadPage(out nextPage);
+                AllPages[PageName.MainMenu].LoadPage(out nextPage);
 
             }
 
             else
             {
-                AllPages["Lost My Lighter"].LoadPage(out nextPage);
+                AllPages[PageName.StartMenu].LoadPage(out nextPage);
             }
             
             while (true)
             {
-                if (nextPage != null)
+                if (nextPage != PageName.None)
                 {
 
                     AllPages[nextPage].LoadPage(out nextPage);
@@ -51,12 +53,7 @@ namespace LostMyLighter.Classes
                     QuitApp();
                     break;
                 }
-
             }
-
-            
-       
-
         }
         
         
@@ -110,10 +107,7 @@ namespace LostMyLighter.Classes
                 case 3:
                     Console.WriteLine(brokenlighter);
                     return;
-
-            }
-            
-            
+            }        
         }
         
 
