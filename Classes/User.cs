@@ -38,7 +38,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("ID: {0}", _id);
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
-            Console.WriteLine("Adress: {0}", _adress);
+            this._adress.DisplayAdress();
             Console.WriteLine("Searches: {0}", _numberOfSearches);
             Console.WriteLine("Marchallers found: {0}", _numberOfMarchaller);
             Console.WriteLine("Lighters: {0}", _lostLighters);
@@ -46,12 +46,11 @@ namespace LostMyLighter.Classes
         }
 
         public void CreatedUserInfo()
-        {
-
-            Console.WriteLine("ID: {0}", _id);
+        {            
+            Console.WriteLine("Login ID: {0}", _id);
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
-            Console.WriteLine("Adress: {0}", _adress);
+            this._adress.DisplayAdress();
             Console.WriteLine("------------------------------------------------");
         }
 
@@ -67,7 +66,6 @@ namespace LostMyLighter.Classes
 
             _id = Users.Count + 1;
             Users.Add(_id, this);
-            CreatedUserInfo();
         }
 
 
