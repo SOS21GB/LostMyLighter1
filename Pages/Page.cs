@@ -38,5 +38,16 @@ namespace LostMyLighter.Pages
 
     }
 
-    enum PageName { None, StartMenu, CreateUser, LogIn, MainMenu, ViewProfile, AddRemoveLighter, FindMarschalls, AddMarschall}
+    enum PageName 
+    { 
+        None,
+        StartMenu,
+        CreateUser,
+        LogIn,
+        MainMenu,
+        ViewProfile,
+        AddRemoveLighter,
+        FindMarschalls,
+        AddMarschall
+    }
 }

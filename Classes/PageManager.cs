@@ -20,7 +20,7 @@ namespace LostMyLighter.Classes
             { PageName.StartMenu, new StartMenu() },
             { PageName.MainMenu, new MainMenu() },
             { PageName.ViewProfile, new ViewProfile() },
-            //{ PageName.CreateUser, new CreateUser() },
+            { PageName.CreateUser, new CreateUser() },
             { PageName.LogIn, new LogInMenu() },
             //{ PageName.AddRemoveLighter, new AddRemoveLighter() },
             //{ PageName.FindMarschalls, new FindMarschalls() },
@@ -162,7 +162,8 @@ namespace LostMyLighter.Classes
                 ErrorMessage();
             }
         }
-
+        
+        
         static void CreateUser()
         {
             string title = "Create User";
@@ -228,6 +229,7 @@ namespace LostMyLighter.Classes
                 CurrUser.CreatedUserInfo();
             }
         }
+        
        public static Adress CreateAdress() 
         {
             string streetNumber;
