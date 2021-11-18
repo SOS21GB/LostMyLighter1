@@ -192,7 +192,18 @@ namespace LostMyLighter.Classes
             }
          }
 
+        public string[] GetValues()
+        {
+            string[] result =
+            {
+                this._userName,
+                this._age.ToString()
 
-        
+            };
+
+            return result;
+
+        }
+
     }
 }
