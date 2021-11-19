@@ -19,6 +19,7 @@ namespace LostMyLighter.Pages
         static public void Header(string title)
         {
             Console.Clear();
+
             Console.WriteLine("------------------------------------------------");
             Console.WriteLine(title);
             Console.WriteLine("------------------------------------------------");

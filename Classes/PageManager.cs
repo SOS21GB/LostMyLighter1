@@ -72,7 +72,9 @@ namespace LostMyLighter.Classes
  
         {
             Console.Clear();
+            
             Console.WriteLine("------------------------------------------------");
+            SymbolPrint.Symbols(5);
             Console.WriteLine(title);
             Console.WriteLine("------------------------------------------------");
         }
