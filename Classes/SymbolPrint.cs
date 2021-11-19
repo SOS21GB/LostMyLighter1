@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,9 +47,11 @@ namespace LostMyLighter.Classes
                                    " |******s   |\n" +
                                    " '********--'";
             
+
             string welcomemessage = "Lighters, Marshals and Cigarettes [Version 1.0.0]";
             
             string line = "-------------------------------------------------------------------------------------";
+
 
             string lightersmarshalsandcigarettes = line+"\n"+
                                                     "Welcome to Lighters, Marshals and Cigarettes\n" +
