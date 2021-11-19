@@ -21,6 +21,7 @@ namespace LostMyLighter.Classes
             { PageName.MainMenu, new MainMenu() },
             { PageName.ViewProfile, new ViewProfile() },
             { PageName.CreateUser, new CreateUser() },
+            { PageName.EditUser, new EditUser() },
             { PageName.LogIn, new LogInMenu() },
             //{ PageName.AddRemoveLighter, new AddRemoveLighter() },
             //{ PageName.FindMarschalls, new FindMarschalls() },

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using LostMyLighter.Pages;
 
 namespace LostMyLighter.Classes
 {
@@ -14,7 +15,7 @@ namespace LostMyLighter.Classes
         private int _id;
         private string _password;
         private string _userName;
-        private int _age; 
+        private int _age;
         private Adress _adress;
         private int _numberOfSearches;
         private int _numberOfMarchaller;
@@ -30,7 +31,7 @@ namespace LostMyLighter.Classes
         */
         public Adress UserAdress { get { return _adress; } }
         public int LostLighters { get { return _lostLighters; } set { _lostLighters = value; } }
-        
+
 
         public void DisplayUserInfo()
         {
@@ -46,7 +47,7 @@ namespace LostMyLighter.Classes
         }
 
         public void CreatedUserInfo()
-        {            
+        {
             Console.WriteLine("Login ID: {0}", _id);
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
@@ -54,11 +55,20 @@ namespace LostMyLighter.Classes
             Console.WriteLine("------------------------------------------------");
         }
 
+        public void EditUserInfo()
+        {
+            Console.WriteLine("Name: {0}", _userName);
+            Console.WriteLine("Age: {0}", _age);
+            this._adress.DisplayAdress();
+            Console.WriteLine("Lighters: {0}", _lostLighters);
+            Console.WriteLine("------------------------------------------------");
+        }
+
         public User(string username, int age, Adress adress, string password)
         {
 
             this._userName = username;
-            this._password = password;  
+            this._password = password;
             this._age = age;
             this._adress = adress;
 
@@ -69,7 +79,7 @@ namespace LostMyLighter.Classes
         }
 
 
-        
+
 
 
 
@@ -78,16 +88,60 @@ namespace LostMyLighter.Classes
 
             return _password == input;
         }
+
+        public void EditName()
+        {
+            Console.WriteLine("Your current username is: {0}", this._userName);
+            Console.WriteLine("Please enter your new username: ");
+            this._userName = Console.ReadLine();            
+        }
+
+        public void EditAge()
+        {
+            Console.WriteLine("Your current age is: {0}", this._age);
+            Console.WriteLine("Please enter your new age & may i say, happy birthday!: ");
+
+            while (true)
+            {
+
+                if (int.TryParse(Console.ReadLine(), out this._age))
+                {
+                    Console.WriteLine("Your new age has been changed to: {0}!", this._age);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Wrong input pal, Try again!");
+                }
+            }
+        }
+
+        public void EditLigthers()
+        {
+            Console.WriteLine("So you've found a lighter have you? Good work dumdum. \nPlease enter the amount of lighters you've \nfound below my friend: ");
+            if (int.TryParse(Console.ReadLine(), out int lightersfound))
+            {
+                this._lostLighters += lightersfound;
+                Console.WriteLine("You have successfully added {0} lighters pal! GJ!", lightersfound);
+            }
+            
+            else
+            {
+                Console.WriteLine("Wrong input friend,try again!");
+                PageManager.PausSleep(1);
+            }
+            
+        }
       
         public void EditUser ()
         {
           
-            string title = "Edit User";
-            PageManager.PageHeader(title);
+            //string title = "Edit User";
+            //PageManager.PageHeader(title);
    
             while (true)
             {
-                Console.WriteLine("\n 1. Name \n 2. Age\n 3. Adress \n 4. Found a lighter");
+                Console.WriteLine("1. Name \n2. Age\n3. Adress \n4. Found a lighter");
                 Console.WriteLine("Please enter the number corresponding to the information you'd like to change: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
@@ -109,9 +163,9 @@ namespace LostMyLighter.Classes
                             while (true)
                             {
                                
-                                if (int.TryParse(Console.ReadLine(), out int age))
+                                if (int.TryParse(Console.ReadLine(), out this._age))
                                 {
-                                    Console.WriteLine("Your new age has been changed to: {0}!", age);
+                                    Console.WriteLine("Your new age has been changed to: {0}!", this._age);
                                     break;
                                 }
                                 else
@@ -136,7 +190,7 @@ namespace LostMyLighter.Classes
 
                             while (true)
                             {
-                                Console.WriteLine("So you've found a lighter have you? Good work dumdum. \nPlease enter the amount of lighters you've \nfound below my friend: ");
+                                Console.WriteLine("So you've found a lighter have you? Good work dumdum.\nPlease enter the amount of lighters you've\nfound below my friend: ");
                                 if (int.TryParse(Console.ReadLine(), out int lightersfound))
                                 {
                                     this._lostLighters += lightersfound;
@@ -154,7 +208,7 @@ namespace LostMyLighter.Classes
 
 
                 }
-                Console.WriteLine("Would you like to change another aspect of your profile? \n Please enter your answer as Y/N below: ");
+                Console.WriteLine("Would you like to change another aspect of your profile? \nPlease enter your answer as Y/N below: ");
                 char choice2 = Convert.ToChar(Console.ReadLine());
                 if (choice2 == 'Y' || choice2 =='y')
                 {

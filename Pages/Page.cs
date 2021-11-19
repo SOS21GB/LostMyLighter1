@@ -44,6 +44,7 @@ namespace LostMyLighter.Pages
         None,
         StartMenu,
         CreateUser,
+        EditUser,
         LogIn,
         MainMenu,
         ViewProfile,

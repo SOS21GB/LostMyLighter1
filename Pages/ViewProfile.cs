@@ -29,8 +29,7 @@ namespace LostMyLighter.Pages
                     switch (choice)
                     {
                         case 1:
-                            //PageManager.CurrUser.EditUser();
-                            nextPage = PageName.None;
+                            nextPage = PageName.EditUser;
                             return;
                         case 2:
                             nextPage = PageName.MainMenu;
