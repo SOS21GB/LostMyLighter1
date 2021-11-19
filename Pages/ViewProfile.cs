@@ -22,7 +22,7 @@ namespace LostMyLighter.Pages
                 Header(_title);
                 PageManager.CurrUser.DisplayUserInfo();
                 Console.WriteLine("1. Edit Profile.");
-                Console.WriteLine("2. Go Back.");
+                Console.WriteLine("2. Go Back to Main Menu.");
 
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {
