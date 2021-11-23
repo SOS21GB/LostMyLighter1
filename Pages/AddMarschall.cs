@@ -19,10 +19,10 @@ namespace LostMyLighter.Pages
             while (true)
             {
                 Header(_title);
-                //Marschall.AddMarschall();
-                //Marschall.DisplayAllMarschaller();
+                Marschall.AddMarschall();
+                SymbolPrint.Line();
                 Console.WriteLine("1. Add Marschall");
-                Console.WriteLine("2. Back to Main Menu");
+                Console.WriteLine("2. Back to Main Menu");                
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {
                     switch (choice)

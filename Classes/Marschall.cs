@@ -167,7 +167,7 @@ namespace LostMyLighter.Classes
             }
 
         }
-        static void AddMarschall()
+        public static void AddMarschall()
         {
 
             string brand;
