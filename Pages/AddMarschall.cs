@@ -22,6 +22,7 @@ namespace LostMyLighter.Pages
                 Marschall.AddMarschall();
                 Console.WriteLine("Marschall Added.");
                 SymbolPrint.Line();
+                PageManager.CurrUser.NumberOfMarchaller++;
                 Console.WriteLine("1. Add another Marschall");
                 Console.WriteLine("2. Back to Main Menu");                
                 if (int.TryParse(Console.ReadLine(), out int choice))
