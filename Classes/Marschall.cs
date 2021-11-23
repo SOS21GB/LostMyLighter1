@@ -59,111 +59,72 @@ namespace LostMyLighter.Classes
 
         public static void SearchMarschalls()
         {
+            Console.WriteLine("Choose how to Search: ");
+            Console.WriteLine("1.Brand");
+            Console.WriteLine("2.Zip Code");
+            Console.WriteLine("3. Street Name ");
+            Console.WriteLine("4. City");
+            Console.WriteLine("5. See all Active ");
+            Console.WriteLine("6. See All");
+            SymbolPrint.Line();
 
-            while (true)
-
+            int choice = Convert.ToInt32(Console.ReadLine());
+            switch (choice)
             {
-
-                Console.WriteLine("Choose how to Search: ");
-
-                Console.WriteLine("1.Brand");
-                Console.WriteLine("2.Zip Code");
-                Console.WriteLine("3. Street Name ");
-                Console.WriteLine("4. City");
-                Console.WriteLine("5. See all Active ");
-                Console.WriteLine("6. See All");
-              
-                int choice = Convert.ToInt32(Console.ReadLine());
-
-
-
-
-
-                switch (choice)
-                {
-
-                    case 1:
-                        
-                        Console.WriteLine("Enter Brand:");
-
-                        string brandInput = Console.ReadLine();
-
-                        var BrandList = Marschalls.Where(item => item._brand == brandInput);
-
-                        foreach (var item in BrandList)
-                        {
-                            Console.WriteLine("Resultat: {0}", item._brand);
-                        }
-
-                        break;
+                case 1:
+                    Console.WriteLine("Enter Brand:");
+                    string brandInput = Console.ReadLine();
+                    var BrandList = Marschalls.Where(item => item._brand == brandInput);
                     
-                    case 2:
-                        Console.WriteLine("Enter ZipCode:");
-                        int zipInput = Convert.ToInt32(Console.ReadLine());
+                    foreach (var item in BrandList)
+                    {
+                        Console.WriteLine("Resultat: {0}", item._brand);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter ZipCode:");
+                    int zipInput = Convert.ToInt32(Console.ReadLine());
+                    var zipList = Marschalls.Where(item => item._marschallAdress.ZipCode == zipInput);
+                    
+                    foreach (var item in zipList)
+                    {
+                        Console.WriteLine("Resultat: {0}", item._marschallAdress.ZipCode);
+                    }
+                    break;
+                case 3:
+                    Console.WriteLine("Enter Street Name:");
+                    string streetInput = Console.ReadLine();
+                    var streetList = Marschalls.Where(item => item._marschallAdress.StreetName == streetInput);
 
-                        var zipList = Marschalls.Where(item => item._marschallAdress.ZipCode == zipInput);
+                    foreach (var item in streetList)
+                    {
+                        Console.WriteLine("Resultat: {0}", item._marschallAdress.StreetName);
+                    }
+                    break;
+                case 4:
+                    Console.WriteLine("Enter City:");
+                    string cityInput = Console.ReadLine();
+                    var cityList = Marschalls.Where(item => item._marschallAdress.StreetName == cityInput);
 
-                        foreach (var item in zipList)
+                    foreach (var item in cityList)
+                    {
+                        Console.WriteLine("Resultat: {0}", item._marschallAdress.City);
+                    }
+                    break;
+                case 5:
+                    Console.WriteLine("All active: ");
+                    foreach (Marschall item in Marschalls)
+                    {
+                        if (item.IsActive())
                         {
-                            Console.WriteLine("Resultat: {0}", item._marschallAdress.ZipCode);
+                            item.DisplayMarsachall();
                         }
-                        break;
 
-                    case 3:
-                        Console.WriteLine("Enter Street Name:");
-                        string streetInput = Console.ReadLine();
-                     
-                        
-
-                        var streetList = Marschalls.Where(item => item._marschallAdress.StreetName == streetInput);
-
-                        foreach (var item in streetList)
-                        {
-                            Console.WriteLine("Resultat: {0}", item._marschallAdress.StreetName);
-                        }
-                        break;
-
-                    case 4:
-
-                        Console.WriteLine("Enter City:");
-                        string cityInput = Console.ReadLine();
-
-
-
-                        var cityList = Marschalls.Where(item => item._marschallAdress.StreetName == cityInput);
-
-                        foreach (var item in cityList)
-                        {
-                            Console.WriteLine("Resultat: {0}", item._marschallAdress.City);
-                        }
-                        break;
-
-
-
-
-
-
-                    case 5:
-                        Console.WriteLine("All active: ");
-                        foreach (Marschall item in Marschalls)
-                        {
-                            if (item.IsActive())
-                            {
-                                item.DisplayMarsachall();
-                            }
-
-                        }
-                        break;
-
-
-                    case 6:
-                        DisplayAllMarschaller();
-
-                        break;
-
-                }
-
-
+                    }
+                    break;
+                case 6:
+                    DisplayAllMarschaller();
+                    break;
             }
 
         }
