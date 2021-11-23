@@ -58,7 +58,7 @@ namespace LostMyLighter.Pages
                 {
                     //om inmatningen av id inte enbart är siffror
                     Header(_title);
-                    ErrorMessage();
+                    ErrorMessage("Entered ID");
                     PageManager.PausSleep(2);
                 }
 

@@ -61,7 +61,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Age: {0}", _age);
             this._adress.DisplayAdress();
             Console.WriteLine("Lighters: {0}", _lostLighters);
-            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine(SymbolPrint.line);
         }
 
         public User(string username, int age, Adress adress, string password)

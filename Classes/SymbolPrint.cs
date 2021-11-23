@@ -8,6 +8,10 @@ namespace LostMyLighter.Classes
 {
     static class SymbolPrint
     {
+
+        public static string line = "-------------------------------------------------------------------------------------";
+
+
         public static void Symbols(int symbol)
         {
             string marchall = "*****\n" +
@@ -50,7 +54,6 @@ namespace LostMyLighter.Classes
 
             string welcomemessage = "Lighters, Marshals and Cigarettes [Version 1.0.0]";
             
-            string line = "-------------------------------------------------------------------------------------";
 
 
             string lightersmarshalsandcigarettes = line+"\n"+

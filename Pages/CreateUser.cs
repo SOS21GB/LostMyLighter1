@@ -34,7 +34,7 @@ namespace LostMyLighter.Pages
                     {
                         break;
                     }
-                    ErrorMessage();
+                    ErrorMessage("Entered age");
                 }
 
                 adress = PageManager.CreateAdress();                                
@@ -62,7 +62,7 @@ namespace LostMyLighter.Pages
                     }
                 }
                 Header(_title);
-                ErrorMessage();
+                ErrorMessage("Number chosen");
             }
             
             

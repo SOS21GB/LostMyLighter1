@@ -13,7 +13,7 @@ namespace LostMyLighter.Pages
     {
         public StartMenu()
         {
-            _title = "";
+            _title = "Welcome to Lighters, Marshals and Cigarettes";
         }
 
         public override void LoadPage(out PageName nextPage)
@@ -45,8 +45,10 @@ namespace LostMyLighter.Pages
                 }
 
                 Console.Clear();
-                
-                ErrorMessage();
+                SymbolPrint.Symbols(4);
+                SymbolPrint.Symbols(6);
+                SymbolPrint.Symbols(5);
+                ErrorMessage("Number chosen");
             }
         }
 
