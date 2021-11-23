@@ -178,7 +178,7 @@ namespace LostMyLighter.Classes
 
             while (true)
             {
-                Console.Write("Enter Burn Time in minutes: ");
+                Console.Write("Enter Burn Time in hours: ");
                 if (int.TryParse(Console.ReadLine(), out burnTime))
                 {
                     break;
@@ -201,9 +201,9 @@ namespace LostMyLighter.Classes
             Console.WriteLine("ID: {0}", _IdMarschall);
             Console.WriteLine("Brand: {0}", _brand);
             Console.WriteLine("Time Registered: {0}", _timeRegistered);
-            Console.WriteLine("Burn Time: {0}", _burnTime);
+            Console.WriteLine("Burn out time: {0}", _timeRegistered.AddHours(BurnTime));
             _marschallAdress.DisplayAdress();
-            Console.WriteLine("Is active {0}", IsActive());
+            Console.WriteLine("Is activ: {0}", IsActive());
         }
     }
 
