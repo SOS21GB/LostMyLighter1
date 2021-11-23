@@ -57,7 +57,7 @@ namespace LostMyLighter.Classes
         }
 
 
-        static void SearchMarschalls()
+        public static void SearchMarschalls()
         {
 
             while (true)
