@@ -17,8 +17,11 @@ namespace LostMyLighter.Pages
         public override void LoadPage(out PageName nextPage)
         {
             while (true)
-            {
+            {                
+                LighterCasino.LostOrFoundLighter();
+                Header(_title);
                 Marschall.SearchMarschalls();
+                SymbolPrint.Line();
                 Console.WriteLine("1. Search again");
                 Console.WriteLine("2. Return to Main Menu");
                 if (int.TryParse(Console.ReadLine(), out int choice))

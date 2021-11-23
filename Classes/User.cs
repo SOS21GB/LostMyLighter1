@@ -33,6 +33,22 @@ namespace LostMyLighter.Classes
         public int LostLighters { get { return _lostLighters; } set { _lostLighters = value; } }
 
 
+        
+
+        public User(string username, int age, Adress adress, string password)
+        {
+
+            this._userName = username;
+            this._password = password;
+            this._age = age;
+            this._adress = adress;
+
+
+
+            _id = Users.Count + 1;
+            Users.Add(_id, this);
+        }
+
         public void DisplayUserInfo()
         {
 
@@ -64,25 +80,6 @@ namespace LostMyLighter.Classes
             SymbolPrint.Line();
 
         }
-
-        public User(string username, int age, Adress adress, string password)
-        {
-
-            this._userName = username;
-            this._password = password;
-            this._age = age;
-            this._adress = adress;
-
-
-
-            _id = Users.Count + 1;
-            Users.Add(_id, this);
-        }
-
-
-
-
-
 
         public bool IsRightPassword(string input)
         {
