@@ -25,15 +25,16 @@ namespace LostMyLighter.Classes
         public int Id { get { return _id; } }
         public string UserName { get { return _userName; } set { _userName = value; } }
         public int Age { get { return _age; } set { _age = value; } }
-        public Adress UserAdress { get { return _adress; } set { _adress = value; } }
-        public int NumberOfSearches { get { return _numberOfSearches; } }
-        public int NumberOfMarchaller { get { return _numberOfMarchaller; } }
+        public Adress UserAdress { get { return _adress; } set { _adress = value; } }        
         */
+
         public Adress UserAdress { get { return _adress; } }
+        public int NumberOfSearches { get { return _numberOfSearches; } set { _numberOfSearches = value; } }
+        public int NumberOfMarchaller { get { return _numberOfMarchaller; } set { _numberOfMarchaller = value; } }
         public int LostLighters { get { return _lostLighters; } set { _lostLighters = value; } }
 
 
-        
+
 
         public User(string username, int age, Adress adress, string password)
         {
@@ -57,7 +58,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Age: {0}", _age);
             this._adress.DisplayAdress();
             Console.WriteLine("Searches: {0}", _numberOfSearches);
-            Console.WriteLine("Marchallers found: {0}", _numberOfMarchaller);
+            Console.WriteLine("Marchallers added: {0}", _numberOfMarchaller);
             Console.WriteLine("Lighters: {0}", _lostLighters);
             SymbolPrint.Line();
         }
