@@ -41,7 +41,6 @@ namespace LostMyLighter.Classes
         static void displayAllMarschaller()
         {
             string title = "All Marschall";
-            PageManager.PageHeader(title);
             foreach (var all in Marschalls)
             {
                 Console.WriteLine("ID: {0}", all);
@@ -108,7 +107,7 @@ namespace LostMyLighter.Classes
 
             Console.Write("Enter brand: ");
             brand = Console.ReadLine();
-            Adress adress = PageManager.CreateAdress();    
+            Adress adress = Adress.CreateAdress();    
 
             while (true)
             {
