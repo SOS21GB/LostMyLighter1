@@ -43,7 +43,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Searches: {0}", _numberOfSearches);
             Console.WriteLine("Marchallers found: {0}", _numberOfMarchaller);
             Console.WriteLine("Lighters: {0}", _lostLighters);
-            Console.WriteLine("------------------------------------------------");
+            SymbolPrint.Line();
         }
 
         public void CreatedUserInfo()
@@ -52,7 +52,6 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
             this._adress.DisplayAdress();
-
             SymbolPrint.Line();
 
         }
