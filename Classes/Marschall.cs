@@ -16,11 +16,12 @@ namespace LostMyLighter.Classes
         private int _burnTime;
         private DateTime _timeRegistered;
         private Adress _marschallAdress;
+        private int _IdMarschall;
 
 
 
-        public string Brand;
-        public int BurnTime;
+        public string Brand { get { return _brand; } }
+        public int BurnTime { get { return _burnTime;} }
 
 
 
@@ -28,20 +29,22 @@ namespace LostMyLighter.Classes
 
         public Marschall(string brand, int burnTime, Adress adress)
         {
-            this.Brand = brand;
-            this.BurnTime = burnTime;
+            this._brand = brand;
+            this._burnTime = burnTime;
             this._timeRegistered = DateTime.Now;
             this._marschallAdress = adress;
 
+
+            _IdMarschall = Marschalls.Count + 1;
             Marschalls.Add(this);
 
         }
 
 
-        static void displayAllMarschaller()
+        static void DisplayAllMarschaller()
         {
-            string title = "All Marschall";
-            PageManager.PageHeader(title);
+            
+            
             foreach (var all in Marschalls)
             {
                 Console.WriteLine("ID: {0}", all);
@@ -57,10 +60,14 @@ namespace LostMyLighter.Classes
 
             {
 
-                Console.WriteLine("Choose: ");
+                Console.WriteLine("Choose how to Search: ");
 
-                Console.WriteLine("1. Enter Brand");
-                Console.WriteLine("2. See all Active ");
+                Console.WriteLine("1.Brand");
+                Console.WriteLine("2.Zip Code");
+                Console.WriteLine("3. Street Name ");
+                Console.WriteLine("4. City");
+                Console.WriteLine("5. See all Active ");
+                Console.WriteLine("6. See All");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
 
@@ -73,22 +80,89 @@ namespace LostMyLighter.Classes
                     case 1:
                         
                         Console.WriteLine("Enter Brand:");
-                        string userInput = Console.ReadLine();
+                        string brandInput = Console.ReadLine();
 
-                        var BrandList = Marschalls.Where(item => item._brand == userInput);
+                        var BrandList = Marschalls.Where(item => item._brand == brandInput);
 
                         foreach (var item in BrandList)
                         {
-                            Console.WriteLine("Brand: {0}", item._brand);
+                            Console.WriteLine("Resultat: {0}", item._brand);
                         }
 
                         break;
 
 
-                    case 2:
+                    
 
-                        Console.WriteLine("");   /// ska skriva kod för att kunna se AKtiva MArschaller 
+                    case 2:
+                        Console.WriteLine("Enter ZipCode:");
+                        int zipInput = Convert.ToInt32(Console.ReadLine());
+
+                       
                         
+
+                        var zipList = Marschalls.Where(item => item._marschallAdress.ZipCode == zipInput);
+
+                        foreach (var item in zipList)
+                        {
+                            Console.WriteLine("Resultat: {0}", item._marschallAdress.ZipCode);
+                        }
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Enter Street Name:");
+                        string streetInput = Console.ReadLine();
+                     
+                        
+
+                        var streetList = Marschalls.Where(item => item._marschallAdress.StreetName == streetInput);
+
+                        foreach (var item in streetList)
+                        {
+                            Console.WriteLine("Resultat: {0}", item._marschallAdress.StreetName);
+                        }
+                        break;
+
+                    case 4:
+
+                        Console.WriteLine("Enter City:");
+                        string cityInput = Console.ReadLine();
+
+
+
+                        var cityList = Marschalls.Where(item => item._marschallAdress.StreetName == cityInput);
+
+                        foreach (var item in cityList)
+                        {
+                            Console.WriteLine("Resultat: {0}", item._marschallAdress.City);
+                        }
+                        break;
+
+
+
+
+
+
+                    case 5:
+                        Console.WriteLine("All active: ");
+                        foreach (Marschall item in Marschalls)
+                        {
+                            if (item.IsActive())
+                            {
+                                item.DisplayMarsachall();
+                            }
+
+                        }
+                        break;
+
+
+                    case 6:
+                        DisplayAllMarschaller();
+
+
+
+
+
 
                         break;
 
@@ -121,6 +195,26 @@ namespace LostMyLighter.Classes
             }
 
             new Marschall(brand, burnTime, adress);
+
+
+
+
+        }
+
+        public bool IsActive()
+        {
+
+           return DateTime.Now < _timeRegistered.AddHours(BurnTime);
+
+        }
+        public void DisplayMarsachall()
+        {
+            Console.WriteLine("Brand: {0}", Brand);
+            Console.WriteLine("Burn Time: {0}", BurnTime);
+            Console.WriteLine("ID: {0}", _IdMarschall );
+            Console.WriteLine("Adress:", _marschallAdress);
+            Console.WriteLine("Time Registered:", _timeRegistered);
+
 
 
         }
