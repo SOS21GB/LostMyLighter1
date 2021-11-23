@@ -28,7 +28,7 @@ namespace LostMyLighter.Pages
         /// <summary>
         /// Call this method to let the user know that the input was not accepted
         /// </summary>
-        protected static void ErrorMessage(string item, string reason = "is not valid")
+        public static void ErrorMessage(string item, string reason = "is not valid")
         {
             Console.WriteLine();
             Console.WriteLine($"{item} {reason}");

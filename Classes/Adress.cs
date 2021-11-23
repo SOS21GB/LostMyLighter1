@@ -39,14 +39,23 @@ namespace LostMyLighter.Classes
         }
         public void EditAdress()
         {
-            Console.WriteLine("Enter your new adress");
+            Console.WriteLine("Enter your new streetadress");
             this._streetName = Console.ReadLine();
             Console.WriteLine("Enter your streetnumber");
             this._streetNumber = Console.ReadLine();
             Console.WriteLine("Enter your city");
             this._city = Console.ReadLine();
-            Console.WriteLine("Enter your zipcode");
-            this._zipCode = Convert.ToInt32(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("Enter your zipcode");
+                if (int.TryParse(Console.ReadLine(), out this._zipCode))
+                {
+                    break;
+                }
+                Page.ErrorMessage("Zipcode");
+            }   
+
+            
 
         }
 
@@ -73,7 +82,7 @@ namespace LostMyLighter.Classes
                 {
                     break;
                 }
-                
+                Page.ErrorMessage("Zipcode");
             }
 
             return new Adress(streetName, streetNumber, city, zipCode);
