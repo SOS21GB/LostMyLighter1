@@ -21,8 +21,10 @@ namespace LostMyLighter.Pages
             {
                 Header(_title);
                 PageManager.CurrUser.EditUserInfo();
-                Console.WriteLine("1. Name \n2. Age\n3. Adress \n4. Found a lighter \n5. Return to Main Menu");
-                Console.WriteLine(SymbolPrint.line);
+
+                Console.WriteLine("1. Name \n2. Age\n3. Adress \n4. Return to Main Menu");
+                SymbolPrint.Line();
+
                 Console.Write("Please enter the number corresponding to the information you'd like to change: ");
                 
                 if (int.TryParse(Console.ReadLine(), out int choice))
@@ -39,9 +41,7 @@ namespace LostMyLighter.Pages
                             PageManager.CurrUser.UserAdress.EditAdress();
                             break;
                         case 4:
-                            PageManager.CurrUser.EditLigthers();                          
-                            break;
-                        case 5:
+
                             nextPage = PageName.MainMenu;
                             return;
 

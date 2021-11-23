@@ -16,6 +16,7 @@ namespace LostMyLighter.Classes
         private int _burnTime;
         private DateTime _timeRegistered;
         private Adress _marschallAdress;
+
         private int _IdMarschall;
 
 
@@ -27,8 +28,10 @@ namespace LostMyLighter.Classes
 
 
 
+
         public Marschall(string brand, int burnTime, Adress adress)
         {
+
             this._brand = brand;
             this._burnTime = burnTime;
             this._timeRegistered = DateTime.Now;
@@ -36,6 +39,7 @@ namespace LostMyLighter.Classes
 
 
             _IdMarschall = Marschalls.Count + 1;
+
             Marschalls.Add(this);
 
         }
@@ -43,10 +47,6 @@ namespace LostMyLighter.Classes
 
         static void DisplayAllMarschaller()
         {
-
-            
-            
-
              string title = "All Marschall";
 
             foreach (var all in Marschalls)
@@ -72,6 +72,7 @@ namespace LostMyLighter.Classes
                 Console.WriteLine("4. City");
                 Console.WriteLine("5. See all Active ");
                 Console.WriteLine("6. See All");
+              
                 int choice = Convert.ToInt32(Console.ReadLine());
 
 
@@ -84,6 +85,7 @@ namespace LostMyLighter.Classes
                     case 1:
                         
                         Console.WriteLine("Enter Brand:");
+
                         string brandInput = Console.ReadLine();
 
                         var BrandList = Marschalls.Where(item => item._brand == brandInput);
@@ -94,16 +96,10 @@ namespace LostMyLighter.Classes
                         }
 
                         break;
-
-
                     
-
                     case 2:
                         Console.WriteLine("Enter ZipCode:");
                         int zipInput = Convert.ToInt32(Console.ReadLine());
-
-                       
-                        
 
                         var zipList = Marschalls.Where(item => item._marschallAdress.ZipCode == zipInput);
 
@@ -163,11 +159,6 @@ namespace LostMyLighter.Classes
                     case 6:
                         DisplayAllMarschaller();
 
-
-
-
-
-
                         break;
 
                 }
@@ -202,7 +193,6 @@ namespace LostMyLighter.Classes
 
 
 
-
         }
 
         public bool IsActive()
@@ -218,9 +208,6 @@ namespace LostMyLighter.Classes
             Console.WriteLine("ID: {0}", _IdMarschall );
             Console.WriteLine("Adress:", _marschallAdress);
             Console.WriteLine("Time Registered:", _timeRegistered);
-
-
-
         }
     }
 

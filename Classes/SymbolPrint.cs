@@ -9,7 +9,11 @@ namespace LostMyLighter.Classes
     static class SymbolPrint
     {
 
-        public static string line = "-------------------------------------------------------------------------------------";
+        public static void Line() 
+        {
+            Console.WriteLine("-------------------------------------------------------------------------------------");
+        }
+
 
 
         public static void Symbols(int symbol)
@@ -53,15 +57,15 @@ namespace LostMyLighter.Classes
             
 
             string welcomemessage = "Lighters, Marshals and Cigarettes [Version 1.0.0]";
-            
 
 
-            string lightersmarshalsandcigarettes = line+"\n"+
-                                                    "Welcome to Lighters, Marshals and Cigarettes\n" +
-                                                   line;
+
+            string lightersmarshalsandcigarettes = "\n" +
+                                                    "Welcome to Lighters, Marshals and Cigarettes\n";
+                                                   
                                                  
-            string productioncrew = line+"\n"+
-                "Production: Max, Johan, Patrick, Elham, Mommo, David";
+            string productioncrew = "Production: Max, Johan, Patrick, Elham, Mommo, David";
+
 
             string programinfo = "© 2021 Lighter Corporation All rights Reserved";
 
@@ -82,10 +86,13 @@ namespace LostMyLighter.Classes
                     Console.WriteLine(programinfo);
                     return;
                 case 5:
-                    
+                    Line();
                     Console.WriteLine(lightersmarshalsandcigarettes);
+                    Line();
                     return;
                 case 6:
+                    Line();
+
                     Console.WriteLine(productioncrew);
                     return;
                 
