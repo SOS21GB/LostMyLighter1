@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LostMyLighter.Pages;
 
 namespace LostMyLighter.Classes
 {
@@ -49,5 +50,33 @@ namespace LostMyLighter.Classes
 
         }
 
+        public static Adress CreateAdress()
+        {
+            string streetNumber;
+            string streetName;
+            string city;
+            int zipCode;
+
+            Console.Write("Enter Streetname: ");
+            streetName = Console.ReadLine();
+
+            Console.Write("Enter Streetnumber: ");
+            streetNumber = Console.ReadLine();
+
+            Console.Write("Enter city: ");
+            city = Console.ReadLine();
+
+            while (true)
+            {
+                Console.Write("Enter Zipcode: ");
+                if (int.TryParse(Console.ReadLine(), out zipCode))
+                {
+                    break;
+                }
+                
+            }
+
+            return new Adress(streetName, streetNumber, city, zipCode);
+        }
     }
 }
