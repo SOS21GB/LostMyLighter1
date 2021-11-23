@@ -20,20 +20,20 @@ namespace LostMyLighter.Pages
         {
             Console.Clear();
 
-            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine(SymbolPrint.line);
             Console.WriteLine(title);
-            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine(SymbolPrint.line);
         }
 
         /// <summary>
         /// Call this method to let the user know that the input was not accepted
         /// </summary>
-        protected static void ErrorMessage()
+        protected static void ErrorMessage(string reason)
         {
             Console.WriteLine();
-            Console.WriteLine("Input not valid");
+            Console.WriteLine($"{reason} is not valid");
             Console.WriteLine();
-            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine(SymbolPrint.line);
             PageManager.PausSleep(2);
         }
 

@@ -38,7 +38,7 @@ namespace LostMyLighter.Pages
                 }
 
                 Header(_title);
-                ErrorMessage();
+                ErrorMessage("Number chosen");
             }
         }
     }

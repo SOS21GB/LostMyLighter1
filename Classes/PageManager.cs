@@ -83,12 +83,12 @@ namespace LostMyLighter.Classes
         /// <summary>
         /// Call this method to let the user know that the input was not accepted
         /// </summary>
-        static void ErrorMessage()
+        static void ErrorMessage(string reason)
         {
             Console.WriteLine();
-            Console.WriteLine("Input not valid");
+            Console.WriteLine($"{reason} is not valid");
             Console.WriteLine();
-            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine(SymbolPrint.line);
             PausSleep(2);
         }
 
@@ -121,7 +121,7 @@ namespace LostMyLighter.Classes
                 }
 
                 PageHeader(title);
-                ErrorMessage();
+                ErrorMessage("Number chosen");
             }
         }
 
@@ -162,7 +162,7 @@ namespace LostMyLighter.Classes
                        
                     }
                 }
-                ErrorMessage();
+                ErrorMessage("Entered ID");
             }
         }
         
@@ -186,7 +186,7 @@ namespace LostMyLighter.Classes
                 {
                     break;
                 }
-                ErrorMessage();
+                ErrorMessage("Entered age");
                 PageHeader(title);
             }
                         
@@ -226,7 +226,7 @@ namespace LostMyLighter.Classes
                 }
                 Console.Clear();
                 PageHeader(title);
-                ErrorMessage();
+                ErrorMessage("Number chosen");
 
                 PageHeader(title);
                 CurrUser.CreatedUserInfo();
@@ -256,7 +256,7 @@ namespace LostMyLighter.Classes
                 {
                     break;
                 }
-                ErrorMessage();
+                ErrorMessage("Entered Zipcode");
             }
 
 
@@ -336,7 +336,7 @@ namespace LostMyLighter.Classes
                 }
 
                 PageHeader(title);
-                ErrorMessage();
+                ErrorMessage("Number chosen");
             }
         }
 
@@ -366,7 +366,7 @@ namespace LostMyLighter.Classes
                 }
 
                 PageHeader(title);
-                ErrorMessage();
+                ErrorMessage("Number chosen");
             }
         }
 
@@ -387,8 +387,8 @@ namespace LostMyLighter.Classes
 
         public static void LogOut()
         {
-            
-            PageHeader("Lost My Lighter");
+            Console.Clear();
+            SymbolPrint.Symbols(5);
             Console.WriteLine("Logging out...");
             CurrUser = null;
             PausSleep(3);
@@ -396,7 +396,8 @@ namespace LostMyLighter.Classes
 
         static void QuitApp()
         {
-            PageHeader("Lost My Lighter");
+            Console.Clear();
+            SymbolPrint.Symbols(5);
             Console.WriteLine("Exiting App...");
             PausSleep(3);
             Console.Clear();
