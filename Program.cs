@@ -9,13 +9,9 @@ namespace LostMyLighter
         static void Main(string[] args)
         {
 
-
-            Marschall.DisplayAllMarschaller();
-
-           
             Testing.PremadeUsers();
 
-           // PageManager.RunApp();
+            PageManager.RunApp();
 
 
         }
