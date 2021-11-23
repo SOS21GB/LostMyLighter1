@@ -23,6 +23,7 @@ namespace LostMyLighter.Pages
             SymbolPrint.Line();
             Console.WriteLine(title);
             SymbolPrint.Line();
+
         }
 
         /// <summary>
@@ -34,6 +35,7 @@ namespace LostMyLighter.Pages
             Console.WriteLine($"{item} {reason}");
             Console.WriteLine();
             SymbolPrint.Line();
+
             PageManager.PausSleep(2);
         }
 

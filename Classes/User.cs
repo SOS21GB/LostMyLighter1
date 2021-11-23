@@ -52,7 +52,9 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
             this._adress.DisplayAdress();
+
             SymbolPrint.Line();
+
         }
 
         public void EditUserInfo()
@@ -61,6 +63,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Age: {0}", _age);
             this._adress.DisplayAdress();
             SymbolPrint.Line();
+
         }
 
         public User(string username, int age, Adress adress, string password)
@@ -112,7 +115,6 @@ namespace LostMyLighter.Classes
         }
 
 
-       
     }
 }
 

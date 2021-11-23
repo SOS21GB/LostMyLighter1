@@ -15,6 +15,7 @@ namespace LostMyLighter.Classes
         }
 
 
+
         public static void Symbols(int symbol)
         {
             string marchall = "*****\n" +
@@ -65,6 +66,7 @@ namespace LostMyLighter.Classes
                                                  
             string productioncrew = "Production: Max, Johan, Patrick, Elham, Mommo, David";
 
+
             string programinfo = "© 2021 Lighter Corporation All rights Reserved";
 
 
@@ -90,6 +92,7 @@ namespace LostMyLighter.Classes
                     return;
                 case 6:
                     Line();
+
                     Console.WriteLine(productioncrew);
                     return;
                 
