@@ -45,13 +45,13 @@ namespace LostMyLighter.Classes
         }
 
 
-        static void DisplayAllMarschaller()
+        public static void DisplayAllMarschaller()
         {
              string title = "All Marschall";
 
-            foreach (var all in Marschalls)
+            foreach (var m in Marschalls)
             {
-                Console.WriteLine("ID: {0}", all);
+                m.DisplayMarsachall();
 
             }
         }
@@ -169,11 +169,8 @@ namespace LostMyLighter.Classes
         }
         static void AddMarschall()
         {
-
             string brand;
             int burnTime;
-
-
 
             Console.Write("Enter brand: ");
             brand = Console.ReadLine();
@@ -191,8 +188,6 @@ namespace LostMyLighter.Classes
 
             new Marschall(brand, burnTime, adress);
 
-
-
         }
 
         public bool IsActive()
@@ -203,11 +198,12 @@ namespace LostMyLighter.Classes
         }
         public void DisplayMarsachall()
         {
-            Console.WriteLine("Brand: {0}", Brand);
-            Console.WriteLine("Burn Time: {0}", BurnTime);
-            Console.WriteLine("ID: {0}", _IdMarschall );
-            Console.WriteLine("Adress:", _marschallAdress);
-            Console.WriteLine("Time Registered:", _timeRegistered);
+            Console.WriteLine("ID: {0}", _IdMarschall);
+            Console.WriteLine("Brand: {0}", _brand);
+            Console.WriteLine("Time Registered: {0}", _timeRegistered);
+            Console.WriteLine("Burn Time: {0}", _burnTime);
+            _marschallAdress.DisplayAdress();
+            Console.WriteLine("Is active {0}", IsActive());
         }
     }
 
