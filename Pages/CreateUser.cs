@@ -37,7 +37,7 @@ namespace LostMyLighter.Pages
                     ErrorMessage("Entered age");
                 }
 
-                adress = PageManager.CreateAdress();                                
+                adress = Adress.CreateAdress();
                 
                 Console.Write("Password for new user: ");
                 password = Console.ReadLine();
