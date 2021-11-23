@@ -41,14 +41,14 @@ namespace LostMyLighter.Pages
                         else
                         {
                             Header(_title);
-                            Console.WriteLine("Wrong Password !! ");   
+                            Console.WriteLine("Password", "Incorrect");   
                         }
                     }
 
                     else
                     {
                         Header(_title);
-                        Console.WriteLine("ID not registered");               
+                        Console.WriteLine("ID", "not registered");               
                     }
 
                     //detta sker om användaren har fel id eller lösen
@@ -60,6 +60,7 @@ namespace LostMyLighter.Pages
                     Header(_title);
                     ErrorMessage("Entered ID");
                     PageManager.PausSleep(2);
+
                 }
 
         }   }
