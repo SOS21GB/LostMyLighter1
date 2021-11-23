@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LostMyLighter.Pages;
 
 namespace LostMyLighter.Classes
 {
@@ -35,6 +36,56 @@ namespace LostMyLighter.Classes
             Console.WriteLine("City: {0}", City);
             Console.WriteLine("Zipcode: {0}", ZipCode);
 
+        }
+        public void EditAdress()
+        {
+            Console.WriteLine("Enter your new streetadress");
+            this._streetName = Console.ReadLine();
+            Console.WriteLine("Enter your streetnumber");
+            this._streetNumber = Console.ReadLine();
+            Console.WriteLine("Enter your city");
+            this._city = Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine("Enter your zipcode");
+                if (int.TryParse(Console.ReadLine(), out this._zipCode))
+                {
+                    break;
+                }
+                Page.ErrorMessage("Zipcode");
+            }   
+
+            
+
+        }
+
+        public static Adress CreateAdress()
+        {
+            string streetNumber;
+            string streetName;
+            string city;
+            int zipCode;
+
+            Console.Write("Enter Streetname: ");
+            streetName = Console.ReadLine();
+
+            Console.Write("Enter Streetnumber: ");
+            streetNumber = Console.ReadLine();
+
+            Console.Write("Enter city: ");
+            city = Console.ReadLine();
+
+            while (true)
+            {
+                Console.Write("Enter Zipcode: ");
+                if (int.TryParse(Console.ReadLine(), out zipCode))
+                {
+                    break;
+                }
+                Page.ErrorMessage("Zipcode");
+            }
+
+            return new Adress(streetName, streetNumber, city, zipCode);
         }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LostMyLighter.Classes;
+
 
 
 namespace LostMyLighter.Pages
@@ -11,17 +13,17 @@ namespace LostMyLighter.Pages
     {
         public StartMenu()
         {
-            _title = "Lost My Lighter";
+            _title = "Welcome to Lighters, Marshals and Cigarettes";
         }
 
         public override void LoadPage(out PageName nextPage)
         {
             while (true)
             {
-
-                //Symbols(1);
-                //Symbols(2);
-                Header(_title);
+                Console.Clear();
+                SymbolPrint.Symbols(4);
+                SymbolPrint.Symbols(6);
+                SymbolPrint.Symbols(5);
                 Console.WriteLine("1. Log in");
                 Console.WriteLine("2. Create User");
                 Console.WriteLine("3. Quit");
@@ -42,8 +44,11 @@ namespace LostMyLighter.Pages
                     }
                 }
 
-                Header(_title);
-                ErrorMessage();
+                Console.Clear();
+                SymbolPrint.Symbols(4);
+                SymbolPrint.Symbols(6);
+                SymbolPrint.Symbols(5);
+                ErrorMessage("Number chosen");
             }
         }
 

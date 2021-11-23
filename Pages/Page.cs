@@ -19,24 +19,37 @@ namespace LostMyLighter.Pages
         static public void Header(string title)
         {
             Console.Clear();
-            Console.WriteLine("------------------------------------------------");
+
+            Console.WriteLine(SymbolPrint.line);
             Console.WriteLine(title);
-            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine(SymbolPrint.line);
         }
 
         /// <summary>
         /// Call this method to let the user know that the input was not accepted
         /// </summary>
-        protected static void ErrorMessage()
+        public static void ErrorMessage(string item, string reason = "is not valid")
         {
             Console.WriteLine();
-            Console.WriteLine("Input not valid");
+            Console.WriteLine($"{item} {reason}");
             Console.WriteLine();
-            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine(SymbolPrint.line);
             PageManager.PausSleep(2);
         }
 
     }
 
-    enum PageName { None, StartMenu, CreateUser, LogIn, MainMenu, ViewProfile, AddRemoveLighter, FindMarschalls, AddMarschall}
+    enum PageName 
+    { 
+        None,
+        StartMenu,
+        CreateUser,
+        EditUser,
+        LogIn,
+        MainMenu,
+        ViewProfile,
+        AddRemoveLighter,
+        FindMarschalls,
+        AddMarschall
+    }
 }

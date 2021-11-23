@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LostMyLighter.Pages;
 
 
 namespace LostMyLighter.Classes
 {
-    class RandomLostAdd
+    class LighterCasino
     {
         public static void LostOrFoundLighter()
         {
@@ -44,37 +45,37 @@ namespace LostMyLighter.Classes
         }
 
         static string title = "On the streets.";
-        public static void RollOne()
+        static void RollOne()
         {
-            PageManager.PageHeader(title);
+            Page.Header(title);
             Console.WriteLine("Clumsy! You lost a lighter!");
             PageManager.CurrUser.LostLighters--;
             SymbolPrint.Symbols(3);
             PageManager.PausSleep(2);
         }
 
-        public static void RollOneZeroLighters()
+        static void RollOneZeroLighters()
         {
-            PageManager.PageHeader(title);
-            Console.WriteLine("You just realized that you lost a lighter!");
+            Page.Header(title);
+            Console.WriteLine("You just realized that you lost a lighter the other day!");
             PageManager.CurrUser.LostLighters--;
             SymbolPrint.Symbols(3);
             PageManager.PausSleep(2);
         }
 
-        public static void RollTen()
+        static void RollTen()
         {
-            PageManager.PageHeader(title);
+            Page.Header(title);
             Console.WriteLine("Lucky! You found a lighter!");
             SymbolPrint.Symbols(2);
             PageManager.CurrUser.LostLighters++;
             PageManager.PausSleep(2);
         }
 
-        public static void RollBetween()
+        static void RollBetween()
         {
-            PageManager.PageHeader(title);
-            Console.WriteLine("What a wonderful day.");
+            Page.Header(title);
+            Console.WriteLine("What a wonderful day. You managed not to lose your lighter!");
             PageManager.PausSleep(2);
         }
     }

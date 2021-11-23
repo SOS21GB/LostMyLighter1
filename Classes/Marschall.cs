@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,8 +43,12 @@ namespace LostMyLighter.Classes
 
         static void DisplayAllMarschaller()
         {
+
             
             
+
+             string title = "All Marschall";
+
             foreach (var all in Marschalls)
             {
                 Console.WriteLine("ID: {0}", all);
@@ -182,7 +186,7 @@ namespace LostMyLighter.Classes
 
             Console.Write("Enter brand: ");
             brand = Console.ReadLine();
-            Adress adress = PageManager.CreateAdress();    
+            Adress adress = Adress.CreateAdress();    
 
             while (true)
             {
