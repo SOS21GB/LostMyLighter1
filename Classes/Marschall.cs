@@ -19,7 +19,7 @@ namespace LostMyLighter.Classes
         private Adress _marschallAdress;
         private int _IdMarschall;
         public string Brand { get { return _brand; } }
-        public int BurnTime { get { return _burnTime;} }
+        public int BurnTime { get { return _burnTime; } }
 
         public Marschall(User user, string brand, int burnTime, Adress adress)
         {
@@ -43,7 +43,7 @@ namespace LostMyLighter.Classes
             this._brand = brand;
             this._burnTime = burnTime;
             this._timeRegistered = DateTime.Now.AddHours(-hoursSinceRegistrerd);
-            this. _expectedBurnOutTime = _timeRegistered.AddHours(BurnTime);
+            this._expectedBurnOutTime = _timeRegistered.AddHours(BurnTime);
             this._marschallAdress = adress;
 
 
@@ -55,7 +55,7 @@ namespace LostMyLighter.Classes
 
         public static void DisplayAllMarschaller()
         {
-             string title = "All Marschall";
+            string title = "All Marschall";
 
             foreach (var m in Marschalls)
             {
@@ -84,10 +84,16 @@ namespace LostMyLighter.Classes
                     Console.WriteLine("Enter Brand:");
                     string brandInput = Console.ReadLine();
                     var BrandList = Marschalls.Where(item => item._brand == brandInput);
-                    
+                    int marshallsFound = 0;
+                    Page.Header("Find Marschalls");
                     foreach (var item in BrandList)
                     {
-                        Console.WriteLine("Resultat: {0}", item._brand);
+                        item.DisplayMarsachall();
+                        marshallsFound++;
+                    }
+                    if (marshallsFound < 1)
+                    {
+                        Console.WriteLine("No Marshalls could be found");
                     }
                     SymbolPrint.Line();
                     break;
@@ -96,11 +102,18 @@ namespace LostMyLighter.Classes
                     Console.WriteLine("Enter ZipCode:");
                     int zipInput = Convert.ToInt32(Console.ReadLine());
                     var zipList = Marschalls.Where(item => item._marschallAdress.ZipCode == zipInput);
-                    
+                    marshallsFound = 0;
+
                     foreach (var item in zipList)
                     {
-                        Console.WriteLine("Resultat: {0}", item._marschallAdress.ZipCode);
+                        item.DisplayMarsachall();
+                        marshallsFound++;
                     }
+                    if (marshallsFound < 1)
+                    {
+                        Console.WriteLine("No Marshalls could be found");
+                    }
+
                     SymbolPrint.Line();
                     break;
                 case 3:
@@ -108,10 +121,15 @@ namespace LostMyLighter.Classes
                     Console.WriteLine("Enter Street Name:");
                     string streetInput = Console.ReadLine();
                     var streetList = Marschalls.Where(item => item._marschallAdress.StreetName == streetInput);
-
+                    marshallsFound = 0;
                     foreach (var item in streetList)
                     {
-                        Console.WriteLine("Resultat: {0}", item._marschallAdress.StreetName);
+                        item.DisplayMarsachall();
+                        marshallsFound++;
+                    }
+                    if (marshallsFound < 1)
+                    {
+                        Console.WriteLine("No Marshalls could be found");
                     }
                     SymbolPrint.Line();
                     break;
@@ -120,10 +138,15 @@ namespace LostMyLighter.Classes
                     Console.WriteLine("Enter City:");
                     string cityInput = Console.ReadLine();
                     var cityList = Marschalls.Where(item => item._marschallAdress.City == cityInput);
-
+                    marshallsFound = 0;
                     foreach (var item in cityList)
                     {
-                        Console.WriteLine("Resultat: {0}", item._marschallAdress.City);
+                        item.DisplayMarsachall();
+                        marshallsFound++;
+                    }
+                    if (marshallsFound < 1)
+                    {
+                        Console.WriteLine("No Marshalls could be found");
                     }
                     SymbolPrint.Line();
                     break;
@@ -155,7 +178,7 @@ namespace LostMyLighter.Classes
 
             Console.Write("Enter brand: ");
             brand = Console.ReadLine();
-            Adress adress = Adress.CreateAdress();    
+            Adress adress = Adress.CreateAdress();
 
             while (true)
             {
@@ -176,7 +199,7 @@ namespace LostMyLighter.Classes
         public bool IsActive()
         {
 
-           return DateTime.Now < _timeRegistered.AddHours(BurnTime);
+            return DateTime.Now < _timeRegistered.AddHours(BurnTime);
 
         }
         public void DisplayMarsachall()
@@ -186,9 +209,10 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Brand: {0}", _brand);
             Console.WriteLine("Time Registered: {0}", _timeRegistered);
             Console.WriteLine("BurnTime (hours): {0}", _burnTime);
-            Console.WriteLine("Expected burn out time: {0}", _expectedBurnOutTime); 
+            Console.WriteLine("Expected burn out time: {0}", _expectedBurnOutTime);
             _marschallAdress.DisplayAdress();
             Console.WriteLine("Is active: {0}", IsActive() ? "Yes" : "No");
+            Console.WriteLine();
         }
     }
 }
