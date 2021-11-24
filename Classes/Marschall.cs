@@ -11,15 +11,11 @@ namespace LostMyLighter.Classes
         public static Marschall CurrMarschall;
         public static List<Marschall> Marschalls = new List<Marschall>();
 
-
         private string _brand;
         private int _burnTime;
         private DateTime _timeRegistered;
         private Adress _marschallAdress;
-
         private int _IdMarschall;
-
-
 
         public string Brand { get { return _brand; } }
         public int BurnTime { get { return _burnTime;} }
@@ -44,6 +40,20 @@ namespace LostMyLighter.Classes
 
         }
 
+        public Marschall(string brand, int burnTime, int hoursSinceRegistrerd, Adress adress)
+        {
+
+            this._brand = brand;
+            this._burnTime = burnTime;
+            this._timeRegistered = DateTime.Now.AddHours(-hoursSinceRegistrerd);
+            this._marschallAdress = adress;
+
+
+            _IdMarschall = Marschalls.Count + 1;
+
+            Marschalls.Add(this);
+
+        }
 
         public static void DisplayAllMarschaller()
         {
@@ -60,11 +70,11 @@ namespace LostMyLighter.Classes
         public static void SearchMarschalls()
         {
             Console.WriteLine("Choose how to Search: ");
-            Console.WriteLine("1.Brand");
-            Console.WriteLine("2.Zip Code");
-            Console.WriteLine("3. Street Name ");
+            Console.WriteLine("1. Brand");
+            Console.WriteLine("2. Zip Code");
+            Console.WriteLine("3. Street Name");
             Console.WriteLine("4. City");
-            Console.WriteLine("5. See all Active ");
+            Console.WriteLine("5. See all Active");
             Console.WriteLine("6. See All");
             SymbolPrint.Line();
 
@@ -104,7 +114,7 @@ namespace LostMyLighter.Classes
                 case 4:
                     Console.WriteLine("Enter City:");
                     string cityInput = Console.ReadLine();
-                    var cityList = Marschalls.Where(item => item._marschallAdress.StreetName == cityInput);
+                    var cityList = Marschalls.Where(item => item._marschallAdress.City == cityInput);
 
                     foreach (var item in cityList)
                     {
