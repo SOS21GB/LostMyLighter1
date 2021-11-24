@@ -13,8 +13,6 @@ namespace LostMyLighter.Classes
     {
         public static User CurrUser;
 
-        public static Marschall CurrMarschall;
-
         public static Dictionary<PageName, Page> AllPages = new()
         {
             { PageName.StartMenu, new StartMenu() },

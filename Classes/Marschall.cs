@@ -9,7 +9,6 @@ namespace LostMyLighter.Classes
 {
     class Marschall
     {
-        public static Marschall CurrMarschall;
         public static List<Marschall> Marschalls = new List<Marschall>();
         private string _brand;
         private int _burnTime;
