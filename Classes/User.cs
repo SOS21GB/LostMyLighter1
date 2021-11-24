@@ -32,10 +32,6 @@ namespace LostMyLighter.Classes
         public int NumberOfSearches { get { return _numberOfSearches; } set { _numberOfSearches = value; } }
         public int NumberOfMarchaller { get { return _numberOfMarchaller; } set { _numberOfMarchaller = value; } }
         public int LostLighters { get { return _lostLighters; } set { _lostLighters = value; } }
-
-
-
-
         public User(string username, int age, Adress adress, string password)
         {
 
@@ -49,7 +45,6 @@ namespace LostMyLighter.Classes
             _id = Users.Count + 1;
             Users.Add(_id, this);
         }
-
         public void DisplayUserInfo()
         {
 
@@ -61,6 +56,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Marchallers added: {0}", _numberOfMarchaller);
             Console.WriteLine("Lighters: {0}", _lostLighters);
             SymbolPrint.Line();
+
         }
 
         public void CreatedUserInfo()
@@ -70,7 +66,6 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Age: {0}", _age);
             this._adress.DisplayAdress();
             SymbolPrint.Line();
-
         }
 
         public void EditUserInfo()
@@ -81,6 +76,7 @@ namespace LostMyLighter.Classes
             SymbolPrint.Line();
 
         }
+
 
         public bool IsRightPassword(string input)
         {
@@ -108,10 +104,7 @@ namespace LostMyLighter.Classes
                 Console.WriteLine("Wrong input pal, Try again!");
                 PageManager.PausSleep(1);
             }
-
         }
-
-
     }
 }
 

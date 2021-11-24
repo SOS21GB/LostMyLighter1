@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,21 +11,13 @@ namespace LostMyLighter.Classes
     {
         public static Marschall CurrMarschall;
         public static List<Marschall> Marschalls = new List<Marschall>();
-
         private string _brand;
         private int _burnTime;
         private DateTime _timeRegistered;
         private Adress _marschallAdress;
         private int _IdMarschall;
-
         public string Brand { get { return _brand; } }
         public int BurnTime { get { return _burnTime;} }
-
-
-
-
-
-
         public Marschall(string brand, int burnTime, Adress adress)
         {
 
@@ -150,6 +143,7 @@ namespace LostMyLighter.Classes
             while (true)
             {
                 Console.Write("Enter Burn Time in hours: ");
+
                 if (int.TryParse(Console.ReadLine(), out burnTime))
                 {
                     break;
@@ -158,6 +152,7 @@ namespace LostMyLighter.Classes
             }
 
             new Marschall(brand, burnTime, adress);
+
 
         }
 
@@ -177,28 +172,6 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Is active: {0}", IsActive() ? "Yes" : "No");
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 

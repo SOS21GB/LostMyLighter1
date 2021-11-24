@@ -42,7 +42,6 @@ namespace LostMyLighter.Pages
                         {
                             Header(_title);
                             ErrorMessage("Password", "Incorrect");   
-
                         }
                     }
 

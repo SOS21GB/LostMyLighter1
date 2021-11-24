@@ -11,7 +11,6 @@ namespace LostMyLighter
             Testing.PremadeUsers();
             Testing.PremadeActiveMarchallers();
             Testing.PremadeInactiveMarchallers();
-
             PageManager.RunApp();
         }
 
