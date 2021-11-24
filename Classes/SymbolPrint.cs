@@ -53,6 +53,7 @@ namespace LostMyLighter.Classes
 | |  
 | |    )
 | |   .(
+) | _(, ')
 |**o______ |
 |**        |
 |***       |
