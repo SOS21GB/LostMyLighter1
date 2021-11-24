@@ -41,7 +41,7 @@ namespace LostMyLighter.Pages
                         else
                         {
                             Header(_title);
-                            Console.WriteLine("Password", "Incorrect");   
+                            ErrorMessage("Password", "Incorrect");   
                         }
                     }
 
