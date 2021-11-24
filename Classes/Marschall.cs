@@ -164,7 +164,7 @@ namespace LostMyLighter.Classes
             Console.WriteLine("Time Registered: {0}", _timeRegistered);
             Console.WriteLine("Burn out time: {0}", _timeRegistered.AddHours(BurnTime));
             _marschallAdress.DisplayAdress();
-            Console.WriteLine("Is activ: {0}", IsActive());
+            Console.WriteLine("Is active: {0}", IsActive() ? "Yes" : "No");
         }
     }
 
