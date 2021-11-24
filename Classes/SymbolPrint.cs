@@ -18,11 +18,12 @@ namespace LostMyLighter.Classes
 
         public static void Symbols(int symbol)
         {
-            string marchall = "*****\n" +
-                              "*   *\n" +
-                              "* * *\n" +
-                              "*   *\n" +
-                              "*****";
+            string marchall = @"
+*********
+*       *
+*   *   *
+*       *
+*********";
             string lighter = "  _    \n" +
                              " | |  \n" +
                              " | |  \n" +

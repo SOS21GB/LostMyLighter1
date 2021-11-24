@@ -19,6 +19,7 @@ namespace LostMyLighter.Pages
             while (true)
             {
                 Header(_title);
+                SymbolPrint.Symbols(1);
                 Marschall.AddMarschall();
                 Console.WriteLine("Marschall Added.");
                 SymbolPrint.Line();
