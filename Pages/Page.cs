@@ -51,8 +51,10 @@ namespace LostMyLighter.Pages
         LogIn,
         MainMenu,
         ViewProfile,
-        AddRemoveLighter,
         FindMarschalls,
-        AddMarschall
+        AddMarschall,
+        FoundLighter,
+        EditLightersMenu,
+        LostLighter
     }
 }

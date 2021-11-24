@@ -20,6 +20,7 @@ namespace LostMyLighter.Classes
         private int _IdMarschall;
         public string Brand { get { return _brand; } }
         public int BurnTime { get { return _burnTime;} }
+
         public Marschall(User user, string brand, int burnTime, Adress adress)
         {
             this._user = user;

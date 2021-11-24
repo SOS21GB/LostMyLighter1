@@ -11,31 +11,46 @@ namespace LostMyLighter.Pages
     {
         public EditLightersMenu()
         {
-            _title = "Add/Remove Lighters";
+            _title = "Add or Remove Lighters";
         }
 
         public override void LoadPage(out PageName nextPage)
         {
 
            
+
             while (true)
             {
                 Header(_title);
-                Console.WriteLine("So you've found a lighter have you? Good work dumdum. \nPlease enter the amount of lighters you've \nfound below my friend: ");
-                
-                if (int.TryParse(Console.ReadLine(), out int lightersfound))
+                Console.WriteLine("1. Found a Lighter");
+                Console.WriteLine("2. Lost a Lighter");
+                Console.WriteLine("3. Back to Main Menu");
+                SymbolPrint.Line();
+                Console.Write("Please choose an action to take:");
+                if (int.TryParse(Console.ReadLine(), out int choice))
                 {
-                    PageManager.CurrUser.LostLighters += lightersfound;
-                    Console.WriteLine("You have successfully added {0} lighters pal! GJ!", lightersfound);
-                    nextPage = PageName.MainMenu;
-                    return;
+
+
+                    switch (choice)
+                    {
+                        case 1:
+                            nextPage = PageName.FoundLighter;
+                            return;
+                        case 2:
+                            nextPage = PageName.LostLighter;
+                            return;
+                        case 3:
+                            nextPage = PageName.MainMenu;
+                            return;
+
+                    }
                 }
-                ErrorMessage("Wrong input friend,try again!");
-
-
-
+                
+                Header(_title);
+                ErrorMessage("Input");
+                PageManager.PausSleep(2);
             }
-           
+
         }
 
     }
