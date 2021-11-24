@@ -10,19 +10,22 @@ namespace LostMyLighter.Classes
     class Marschall
     {
         public static List<Marschall> Marschalls = new List<Marschall>();
+        private User _user;
         private string _brand;
         private int _burnTime;
         private DateTime _timeRegistered;
+        private DateTime _expectedBurnOutTime;
         private Adress _marschallAdress;
         private int _IdMarschall;
         public string Brand { get { return _brand; } }
         public int BurnTime { get { return _burnTime;} }
-        public Marschall(string brand, int burnTime, Adress adress)
+        public Marschall(User user, string brand, int burnTime, Adress adress)
         {
-
+            this._user = user;
             this._brand = brand;
             this._burnTime = burnTime;
             this._timeRegistered = DateTime.Now;
+            this._expectedBurnOutTime = _timeRegistered.AddHours(BurnTime);
             this._marschallAdress = adress;
 
 
@@ -32,12 +35,13 @@ namespace LostMyLighter.Classes
 
         }
 
-        public Marschall(string brand, int burnTime, int hoursSinceRegistrerd, Adress adress)
+        public Marschall(User user, string brand, int burnTime, int hoursSinceRegistrerd, Adress adress)
         {
-
+            this._user = user;
             this._brand = brand;
             this._burnTime = burnTime;
             this._timeRegistered = DateTime.Now.AddHours(-hoursSinceRegistrerd);
+            this. _expectedBurnOutTime = _timeRegistered.AddHours(BurnTime);
             this._marschallAdress = adress;
 
 
@@ -130,7 +134,7 @@ namespace LostMyLighter.Classes
             }
 
         }
-        public static void AddMarschall()
+        public static void AddMarschall(User creator)
         {
             string brand;
             int burnTime;
@@ -150,7 +154,7 @@ namespace LostMyLighter.Classes
 
             }
 
-            new Marschall(brand, burnTime, adress);
+            new Marschall(creator, brand, burnTime, adress);
 
 
         }
@@ -164,9 +168,11 @@ namespace LostMyLighter.Classes
         public void DisplayMarsachall()
         {
             Console.WriteLine("ID: {0}", _IdMarschall);
+            Console.WriteLine("User: {0}", _user.UserName);
             Console.WriteLine("Brand: {0}", _brand);
             Console.WriteLine("Time Registered: {0}", _timeRegistered);
-            Console.WriteLine("Burn out time: {0}", _timeRegistered.AddHours(BurnTime));
+            Console.WriteLine("BurnTime (hours): {0}", _burnTime);
+            Console.WriteLine("Expected burn out time: {0}", _expectedBurnOutTime); 
             _marschallAdress.DisplayAdress();
             Console.WriteLine("Is active: {0}", IsActive() ? "Yes" : "No");
         }
