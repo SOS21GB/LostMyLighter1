@@ -23,11 +23,12 @@ namespace LostMyLighter.Classes
 
         /*
         public int Id { get { return _id; } }
-        public string UserName { get { return _userName; } set { _userName = value; } }
+        
         public int Age { get { return _age; } set { _age = value; } }
         public Adress UserAdress { get { return _adress; } set { _adress = value; } }        
         */
 
+        public string UserName { get { return _userName; } }
         public Adress UserAdress { get { return _adress; } }
         public int NumberOfSearches { get { return _numberOfSearches; } set { _numberOfSearches = value; } }
         public int NumberOfMarchaller { get { return _numberOfMarchaller; } set { _numberOfMarchaller = value; } }
