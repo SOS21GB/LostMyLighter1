@@ -18,45 +18,53 @@ namespace LostMyLighter.Classes
 
         public static void Symbols(int symbol)
         {
-            string marchall = "*****\n" +
-                              "*   *\n" +
-                              "* * *\n" +
-                              "*   *\n" +
-                              "*****";
-            string lighter = "  _    \n" +
-                             " | |  \n" +
-                             " | |  \n" +
-                             " | |  \n" +
-                             " | |  \n" +
-                             " | |    )\n" +
-                             " | |   .(\n" +
-                             " ) | _(, ')\n" +
-                             " | o______ |\n" +
-                             " |         |\n" +
-                             " | ||      |\n" +
-                             " | ||      |\n" +
-                             " | ||      |\n" +
-                             " | || jgs  |\n" +
-                             " '---------'";
+            string marchall = @"
 
-            string brokenlighter = "  _    \n" +
-                                   " | |  \n" +
-                                   " | |  \n" +
-                                   " | |  \n" +
-                                   " | |  \n" +
-                                   " | |    )\n" +
-                                   " | |   .(\n" +
-                                   " )* | _(, ')\n" +
-                                   " |**o______ |\n" +
-                                   " |**        |\n" +
-                                   " |***       |\n" +
-                                   " |****      |\n" +
-                                   " |*****     |\n" +
-                                   " |******s   |\n" +
-                                   " '********--'";
+    )
+   ) \
+  / ) (
+  \(*)/  
+*********
+*********
+*********";
+            string lighter = @" 
+ _    
+| |  
+| |  
+| |  
+| |  
+| |    )
+| |   .(
+) | _(, ')
+| o______ |
+|         |
+| ||      |
+| ||      |
+| ||      |
+| || jgs  |
+'---------'";
+
+            string brokenlighter = @" 
+ _    
+| |  
+| |  
+| |  
+| |  
+| |    )
+| |   .(
+) | _(, ')
+|**o______ |
+|**        |
+|***       |
+|****      |
+|*****     |
+|******s   |
+'********--'";
+
             
 
             string welcomemessage = "Lighters, Marshals and Cigarettes [Version 1.0.0]";
+           
             string lightersmarshalsandcigarettes = "\n" +
                                                     "Welcome to Lighters, Marshals and Cigarettes\n";
                                                                                        
