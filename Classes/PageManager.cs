@@ -21,10 +21,11 @@ namespace LostMyLighter.Classes
             { PageName.CreateUser, new CreateUser() },
             { PageName.EditUser, new EditUser() },
             { PageName.LogIn, new LogInMenu() },
-            { PageName.AddRemoveLighter, new EditLightersMenu() },
+            { PageName.EditLightersMenu, new EditLightersMenu() },
             { PageName.AddMarschall, new AddMarschall() },
-            { PageName.FindMarschalls, new FindMarschalls() }
-
+            { PageName.FindMarschalls, new FindMarschalls() },
+            { PageName.FoundLighter, new FoundLighter() },
+            { PageName.LostLighter, new LostLighter() }
         };
 
 
