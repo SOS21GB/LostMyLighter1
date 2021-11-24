@@ -134,7 +134,7 @@ namespace LostMyLighter.Classes
             }
 
         }
-        public static void AddMarschall(User creator)
+        public static void AddMarschall(User user)
         {
             string brand;
             int burnTime;
@@ -154,7 +154,7 @@ namespace LostMyLighter.Classes
 
             }
 
-            new Marschall(creator, brand, burnTime, adress);
+            new Marschall(user, brand, burnTime, adress);
 
 
         }
