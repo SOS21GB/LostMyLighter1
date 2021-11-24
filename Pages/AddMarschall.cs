@@ -20,26 +20,36 @@ namespace LostMyLighter.Pages
             {
                 Header(_title);
                 Marschall.AddMarschall();
-                Console.WriteLine("Marschall Added.");
                 SymbolPrint.Line();
+                Console.WriteLine("Marschall Added.");                
+                PageManager.PausSleep(2);
                 PageManager.CurrUser.NumberOfMarchaller++;
-                Console.WriteLine("1. Add another Marschall");
-                Console.WriteLine("2. Back to Main Menu");                
-                if (int.TryParse(Console.ReadLine(), out int choice))
+                while (true)
                 {
-                    switch (choice)
+                    Header(_title);                    
+                    Console.WriteLine("1. Add another Marschall");
+                    Console.WriteLine("2. Back to Main Menu");
+                    SymbolPrint.Line();
+                    if (int.TryParse(Console.ReadLine(), out int choice))
                     {
-                        case 1:
-                            nextPage = PageName.AddMarschall;
-                            return;
-                        case 2:
-                            nextPage = PageName.MainMenu;
-                            return;
+                        switch (choice)
+                        {
+                            case 1:
+                                nextPage = PageName.AddMarschall;
+                                return;
+                            case 2:
+                                nextPage = PageName.MainMenu;
+                                return;
+                        }
                     }
+                    Header(_title);
+                    ErrorMessage("Input");
                 }
+                
 
             }
 
-        }
+        }        
+
     }
 }
