@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LostMyLighter.Pages;
 
 namespace LostMyLighter.Classes
 {
@@ -66,7 +67,7 @@ namespace LostMyLighter.Classes
         public static void SearchMarschalls()
         {
             Console.WriteLine("Choose how to Search: ");
-            Console.WriteLine("1. Brand");
+            Console.WriteLine("\n1. Brand");
             Console.WriteLine("2. Zip Code");
             Console.WriteLine("3. Street Name");
             Console.WriteLine("4. City");
@@ -78,6 +79,7 @@ namespace LostMyLighter.Classes
             switch (choice)
             {
                 case 1:
+                    Page.Header("Find Marschalls");
                     Console.WriteLine("Enter Brand:");
                     string brandInput = Console.ReadLine();
                     var BrandList = Marschalls.Where(item => item._brand == brandInput);
@@ -86,8 +88,10 @@ namespace LostMyLighter.Classes
                     {
                         Console.WriteLine("Resultat: {0}", item._brand);
                     }
+                    SymbolPrint.Line();
                     break;
                 case 2:
+                    Page.Header("Find Marschalls");
                     Console.WriteLine("Enter ZipCode:");
                     int zipInput = Convert.ToInt32(Console.ReadLine());
                     var zipList = Marschalls.Where(item => item._marschallAdress.ZipCode == zipInput);
@@ -96,8 +100,10 @@ namespace LostMyLighter.Classes
                     {
                         Console.WriteLine("Resultat: {0}", item._marschallAdress.ZipCode);
                     }
+                    SymbolPrint.Line();
                     break;
                 case 3:
+                    Page.Header("Find Marschalls");
                     Console.WriteLine("Enter Street Name:");
                     string streetInput = Console.ReadLine();
                     var streetList = Marschalls.Where(item => item._marschallAdress.StreetName == streetInput);
@@ -106,8 +112,10 @@ namespace LostMyLighter.Classes
                     {
                         Console.WriteLine("Resultat: {0}", item._marschallAdress.StreetName);
                     }
+                    SymbolPrint.Line();
                     break;
                 case 4:
+                    Page.Header("Find Marschalls");
                     Console.WriteLine("Enter City:");
                     string cityInput = Console.ReadLine();
                     var cityList = Marschalls.Where(item => item._marschallAdress.City == cityInput);
@@ -116,8 +124,10 @@ namespace LostMyLighter.Classes
                     {
                         Console.WriteLine("Resultat: {0}", item._marschallAdress.City);
                     }
+                    SymbolPrint.Line();
                     break;
                 case 5:
+                    Page.Header("Find Marschalls");
                     Console.WriteLine("All active: ");
                     foreach (Marschall item in Marschalls)
                     {
@@ -127,9 +137,12 @@ namespace LostMyLighter.Classes
                         }
 
                     }
+                    SymbolPrint.Line();
                     break;
                 case 6:
+                    Page.Header("Find Marschalls");
                     DisplayAllMarschaller();
+                    SymbolPrint.Line();
                     break;
             }
 

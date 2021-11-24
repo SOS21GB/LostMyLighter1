@@ -22,7 +22,8 @@ namespace LostMyLighter.Pages
                 Header(_title);
                 Marschall.SearchMarschalls();
                 PageManager.CurrUser.NumberOfSearches++;
-                while (true)                {
+                while (true)                
+                {
                     
                     Console.WriteLine("1. Search again");
                     Console.WriteLine("2. Return to Main Menu");
