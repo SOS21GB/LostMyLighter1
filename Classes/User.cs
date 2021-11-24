@@ -55,7 +55,7 @@ namespace LostMyLighter.Classes
             this._adress.DisplayAdress();
             Console.WriteLine("Searches: {0}", _numberOfSearches);
             Console.WriteLine("Marchallers added: {0}", _numberOfMarchaller);
-            Console.WriteLine("Lighters: {0}", _lostLighters);
+            Console.WriteLine("Lighter score: {0}", _lostLighters);
             SymbolPrint.Line();
 
         }
@@ -95,7 +95,7 @@ namespace LostMyLighter.Classes
         public void EditAge()
         {
             Console.WriteLine("Your current age is: {0}", this._age);
-            Console.WriteLine("Please enter your new age & may i say, happy birthday!: ");
+            Console.WriteLine("Please enter your new age & may I say, happy birthday!: ");
             if (int.TryParse(Console.ReadLine(), out this._age))
             {
                 Console.WriteLine("Your new age has been changed to: {0}!", this._age);

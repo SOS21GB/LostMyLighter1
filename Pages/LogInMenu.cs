@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LostMyLighter.Classes;
 
 namespace LostMyLighter.Pages
+
 {
     class LogInMenu : Page
     {
