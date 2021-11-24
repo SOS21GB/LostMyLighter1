@@ -8,12 +8,11 @@ namespace LostMyLighter
     {
         static void Main(string[] args)
         {
-
             Testing.PremadeUsers();
+            Testing.PremadeActiveMarchallers();
+            Testing.PremadeInactiveMarchallers();
 
             PageManager.RunApp();
-
-
         }
 
     }
