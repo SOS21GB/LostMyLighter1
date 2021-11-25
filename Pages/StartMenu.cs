@@ -27,6 +27,7 @@ namespace LostMyLighter.Pages
                 Console.WriteLine("1. Log in");
                 Console.WriteLine("2. Create User");
                 Console.WriteLine("3. Quit");
+                SymbolPrint.Line();
 
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {

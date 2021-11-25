@@ -39,20 +39,27 @@ namespace LostMyLighter.Classes
         }
         public void EditAdress()
         {
-            Console.WriteLine("Enter your new streetadress");
+            Page.Header("Edit Adress");
+
+            Console.Write("Enter your new streetadress: ");
             this._streetName = Console.ReadLine();
-            Console.WriteLine("Enter your streetnumber");
+            Console.Write("Enter your streetnumber: ");
             this._streetNumber = Console.ReadLine();
-            Console.WriteLine("Enter your city");
+            Console.Write("Enter your city: ");
             this._city = Console.ReadLine();
             while (true)
             {
-                Console.WriteLine("Enter your zipcode");
+                Console.Write("Enter your zipcode: ");
                 if (int.TryParse(Console.ReadLine(), out this._zipCode))
                 {
                     break;
                 }
+                Page.Header("Edit Adress");
                 Page.ErrorMessage("Zipcode");
+                Page.Header("Edit User");
+                Console.Write($"Enter your new streetadress: {_streetName} \n");
+                Console.Write($"Enter your streetnumber: {_streetNumber} \n");
+                Console.Write($"Enter your city: {_city} \n");
             }   
 
             
