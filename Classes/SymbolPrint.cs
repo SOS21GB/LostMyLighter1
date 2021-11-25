@@ -63,11 +63,13 @@ namespace LostMyLighter.Classes
 
             
 
-            string welcomemessage = "Lighters, Marshals and Cigarettes [Version 1.0.0]";
+            string welcomemessage = "Lighters, Marshalls and Cigarettes [Version 1.0.0]";
            
             string lightersmarshalsandcigarettes = "\n" +
-                                                    "Welcome to Lighters, Marshals and Cigarettes\n";
-                                                                                       
+                                                    "Welcome to Lighters, Marshalls and Cigarettes\n";
+            string logoutMessage = "\n" +
+                                                  "Good Bye & Please do Come Again!\n";
+
             string productioncrew = "Production: Max, Johan, Patrick, Elham, Mommo, David";
 
             string programinfo = "© 2021 Lighter Corporation All rights Reserved";
@@ -97,8 +99,11 @@ namespace LostMyLighter.Classes
                     Line();
                     Console.WriteLine(productioncrew);
                     return;
-                
-
+                case 7:
+                    Line();
+                    Console.WriteLine(logoutMessage);
+                    Line();
+                    return;
 
             }
 

@@ -18,7 +18,7 @@ namespace LostMyLighter.Classes
             switch (lighter)
             {
                 case 1:
-                    if (PageManager.CurrUser.LostLighters > 0)
+                    if (PageManager.CurrUser.LighterScore > 0)
                     {
                         RollOne();
                     }
@@ -31,6 +31,8 @@ namespace LostMyLighter.Classes
                 case 3:
                 case 4:
                 case 5:
+                    RollTwoToFive();
+                    return;
                 case 6:
                 case 7:
                 case 8:
@@ -44,39 +46,48 @@ namespace LostMyLighter.Classes
 
         }
 
-        static string title = "On the streets.";
+        static string title = "As you are walking down the street.... ";
         static void RollOne()
         {
             Page.Header(title);
-            Console.WriteLine("Clumsy! You lost a lighter!");
-            PageManager.CurrUser.LostLighters--;
+            PageManager.CurrUser.LighterScore--;
+            PageManager.CurrUser.TotalLostLighters--;
+            Console.WriteLine("Clumsy! You lost a lighter!\nCurrent lighter Score: {0}", PageManager.CurrUser.LighterScore);
             SymbolPrint.Symbols(3);
-            PageManager.PausSleep(2);
+            PageManager.PausSleep(4);
         }
 
         static void RollOneZeroLighters()
         {
             Page.Header(title);
-            Console.WriteLine("You just realized that you lost a lighter the other day!");
-            PageManager.CurrUser.LostLighters--;
+            PageManager.CurrUser.LighterScore--;
+            PageManager.CurrUser.TotalLostLighters--;
+            Console.WriteLine("Oh, you just realized that you lost a lighter the other day!\nCurrent lighter Score: {0}", PageManager.CurrUser.LighterScore);
             SymbolPrint.Symbols(3);
-            PageManager.PausSleep(2);
+            PageManager.PausSleep(4);
         }
 
         static void RollTen()
         {
             Page.Header(title);
-            Console.WriteLine("Lucky! You found a lighter!");
+            PageManager.CurrUser.LighterScore++;
+            PageManager.CurrUser.TotalFoundLighters++;
+            Console.WriteLine("Lucky! You found a lighter!\nCurrent lighter Score: {0}", PageManager.CurrUser.LighterScore);
             SymbolPrint.Symbols(2);
-            PageManager.CurrUser.LostLighters++;
-            PageManager.PausSleep(2);
+            PageManager.PausSleep(4);
         }
 
         static void RollBetween()
         {
             Page.Header(title);
-            Console.WriteLine("What a wonderful day. You managed not to lose your lighter!");
-            PageManager.PausSleep(2);
+            Console.WriteLine("What a wonderful day. You managed not to lose your lighter!\nCurrent lighter Score: {0}", PageManager.CurrUser.LighterScore);
+            PageManager.PausSleep(4);
+        }
+        static void RollTwoToFive()
+        {
+            Page.Header(title);
+            Console.WriteLine("You may not be the best at anything, but atleast you didn't lose a lighter today pal!\nCurrent lighter Score remains at: {0}", PageManager.CurrUser.LighterScore);
+            PageManager.PausSleep(4);
         }
     }
     
