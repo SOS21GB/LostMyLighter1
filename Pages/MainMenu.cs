@@ -27,6 +27,7 @@ namespace LostMyLighter.Pages
                 Console.WriteLine("5. Log Out");
                 Console.WriteLine("6. Quit App.");
                 SymbolPrint.Line();
+                Console.Write("Please enter the number corresponding with what you would like to do: ");
 
                 if (int.TryParse(Console.ReadLine(), out int userInput))
                 {
