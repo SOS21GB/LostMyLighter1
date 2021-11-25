@@ -94,6 +94,7 @@ namespace LostMyLighter.Classes
             switch (choice)
             {
                 case 1:
+
                     Page.Header(title);
                     Console.Write("Enter Brand: ");
                     string brandInput = Console.ReadLine();
@@ -127,6 +128,7 @@ namespace LostMyLighter.Classes
                         Page.Header(title);
                         Page.ErrorMessage("Input");
                     }
+
 
                     var zipList = Marschalls.Where(item => item._marschallAdress.ZipCode == zipInput);
                     marshallsFound = 0;

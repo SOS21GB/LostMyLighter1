@@ -17,20 +17,18 @@ namespace LostMyLighter.Pages
         public override void LoadPage(out PageName nextPage)
         {
 
-           
 
             while (true)
             {
                 Header(_title);
                 Console.WriteLine("1. Found a Lighter");
                 Console.WriteLine("2. Lost a Lighter");
-                Console.WriteLine("3. Back to Main Menu");
+                Console.WriteLine("3. Lighter Statistics");
+                Console.WriteLine("4. Back to Main Menu");
                 SymbolPrint.Line();
                 Console.Write("Please choose an action to take:");
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {
-
-
                     switch (choice)
                     {
                         case 1:
@@ -40,9 +38,13 @@ namespace LostMyLighter.Pages
                             nextPage = PageName.LostLighter;
                             return;
                         case 3:
+                            PageManager.CurrUser.LighterStats();
+                            PageManager.PausSleep(4);
+                            nextPage = PageName.EditLightersMenu;
+                            return;
+                        case 4:
                             nextPage = PageName.MainMenu;
                             return;
-
                     }
                 }
                 

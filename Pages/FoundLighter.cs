@@ -21,7 +21,6 @@ namespace LostMyLighter.Pages
             while (true)
 
             {
-
                 Header(_title);
                 Console.WriteLine("So you've found a lighter have you? Good work dumdum. \nPlease enter the amount of lighters you've \nfound below my friend: ");
                 SymbolPrint.Line();
@@ -29,10 +28,11 @@ namespace LostMyLighter.Pages
                 {
                     {
                         Header(_title);
-                        PageManager.CurrUser.LostLighters += lightersfound;
+                        PageManager.CurrUser.LighterScore += lightersfound;
+                        PageManager.CurrUser.TotalFoundLighters += lightersfound;
                         Console.WriteLine("You have successfully added {0} lighters pal! Hope to see you soon!", lightersfound);
                         SymbolPrint.Line();
-                        Console.WriteLine("Your current lighter score: {0}", PageManager.CurrUser.LostLighters);
+                        Console.WriteLine("Your current lighter score: {0}", PageManager.CurrUser.LighterScore);
                         PageManager.PausSleep(4);
                         nextPage = PageName.EditLightersMenu;
                         return;
