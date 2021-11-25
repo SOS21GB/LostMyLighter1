@@ -225,7 +225,7 @@ namespace LostMyLighter.Classes
                 {
                     break;
                 }
-
+                Console.WriteLine("Invalid Input..");
             }
 
             new Marschall(user, brand, burnTime, adress);

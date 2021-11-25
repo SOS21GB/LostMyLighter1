@@ -89,7 +89,8 @@ namespace LostMyLighter.Classes
                 {
                     break;
                 }
-                Page.ErrorMessage("Zipcode");
+                Console.WriteLine("Zipcode not valid...");
+
             }
 
             return new Adress(streetName, streetNumber, city, zipCode);
