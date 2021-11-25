@@ -65,7 +65,7 @@ namespace LostMyLighter.Classes
         public static void LogOut()
         {
             Console.Clear();
-            SymbolPrint.Symbols(5);
+            SymbolPrint.Symbols(7);
             Console.WriteLine("Logging out...");
             CurrUser = null;
             PausSleep(3);
@@ -74,7 +74,7 @@ namespace LostMyLighter.Classes
         static void QuitApp()
         {
             Console.Clear();
-            SymbolPrint.Symbols(5);
+            SymbolPrint.Symbols(7);
             Console.WriteLine("Exiting App...");
             PausSleep(3);
             Console.Clear();

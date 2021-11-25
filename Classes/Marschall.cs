@@ -81,7 +81,7 @@ namespace LostMyLighter.Classes
             {
                 case 1:
                     Page.Header("Find Marschalls");
-                    Console.WriteLine("Enter Brand:");
+                    Console.Write("Enter Brand: ");
                     string brandInput = Console.ReadLine();
                     var BrandList = Marschalls.Where(item => item._brand == brandInput);
                     int marshallsFound = 0;
@@ -99,7 +99,7 @@ namespace LostMyLighter.Classes
                     break;
                 case 2:
                     Page.Header("Find Marschalls");
-                    Console.WriteLine("Enter ZipCode:");
+                    Console.Write("Enter ZipCode: ");
                     int zipInput = Convert.ToInt32(Console.ReadLine());
                     var zipList = Marschalls.Where(item => item._marschallAdress.ZipCode == zipInput);
                     marshallsFound = 0;
@@ -118,7 +118,7 @@ namespace LostMyLighter.Classes
                     break;
                 case 3:
                     Page.Header("Find Marschalls");
-                    Console.WriteLine("Enter Street Name:");
+                    Console.Write("Enter Street Name: ");
                     string streetInput = Console.ReadLine();
                     var streetList = Marschalls.Where(item => item._marschallAdress.StreetName == streetInput);
                     marshallsFound = 0;
@@ -135,7 +135,7 @@ namespace LostMyLighter.Classes
                     break;
                 case 4:
                     Page.Header("Find Marschalls");
-                    Console.WriteLine("Enter City:");
+                    Console.Write("Enter City: ");
                     string cityInput = Console.ReadLine();
                     var cityList = Marschalls.Where(item => item._marschallAdress.City == cityInput);
                     marshallsFound = 0;

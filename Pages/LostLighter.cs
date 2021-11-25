@@ -26,10 +26,11 @@ namespace LostMyLighter.Pages
                 if (int.TryParse(Console.ReadLine(), out int lighterslost))
                 {
                     Header(_title);
-                    PageManager.CurrUser.LostLighters -= lighterslost;
+                    PageManager.CurrUser.LighterScore -= lighterslost;
+                    PageManager.CurrUser.TotalLostLighters -= lighterslost;
                     Console.WriteLine("{0} lighters have successfully been removed \nLets not do this to a thing bud.", lighterslost);
                     SymbolPrint.Line();
-                    Console.WriteLine("Your current lighter score: {0}",PageManager.CurrUser.LostLighters);
+                    Console.WriteLine("Your current lighter score: {0}",PageManager.CurrUser.LighterScore);
                     PageManager.PausSleep(4);
                     nextPage = PageName.EditLightersMenu;
                     return;
