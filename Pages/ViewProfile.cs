@@ -23,6 +23,8 @@ namespace LostMyLighter.Pages
                 PageManager.CurrUser.DisplayUserInfo();
                 Console.WriteLine("1. Edit Profile.");
                 Console.WriteLine("2. Go Back to Main Menu.");
+                SymbolPrint.Line();
+                Console.Write("Please enter the number corresponding with what you would like to do: ");
 
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {
