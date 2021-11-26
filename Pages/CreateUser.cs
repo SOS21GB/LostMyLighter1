@@ -1,7 +1,6 @@
-﻿using LostMyLighter.Classes;
-using System;
+﻿using System;
 
-namespace LostMyLighter.Pages
+namespace LostMyLighter
 {
     internal class CreateUser : Page
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace LostMyLighter.Classes
+namespace LostMyLighter
 {
     internal static class SymbolPrint
     {

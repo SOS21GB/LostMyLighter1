@@ -1,8 +1,7 @@
-﻿using LostMyLighter.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace LostMyLighter.Classes
+namespace LostMyLighter
 {
     internal class Adress
     {

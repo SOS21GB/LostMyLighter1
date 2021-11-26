@@ -1,5 +1,3 @@
-using LostMyLighter.Classes;
-
 namespace LostMyLighter
 {
     internal class Program

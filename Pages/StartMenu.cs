@@ -1,5 +1,4 @@
-﻿using LostMyLighter.Classes;
-using System;
+﻿using System;
 
 namespace LostMyLighter.Pages
 {

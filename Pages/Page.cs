@@ -1,7 +1,6 @@
-﻿using LostMyLighter.Classes;
-using System;
+﻿using System;
 
-namespace LostMyLighter.Pages
+namespace LostMyLighter
 {
     internal abstract class Page
     {
@@ -24,10 +23,10 @@ namespace LostMyLighter.Pages
         /// <summary>
         /// Call this method to let the user know that the input was not accepted
         /// </summary>
-        public static void ErrorMessage(string item, string reason = "is not valid")
+        public static void ErrorMessage(string what, string why = "is not valid")
         {
             Console.WriteLine();
-            Console.WriteLine($"{item} {reason}");
+            Console.WriteLine($"{what} {why}");
             Console.WriteLine();
             SymbolPrint.Line();
 

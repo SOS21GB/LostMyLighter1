@@ -1,9 +1,8 @@
-using LostMyLighter.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LostMyLighter.Classes
+namespace LostMyLighter
 {
     internal class Marschall
     {
@@ -15,8 +14,10 @@ namespace LostMyLighter.Classes
         private DateTime _expectedBurnOutTime;
         private Adress _marschallAdress;
         private int _IdMarschall;
+
         public string Brand
         { get { return _brand; } }
+
         public int BurnTime
         { get { return _burnTime; } }
 
@@ -50,8 +51,6 @@ namespace LostMyLighter.Classes
 
         public static void DisplayAllMarschaller()
         {
-            string title = "All Marschall";
-
             foreach (var m in Marschalls)
             {
                 m.DisplayMarsachall();

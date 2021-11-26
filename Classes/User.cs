@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LostMyLighter.Classes
+namespace LostMyLighter
 {
     internal class User
     {
@@ -27,16 +27,22 @@ namespace LostMyLighter.Classes
 
         public string UserName
         { get { return _userName; } }
+
         public Adress UserAdress
         { get { return _adress; } }
+
         public int NumberOfSearches
         { get { return _numberOfSearches; } set { _numberOfSearches = value; } }
+
         public int NumberOfMarchaller
         { get { return _numberOfMarchaller; } set { _numberOfMarchaller = value; } }
+
         public int LighterScore
         { get { return _lighterScore; } set { _lighterScore = value; } }
+
         public int TotalLostLighters
         { get { return _totalLostLighters; } set { _totalLostLighters = value; } }
+
         public int TotalFoundLighters
         { get { return _totalFoundLighters; } set { _totalFoundLighters = value; } }
 

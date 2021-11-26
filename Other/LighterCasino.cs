@@ -1,7 +1,6 @@
-﻿using LostMyLighter.Pages;
-using System;
+﻿using System;
 
-namespace LostMyLighter.Classes
+namespace LostMyLighter
 {
     internal class LighterCasino
     {
