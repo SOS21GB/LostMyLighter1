@@ -23,6 +23,7 @@ namespace LostMyLighter.Classes
         public static void PremadeInactiveMarchallers()
         {
             new Marschall(User.Users[1], "Marchall Svea", 6, 72, new Adress("Vasagatan", "7A", "Stockholm", 12453));
+            new Marschall(User.Users[1], "Marchall Svea", 6, 72, new Adress("Sveavägen", "1A", "Skara", 59875));
         }
     }   
 }

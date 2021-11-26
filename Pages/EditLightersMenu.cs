@@ -26,7 +26,7 @@ namespace LostMyLighter.Pages
                 Console.WriteLine("3. Lighter Statistics");
                 Console.WriteLine("4. Back to Main Menu");
                 SymbolPrint.Line();
-                Console.Write("Please choose an action to take:");
+                Console.Write("Please choose an action to take: ");
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {
                     switch (choice)
@@ -38,6 +38,12 @@ namespace LostMyLighter.Pages
                             nextPage = PageName.LostLighter;
                             return;
                         case 3:
+                            Header(_title);
+                            Console.WriteLine("1. Found a Lighter");
+                            Console.WriteLine("2. Lost a Lighter");
+                            Console.WriteLine("3. Lighter Statistics");
+                            Console.WriteLine("4. Back to Main Menu");
+                            SymbolPrint.Line();
                             PageManager.CurrUser.LighterStats();
                             PageManager.PausSleep(4);
                             nextPage = PageName.EditLightersMenu;

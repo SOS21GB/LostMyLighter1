@@ -73,12 +73,13 @@ namespace LostMyLighter.Classes
             while (true)
             {
                 Page.Header(title);
-                Console.WriteLine("1. Brand");
-                Console.WriteLine("2. Zip Code");
-                Console.WriteLine("3. Street Name");
-                Console.WriteLine("4. City");
-                Console.WriteLine("5. See all Active");
-                Console.WriteLine("6. See All");
+                Console.WriteLine("1. Username");
+                Console.WriteLine("2. Brand");
+                Console.WriteLine("3. Zip Code");
+                Console.WriteLine("4. Street Name");
+                Console.WriteLine("5. City");
+                Console.WriteLine("6. See all Active");
+                Console.WriteLine("7. See All");
                 SymbolPrint.Line();
                 Console.Write("Choose how to Search: ");
 
@@ -96,16 +97,47 @@ namespace LostMyLighter.Classes
                 case 1:
 
                     Page.Header(title);
+                    Console.Write("Enter Username: ");
+                    string userNameInput = Console.ReadLine();
+                    var UserList = Marschalls.Where(item => item._user.UserName.ToLower() == userNameInput.ToLower());
+                    int marshallsFound = 0;
+                    Page.Header(title);
+                    foreach (var item in UserList)
+                    {
+                        if (item.IsActive())
+                        {
+                            item.DisplayMarsachall();
+                            SymbolPrint.Line();
+                            marshallsFound++;
+                        }
+
+                    }
+                    if (marshallsFound < 1)
+                    {
+
+                        Page.ErrorMessage("No Marshalls", "could be found");
+
+                    }
+
+                    break;
+
+                case 2:
+
+                    Page.Header(title);
                     Console.Write("Enter Brand: ");
                     string brandInput = Console.ReadLine();
-                    var BrandList = Marschalls.Where(item => item._brand == brandInput);
-                    int marshallsFound = 0;
+                    var BrandList = Marschalls.Where(item => item._brand.ToLower() == brandInput.ToLower());
+                    marshallsFound = 0;
                     Page.Header(title);
                     foreach (var item in BrandList)
                     {
-                        item.DisplayMarsachall();
-                        SymbolPrint.Line();
-                        marshallsFound++;
+                        if (item.IsActive())
+                        {
+                            item.DisplayMarsachall();
+                            SymbolPrint.Line();
+                            marshallsFound++;
+                        }
+
                     }
                     if (marshallsFound < 1)
                     {
@@ -115,7 +147,7 @@ namespace LostMyLighter.Classes
                     }
              
                     break;
-                case 2:
+                case 3:
                     int zipInput = 0;
                     while (true)
                     {
@@ -136,9 +168,13 @@ namespace LostMyLighter.Classes
 
                     foreach (var item in zipList)
                     {
-                        item.DisplayMarsachall();
-                        marshallsFound++;
-                        SymbolPrint.Line();
+                        if (item.IsActive())
+                        {
+                            item.DisplayMarsachall();
+                            marshallsFound++;
+                            SymbolPrint.Line();
+
+                        }
                     }
                     if (marshallsFound < 1)
                     {
@@ -148,18 +184,21 @@ namespace LostMyLighter.Classes
 
                
                     break;
-                case 3:
+                case 4:
                     Page.Header(title);
                     Console.Write("Enter Street Name: ");
                     string streetInput = Console.ReadLine();
-                    var streetList = Marschalls.Where(item => item._marschallAdress.StreetName == streetInput);
+                    var streetList = Marschalls.Where(item => item._marschallAdress.StreetName.ToLower() == streetInput.ToLower());
                     marshallsFound = 0;
                     Page.Header(title);
                     foreach (var item in streetList)
                     {
-                        item.DisplayMarsachall();
-                        marshallsFound++;
-                        SymbolPrint.Line();
+                        if (item.IsActive())
+                        {
+                            item.DisplayMarsachall();
+                            marshallsFound++;
+                            SymbolPrint.Line();
+                        }
                     }
                     if (marshallsFound < 1)
                     {
@@ -168,18 +207,21 @@ namespace LostMyLighter.Classes
                     }
                     
                     break;
-                case 4:
+                case 5:
                     Page.Header(title);
                     Console.Write("Enter City: ");
                     string cityInput = Console.ReadLine();
-                    var cityList = Marschalls.Where(item => item._marschallAdress.City == cityInput);
+                    var cityList = Marschalls.Where(item => item._marschallAdress.City.ToLower() == cityInput.ToLower());
                     marshallsFound = 0;
                     Page.Header(title);
                     foreach (var item in cityList)
                     {
-                        item.DisplayMarsachall();
-                        marshallsFound++;
-                        SymbolPrint.Line();
+                        if (item.IsActive())
+                        {
+                            item.DisplayMarsachall();
+                            marshallsFound++;
+                            SymbolPrint.Line();
+                        }
                     }
                     if (marshallsFound < 1)
                     {
@@ -188,7 +230,7 @@ namespace LostMyLighter.Classes
                     }
 
                     break;
-                case 5:
+                case 6:
                     Page.Header(title);
                     Console.WriteLine("All active: \n");
                     foreach (Marschall item in Marschalls)
@@ -201,7 +243,7 @@ namespace LostMyLighter.Classes
                     }
                     SymbolPrint.Line();
                     break;
-                case 6:
+                case 7:
                     Page.Header(title);
                     Console.WriteLine("All registered marschalls: \n");
                     DisplayAllMarschaller();

@@ -75,7 +75,7 @@ namespace LostMyLighter.Classes
         public void LighterStats()
         {
             Console.WriteLine("Current lighter score: {0}. Total lighters found: {1}. Total lighters lost: {2}.", _lighterScore, _totalFoundLighters, _totalLostLighters);
-            SymbolPrint.Line();
+
         }
 
         public void EditUserInfo()
