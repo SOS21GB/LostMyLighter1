@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
+﻿using LostMyLighter.Classes;
+using System;
 
 namespace LostMyLighter.Pages
 
 {
-    class LogInMenu : Page
+    internal class LogInMenu : Page
     {
         public LogInMenu()
         {
@@ -42,14 +38,13 @@ namespace LostMyLighter.Pages
                         else
                         {
                             Header(_title);
-                            ErrorMessage("Password", "Incorrect");   
+                            ErrorMessage("Password", "Incorrect");
                         }
                     }
-
                     else
                     {
                         Header(_title);
-                        Console.WriteLine("ID", "not registered");               
+                        Console.WriteLine("ID", "not registered");
                     }
 
                     //detta sker om användaren har fel id eller lösen
@@ -61,9 +56,8 @@ namespace LostMyLighter.Pages
                     Header(_title);
                     ErrorMessage("Entered ID");
                     PageManager.PausSleep(2);
-
                 }
-
-        }   }
+            }
+        }
     }
 }

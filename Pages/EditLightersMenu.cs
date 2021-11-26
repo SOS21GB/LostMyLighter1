@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
+﻿using LostMyLighter.Classes;
+using System;
 
 namespace LostMyLighter.Pages
 {
-    class EditLightersMenu : Page
+    internal class EditLightersMenu : Page
     {
         public EditLightersMenu()
         {
@@ -16,8 +12,6 @@ namespace LostMyLighter.Pages
 
         public override void LoadPage(out PageName nextPage)
         {
-
-
             while (true)
             {
                 Header(_title);
@@ -34,9 +28,11 @@ namespace LostMyLighter.Pages
                         case 1:
                             nextPage = PageName.FoundLighter;
                             return;
+
                         case 2:
                             nextPage = PageName.LostLighter;
                             return;
+
                         case 3:
                             Header(_title);
                             Console.WriteLine("1. Found a Lighter");
@@ -48,18 +44,17 @@ namespace LostMyLighter.Pages
                             PageManager.PausSleep(4);
                             nextPage = PageName.EditLightersMenu;
                             return;
+
                         case 4:
                             nextPage = PageName.MainMenu;
                             return;
                     }
                 }
-                
+
                 Header(_title);
                 ErrorMessage("Input");
                 PageManager.PausSleep(2);
             }
-
         }
-
     }
 }

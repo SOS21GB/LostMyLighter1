@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
-
-
+﻿using LostMyLighter.Classes;
+using System;
 
 namespace LostMyLighter.Pages
 {
-    class StartMenu : Page
+    internal class StartMenu : Page
     {
         public StartMenu()
         {
@@ -36,9 +30,11 @@ namespace LostMyLighter.Pages
                         case 1:
                             nextPage = PageName.LogIn;
                             return;
+
                         case 2:
                             nextPage = PageName.CreateUser;
                             return;
+
                         case 3:
                             nextPage = PageName.None;
                             return;
@@ -52,6 +48,5 @@ namespace LostMyLighter.Pages
                 ErrorMessage("Number chosen");
             }
         }
-
     }
 }

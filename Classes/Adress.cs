@@ -1,25 +1,29 @@
-﻿using System;
+﻿using LostMyLighter.Pages;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Pages;
 
 namespace LostMyLighter.Classes
 {
-    class Adress
+    internal class Adress
     {
-         public static List< Adress> Adresser = new();
+        public static List<Adress> Adresser = new();
 
         public string _streetNumber;
         private string _streetName;
         private string _city;
-        private int _zipCode; 
+        private int _zipCode;
 
-        public string StreetNumber { get { return _streetNumber; } set {_streetNumber = value; } }
-        public string StreetName { get { return _streetName; } set {_streetName = value; } }
-        public string City { get { return _city; } set { _city = value; } }
-        public int ZipCode { get { return _zipCode; } set { _zipCode = value; } }
+        public string StreetNumber
+        { get { return _streetNumber; } set { _streetNumber = value; } }
+
+        public string StreetName
+        { get { return _streetName; } set { _streetName = value; } }
+
+        public string City
+        { get { return _city; } set { _city = value; } }
+
+        public int ZipCode
+        { get { return _zipCode; } set { _zipCode = value; } }
 
         public Adress(string streetName, string streetNumber, string city, int zipCode)
         {
@@ -27,16 +31,17 @@ namespace LostMyLighter.Classes
             this.StreetName = streetName;
             this.City = city;
             this.ZipCode = zipCode;
-            Adresser.Add(this);           
+            Adresser.Add(this);
         }
+
         public void DisplayAdress()
         {
             Console.WriteLine("Streetname: {0}", StreetName);
             Console.WriteLine("Streetnumber: {0}", StreetNumber);
             Console.WriteLine("City: {0}", City);
             Console.WriteLine("Zipcode: {0}", ZipCode);
-
         }
+
         public void EditAdress()
         {
             Page.Header("Edit Adress");
@@ -60,10 +65,7 @@ namespace LostMyLighter.Classes
                 Console.Write($"Enter your new streetadress: {_streetName} \n");
                 Console.Write($"Enter your streetnumber: {_streetNumber} \n");
                 Console.Write($"Enter your city: {_city} \n");
-            }   
-
-            
-
+            }
         }
 
         public static Adress CreateAdress()
@@ -90,7 +92,6 @@ namespace LostMyLighter.Classes
                     break;
                 }
                 Console.WriteLine("Zipcode not valid...");
-
             }
 
             return new Adress(streetName, streetNumber, city, zipCode);

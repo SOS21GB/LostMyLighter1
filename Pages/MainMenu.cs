@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
-
+﻿using LostMyLighter.Classes;
+using System;
 
 namespace LostMyLighter.Pages
 {
-    class MainMenu : Page
+    internal class MainMenu : Page
     {
         public MainMenu()
         {
@@ -37,34 +32,38 @@ namespace LostMyLighter.Pages
                             //SearchMarschalls();
                             nextPage = PageName.FindMarschalls;
                             return;
+
                         case 2:
                             //AddMarschall();
                             nextPage = PageName.AddMarschall;
                             return;
+
                         case 3:
 
                             //Add/RemoveLIghter
                             nextPage = PageName.EditLightersMenu;
                             return;
+
                         case 4:
                             // ViewProfile();
                             nextPage = PageName.ViewProfile;
                             return;
+
                         case 5:
-                            
+
                             nextPage = PageName.StartMenu;
                             PageManager.LogOut();
-                           
-                            return;   
+
+                            return;
+
                         case 6:
                             // QuitApp();
                             nextPage = PageName.None;
                             PageManager.LogOut();
-                            return;   
-                            
+                            return;
                     }
                 }
-                
+
                 Header(_title);
                 ErrorMessage("Number chosen");
             }

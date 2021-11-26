@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
+﻿using LostMyLighter.Classes;
+using System;
 
 namespace LostMyLighter.Pages
 
 {
-    class FoundLighter : Page
+    internal class FoundLighter : Page
     {
-
         public FoundLighter()
         {
             _title = " Found Lighter";
@@ -37,36 +32,10 @@ namespace LostMyLighter.Pages
                         nextPage = PageName.EditLightersMenu;
                         return;
                     }
-
                 }
                 Header(_title);
                 ErrorMessage("Wrong input friend,", "try again!");
-
             }
-
         }
-
     }
 }
-
-    
-
-    
-
-
-    
-
-    
-
-
-
-
-
-
-
-
-
-           
-        
-    
-

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
+﻿using LostMyLighter.Classes;
+using System;
 
 namespace LostMyLighter.Pages
 {
-    class FindMarschalls : Page
+    internal class FindMarschalls : Page
     {
         public FindMarschalls()
         {
@@ -17,14 +13,13 @@ namespace LostMyLighter.Pages
         public override void LoadPage(out PageName nextPage)
         {
             while (true)
-            {                
+            {
                 LighterCasino.LostOrFoundLighter();
                 Header(_title);
                 Marschall.SearchMarschalls();
                 PageManager.CurrUser.NumberOfSearches++;
-                while (true)                
+                while (true)
                 {
-                    
                     Console.WriteLine("1. Search again");
                     Console.WriteLine("2. Return to Main Menu");
                     SymbolPrint.Line();
@@ -35,6 +30,7 @@ namespace LostMyLighter.Pages
                             case 1:
                                 nextPage = PageName.FindMarschalls;
                                 return;
+
                             case 2:
                                 nextPage = PageName.MainMenu;
                                 return;
@@ -43,7 +39,6 @@ namespace LostMyLighter.Pages
                     Header(_title);
                     ErrorMessage("Input");
                 }
-
             }
         }
     }

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
+﻿using LostMyLighter.Classes;
+using System;
 
 namespace LostMyLighter.Pages
 {
-    abstract class Page
+    internal abstract class Page
     {
         protected string _title = "none";
 
@@ -16,10 +12,9 @@ namespace LostMyLighter.Pages
             nextPage = PageName.None;
         }
 
-        static public void Header(string title)
+        public static void Header(string title)
         {
             Console.Clear();
-
 
             SymbolPrint.Line();
             Console.WriteLine(title);
@@ -36,14 +31,12 @@ namespace LostMyLighter.Pages
             Console.WriteLine();
             SymbolPrint.Line();
 
-
             PageManager.PausSleep(2);
         }
-
     }
 
-    enum PageName 
-    { 
+    internal enum PageName
+    {
         None,
         StartMenu,
         CreateUser,

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
+﻿using LostMyLighter.Classes;
+using System;
 
 namespace LostMyLighter.Pages
 {
-    class AddMarschall : Page
+    internal class AddMarschall : Page
     {
         public AddMarschall()
         {
@@ -27,7 +23,7 @@ namespace LostMyLighter.Pages
                 PageManager.CurrUser.NumberOfMarchaller++;
                 while (true)
                 {
-                    Header(_title);                    
+                    Header(_title);
                     Console.WriteLine("1. Add another Marschall");
                     Console.WriteLine("2. Back to Main Menu");
                     SymbolPrint.Line();
@@ -38,6 +34,7 @@ namespace LostMyLighter.Pages
                             case 1:
                                 nextPage = PageName.AddMarschall;
                                 return;
+
                             case 2:
                                 nextPage = PageName.MainMenu;
                                 return;
@@ -46,11 +43,7 @@ namespace LostMyLighter.Pages
                     Header(_title);
                     ErrorMessage("Input");
                 }
-                
-
             }
-
-        }        
-
+        }
     }
 }

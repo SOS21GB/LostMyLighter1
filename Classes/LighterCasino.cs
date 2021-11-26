@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Pages;
-
+﻿using LostMyLighter.Pages;
+using System;
 
 namespace LostMyLighter.Classes
 {
-    class LighterCasino
+    internal class LighterCasino
     {
         public static void LostOrFoundLighter()
         {
@@ -27,27 +22,30 @@ namespace LostMyLighter.Classes
                         RollOneZeroLighters();
                     }
                     return;
+
                 case 2:
                 case 3:
                 case 4:
                 case 5:
                     RollTwoToFive();
                     return;
+
                 case 6:
                 case 7:
                 case 8:
                 case 9:
                     RollBetween();
                     return;
+
                 case 10:
                     RollTen();
                     return;
             }
-
         }
 
-        static string title = "As you are walking down the street.... ";
-        static void RollOne()
+        private static string title = "As you are walking down the street.... ";
+
+        private static void RollOne()
         {
             Page.Header(title);
             PageManager.CurrUser.LighterScore--;
@@ -57,7 +55,7 @@ namespace LostMyLighter.Classes
             PageManager.PausSleep(4);
         }
 
-        static void RollOneZeroLighters()
+        private static void RollOneZeroLighters()
         {
             Page.Header(title);
             PageManager.CurrUser.LighterScore--;
@@ -67,7 +65,7 @@ namespace LostMyLighter.Classes
             PageManager.PausSleep(4);
         }
 
-        static void RollTen()
+        private static void RollTen()
         {
             Page.Header(title);
             PageManager.CurrUser.LighterScore++;
@@ -77,18 +75,18 @@ namespace LostMyLighter.Classes
             PageManager.PausSleep(4);
         }
 
-        static void RollBetween()
+        private static void RollBetween()
         {
             Page.Header(title);
             Console.WriteLine("What a wonderful day. You managed not to lose your lighter!\nCurrent lighter Score: {0}", PageManager.CurrUser.LighterScore);
             PageManager.PausSleep(4);
         }
-        static void RollTwoToFive()
+
+        private static void RollTwoToFive()
         {
             Page.Header(title);
             Console.WriteLine("You may not be the best at anything, but atleast you didn't lose a lighter today pal!\nCurrent lighter Score remains at: {0}", PageManager.CurrUser.LighterScore);
             PageManager.PausSleep(4);
         }
     }
-    
 }

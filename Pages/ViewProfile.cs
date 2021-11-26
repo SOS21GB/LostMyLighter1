@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
-
+﻿using LostMyLighter.Classes;
+using System;
 
 namespace LostMyLighter.Pages
 {
-    class ViewProfile : Page
+    internal class ViewProfile : Page
     {
         public ViewProfile()
         {
@@ -33,6 +28,7 @@ namespace LostMyLighter.Pages
                         case 1:
                             nextPage = PageName.EditUser;
                             return;
+
                         case 2:
                             nextPage = PageName.MainMenu;
                             return;

@@ -1,14 +1,11 @@
-
+using LostMyLighter.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Pages;
 
 namespace LostMyLighter.Classes
 {
-    class Marschall
+    internal class Marschall
     {
         public static List<Marschall> Marschalls = new List<Marschall>();
         private User _user;
@@ -18,8 +15,10 @@ namespace LostMyLighter.Classes
         private DateTime _expectedBurnOutTime;
         private Adress _marschallAdress;
         private int _IdMarschall;
-        public string Brand { get { return _brand; } }
-        public int BurnTime { get { return _burnTime; } }
+        public string Brand
+        { get { return _brand; } }
+        public int BurnTime
+        { get { return _burnTime; } }
 
         public Marschall(User user, string brand, int burnTime, Adress adress)
         {
@@ -30,11 +29,9 @@ namespace LostMyLighter.Classes
             this._expectedBurnOutTime = _timeRegistered.AddHours(BurnTime);
             this._marschallAdress = adress;
 
-
             _IdMarschall = Marschalls.Count + 1;
 
             Marschalls.Add(this);
-
         }
 
         public Marschall(User user, string brand, int burnTime, int hoursSinceRegistrerd, Adress adress)
@@ -46,11 +43,9 @@ namespace LostMyLighter.Classes
             this._expectedBurnOutTime = _timeRegistered.AddHours(BurnTime);
             this._marschallAdress = adress;
 
-
             _IdMarschall = Marschalls.Count + 1;
 
             Marschalls.Add(this);
-
         }
 
         public static void DisplayAllMarschaller()
@@ -60,10 +55,8 @@ namespace LostMyLighter.Classes
             foreach (var m in Marschalls)
             {
                 m.DisplayMarsachall();
-
             }
         }
-
 
         public static void SearchMarschalls()
         {
@@ -83,15 +76,14 @@ namespace LostMyLighter.Classes
                 SymbolPrint.Line();
                 Console.Write("Choose how to Search: ");
 
-                if(int.TryParse(Console.ReadLine(), out choice))
+                if (int.TryParse(Console.ReadLine(), out choice))
                 {
-
                     break;
                 }
                 Page.Header(title);
                 Page.ErrorMessage("Input");
             }
-            
+
             switch (choice)
             {
                 case 1:
@@ -110,13 +102,10 @@ namespace LostMyLighter.Classes
                             SymbolPrint.Line();
                             marshallsFound++;
                         }
-
                     }
                     if (marshallsFound < 1)
                     {
-
                         Page.ErrorMessage("No Marshalls", "could be found");
-
                     }
 
                     break;
@@ -137,30 +126,27 @@ namespace LostMyLighter.Classes
                             SymbolPrint.Line();
                             marshallsFound++;
                         }
-
                     }
                     if (marshallsFound < 1)
                     {
-                  
                         Page.ErrorMessage("No Marshalls", "could be found");
-                        
                     }
-             
+
                     break;
+
                 case 3:
                     int zipInput = 0;
                     while (true)
                     {
                         Page.Header(title);
                         Console.Write("Enter ZipCode: ");
-                        if(int.TryParse(Console.ReadLine(), out zipInput))
+                        if (int.TryParse(Console.ReadLine(), out zipInput))
                         {
                             break;
                         }
                         Page.Header(title);
                         Page.ErrorMessage("Input");
                     }
-
 
                     var zipList = Marschalls.Where(item => item._marschallAdress.ZipCode == zipInput);
                     marshallsFound = 0;
@@ -173,17 +159,15 @@ namespace LostMyLighter.Classes
                             item.DisplayMarsachall();
                             marshallsFound++;
                             SymbolPrint.Line();
-
                         }
                     }
                     if (marshallsFound < 1)
                     {
-                       
                         Page.ErrorMessage("No Marshalls", "could be found");
                     }
 
-               
                     break;
+
                 case 4:
                     Page.Header(title);
                     Console.Write("Enter Street Name: ");
@@ -202,11 +186,11 @@ namespace LostMyLighter.Classes
                     }
                     if (marshallsFound < 1)
                     {
-                       
                         Page.ErrorMessage("No Marshalls", "could be found");
                     }
-                    
+
                     break;
+
                 case 5:
                     Page.Header(title);
                     Console.Write("Enter City: ");
@@ -225,11 +209,11 @@ namespace LostMyLighter.Classes
                     }
                     if (marshallsFound < 1)
                     {
-                        
                         Page.ErrorMessage("No Marshalls", "could be found");
                     }
 
                     break;
+
                 case 6:
                     Page.Header(title);
                     Console.WriteLine("All active: \n");
@@ -239,10 +223,10 @@ namespace LostMyLighter.Classes
                         {
                             item.DisplayMarsachall();
                         }
-
                     }
                     SymbolPrint.Line();
                     break;
+
                 case 7:
                     Page.Header(title);
                     Console.WriteLine("All registered marschalls: \n");
@@ -250,8 +234,8 @@ namespace LostMyLighter.Classes
                     SymbolPrint.Line();
                     break;
             }
-
         }
+
         public static void AddMarschall(User user)
         {
             string brand;
@@ -273,16 +257,13 @@ namespace LostMyLighter.Classes
             }
 
             new Marschall(user, brand, burnTime, adress);
-
-
         }
 
         public bool IsActive()
         {
-
             return DateTime.Now < _timeRegistered.AddHours(BurnTime);
-
         }
+
         public void DisplayMarsachall()
         {
             Console.WriteLine("ID: {0}", _IdMarschall);
@@ -297,17 +278,3 @@ namespace LostMyLighter.Classes
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
+﻿using LostMyLighter.Classes;
+using System;
 
 namespace LostMyLighter.Pages
 {
-    class LostLighter : EditLightersMenu
+    internal class LostLighter : EditLightersMenu
     {
         public LostLighter()
         {
             _title = "Lost Lighter";
         }
+
         public override void LoadPage(out PageName nextPage)
         {
-
-
             while (true)
             {
                 Header(_title);
@@ -30,7 +25,7 @@ namespace LostMyLighter.Pages
                     PageManager.CurrUser.TotalLostLighters -= lighterslost;
                     Console.WriteLine("{0} lighters have successfully been removed \nLets not do this to a thing bud.", lighterslost);
                     SymbolPrint.Line();
-                    Console.WriteLine("Your current lighter score: {0}",PageManager.CurrUser.LighterScore);
+                    Console.WriteLine("Your current lighter score: {0}", PageManager.CurrUser.LighterScore);
                     PageManager.PausSleep(4);
                     nextPage = PageName.EditLightersMenu;
                     return;
@@ -41,5 +36,4 @@ namespace LostMyLighter.Pages
             }
         }
     }
-
 }
