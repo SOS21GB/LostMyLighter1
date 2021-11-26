@@ -17,14 +17,7 @@ namespace LostMyLighter
         private int _lighterScore;
         private int _totalLostLighters;
         private int _totalFoundLighters;
-
-        /*
-        public int Id { get { return _id; } }
-
-        public int Age { get { return _age; } set { _age = value; } }
-        public Adress UserAdress { get { return _adress; } set { _adress = value; } }
-        */
-
+        
         public string UserName
         { get { return _userName; } }
 
