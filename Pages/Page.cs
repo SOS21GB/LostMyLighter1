@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
 
-namespace LostMyLighter.Pages
+namespace LostMyLighter
 {
-    abstract class Page
+    internal abstract class Page
     {
         protected string _title = "none";
 
@@ -16,10 +11,9 @@ namespace LostMyLighter.Pages
             nextPage = PageName.None;
         }
 
-        static public void Header(string title)
+        public static void Header(string title)
         {
             Console.Clear();
-
 
             SymbolPrint.Line();
             Console.WriteLine(title);
@@ -29,21 +23,19 @@ namespace LostMyLighter.Pages
         /// <summary>
         /// Call this method to let the user know that the input was not accepted
         /// </summary>
-        public static void ErrorMessage(string item, string reason = "is not valid")
+        public static void ErrorMessage(string what, string why = "is not valid")
         {
             Console.WriteLine();
-            Console.WriteLine($"{item} {reason}");
+            Console.WriteLine($"{what} {why}");
             Console.WriteLine();
             SymbolPrint.Line();
 
-
             PageManager.PausSleep(2);
         }
-
     }
 
-    enum PageName 
-    { 
+    internal enum PageName
+    {
         None,
         StartMenu,
         CreateUser,
@@ -51,8 +43,10 @@ namespace LostMyLighter.Pages
         LogIn,
         MainMenu,
         ViewProfile,
-        AddRemoveLighter,
         FindMarschalls,
-        AddMarschall
+        AddMarschall,
+        FoundLighter,
+        EditLightersMenu,
+        LostLighter
     }
 }

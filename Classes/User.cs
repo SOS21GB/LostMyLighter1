@@ -1,14 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-using LostMyLighter.Pages;
 
-namespace LostMyLighter.Classes
+namespace LostMyLighter
 {
-    class User
+    internal class User
     {
         public static Dictionary<int, User> Users = new();
 
@@ -19,44 +14,52 @@ namespace LostMyLighter.Classes
         private Adress _adress;
         private int _numberOfSearches;
         private int _numberOfMarchaller;
-        private int _lostLighters;
+        private int _lighterScore;
+        private int _totalLostLighters;
+        private int _totalFoundLighters;
+        
+        public string UserName
+        { get { return _userName; } }
 
-        /*
-        public int Id { get { return _id; } }
-        public string UserName { get { return _userName; } set { _userName = value; } }
-        public int Age { get { return _age; } set { _age = value; } }
-        public Adress UserAdress { get { return _adress; } set { _adress = value; } }        
-        */
+        public Adress UserAdress
+        { get { return _adress; } }
 
-        public Adress UserAdress { get { return _adress; } }
-        public int NumberOfSearches { get { return _numberOfSearches; } set { _numberOfSearches = value; } }
-        public int NumberOfMarchaller { get { return _numberOfMarchaller; } set { _numberOfMarchaller = value; } }
-        public int LostLighters { get { return _lostLighters; } set { _lostLighters = value; } }
+        public int NumberOfSearches
+        { get { return _numberOfSearches; } set { _numberOfSearches = value; } }
+
+        public int NumberOfMarchaller
+        { get { return _numberOfMarchaller; } set { _numberOfMarchaller = value; } }
+
+        public int LighterScore
+        { get { return _lighterScore; } set { _lighterScore = value; } }
+
+        public int TotalLostLighters
+        { get { return _totalLostLighters; } set { _totalLostLighters = value; } }
+
+        public int TotalFoundLighters
+        { get { return _totalFoundLighters; } set { _totalFoundLighters = value; } }
+
         public User(string username, int age, Adress adress, string password)
         {
-
             this._userName = username;
             this._password = password;
             this._age = age;
             this._adress = adress;
 
-
-
             _id = Users.Count + 1;
             Users.Add(_id, this);
         }
+
         public void DisplayUserInfo()
         {
-
             Console.WriteLine("ID: {0}", _id);
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
             this._adress.DisplayAdress();
             Console.WriteLine("Searches: {0}", _numberOfSearches);
             Console.WriteLine("Marchallers added: {0}", _numberOfMarchaller);
-            Console.WriteLine("Lighters: {0}", _lostLighters);
+            Console.WriteLine("Current lighter score: {0}. Total lighters found: {1}. Total lighters lost: {2}", _lighterScore, _totalFoundLighters, _totalLostLighters);
             SymbolPrint.Line();
-
         }
 
         public void CreatedUserInfo()
@@ -68,19 +71,21 @@ namespace LostMyLighter.Classes
             SymbolPrint.Line();
         }
 
+        public void LighterStats()
+        {
+            Console.WriteLine("Current lighter score: {0}. Total lighters found: {1}. Total lighters lost: {2}.", _lighterScore, _totalFoundLighters, _totalLostLighters);
+        }
+
         public void EditUserInfo()
         {
             Console.WriteLine("Name: {0}", _userName);
             Console.WriteLine("Age: {0}", _age);
             this._adress.DisplayAdress();
             SymbolPrint.Line();
-
         }
-
 
         public bool IsRightPassword(string input)
         {
-
             return _password == input;
         }
 
@@ -94,7 +99,7 @@ namespace LostMyLighter.Classes
         public void EditAge()
         {
             Console.WriteLine("Your current age is: {0}", this._age);
-            Console.WriteLine("Please enter your new age & may i say, happy birthday!: ");
+            Console.WriteLine("Please enter your new age & may I say, happy birthday!: ");
             if (int.TryParse(Console.ReadLine(), out this._age))
             {
                 Console.WriteLine("Your new age has been changed to: {0}!", this._age);
@@ -107,4 +112,3 @@ namespace LostMyLighter.Classes
         }
     }
 }
-

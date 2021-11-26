@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
 
-namespace LostMyLighter.Pages
+namespace LostMyLighter
 {
-    class FindMarschalls : Page
+    internal class FindMarschalls : Page
     {
         public FindMarschalls()
         {
@@ -17,25 +12,31 @@ namespace LostMyLighter.Pages
         public override void LoadPage(out PageName nextPage)
         {
             while (true)
-            {                
+            {
                 LighterCasino.LostOrFoundLighter();
                 Header(_title);
                 Marschall.SearchMarschalls();
-                SymbolPrint.Line();
                 PageManager.CurrUser.NumberOfSearches++;
-                Console.WriteLine("1. Search again");
-                Console.WriteLine("2. Return to Main Menu");
-                if (int.TryParse(Console.ReadLine(), out int choice))
+                while (true)
                 {
-                    switch (choice)
+                    Console.WriteLine("1. Search again");
+                    Console.WriteLine("2. Return to Main Menu");
+                    SymbolPrint.Line();
+                    if (int.TryParse(Console.ReadLine(), out int choice))
                     {
-                        case 1:
-                            nextPage = PageName.FindMarschalls;
-                            return;
-                        case 2:
-                            nextPage = PageName.MainMenu;
-                            return;
+                        switch (choice)
+                        {
+                            case 1:
+                                nextPage = PageName.FindMarschalls;
+                                return;
+
+                            case 2:
+                                nextPage = PageName.MainMenu;
+                                return;
+                        }
                     }
+                    Header(_title);
+                    ErrorMessage("Input");
                 }
             }
         }

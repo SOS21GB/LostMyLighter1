@@ -1,144 +1,248 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LostMyLighter.Classes
+namespace LostMyLighter
 {
-    class Marschall
+    internal class Marschall
     {
-        public static Marschall CurrMarschall;
         public static List<Marschall> Marschalls = new List<Marschall>();
+        private User _user;
         private string _brand;
         private int _burnTime;
         private DateTime _timeRegistered;
+        private DateTime _expectedBurnOutTime;
         private Adress _marschallAdress;
         private int _IdMarschall;
-        public string Brand { get { return _brand; } }
-        public int BurnTime { get { return _burnTime;} }
-        public Marschall(string brand, int burnTime, Adress adress)
-        {
 
+        public string Brand
+        { get { return _brand; } }
+
+        public int BurnTime
+        { get { return _burnTime; } }
+
+        public Marschall(User user, string brand, int burnTime, Adress adress)
+        {
+            this._user = user;
             this._brand = brand;
             this._burnTime = burnTime;
             this._timeRegistered = DateTime.Now;
+            this._expectedBurnOutTime = _timeRegistered.AddHours(BurnTime);
             this._marschallAdress = adress;
-
 
             _IdMarschall = Marschalls.Count + 1;
 
             Marschalls.Add(this);
-
         }
 
-        public Marschall(string brand, int burnTime, int hoursSinceRegistrerd, Adress adress)
+        public Marschall(User user, string brand, int burnTime, int hoursSinceRegistrerd, Adress adress)
         {
-
+            this._user = user;
             this._brand = brand;
             this._burnTime = burnTime;
             this._timeRegistered = DateTime.Now.AddHours(-hoursSinceRegistrerd);
+            this._expectedBurnOutTime = _timeRegistered.AddHours(BurnTime);
             this._marschallAdress = adress;
-
 
             _IdMarschall = Marschalls.Count + 1;
 
             Marschalls.Add(this);
-
         }
 
         public static void DisplayAllMarschaller()
         {
-             string title = "All Marschall";
-
             foreach (var m in Marschalls)
             {
                 m.DisplayMarsachall();
-
             }
         }
 
-
         public static void SearchMarschalls()
         {
-            Console.WriteLine("Choose how to Search: ");
-            Console.WriteLine("1. Brand");
-            Console.WriteLine("2. Zip Code");
-            Console.WriteLine("3. Street Name");
-            Console.WriteLine("4. City");
-            Console.WriteLine("5. See all Active");
-            Console.WriteLine("6. See All");
-            SymbolPrint.Line();
+            string title = "Find Marschalls";
+            int choice = 0;
 
-            int choice = Convert.ToInt32(Console.ReadLine());
+            while (true)
+            {
+                Page.Header(title);
+                Console.WriteLine("1. Username");
+                Console.WriteLine("2. Brand");
+                Console.WriteLine("3. Zip Code");
+                Console.WriteLine("4. Street Name");
+                Console.WriteLine("5. City");
+                Console.WriteLine("6. See all Active");
+                Console.WriteLine("7. See All");
+                SymbolPrint.Line();
+                Console.Write("Choose how to Search: ");
+
+                if (int.TryParse(Console.ReadLine(), out choice))
+                {
+                    break;
+                }
+                Page.Header(title);
+                Page.ErrorMessage("Input");
+            }
+
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("Enter Brand:");
+
+                    Page.Header(title);
+                    Console.Write("Enter Username: ");
+                    string userNameInput = Console.ReadLine();
+                    var UserList = Marschalls.Where(item => item._user.UserName.ToLower() == userNameInput.ToLower());
+                    int marshallsFound = 0;
+                    Page.Header(title);
+                    foreach (var item in UserList)
+                    {
+                        if (item.IsActive())
+                        {
+                            item.DisplayMarsachall();
+                            SymbolPrint.Line();
+                            marshallsFound++;
+                        }
+                    }
+                    if (marshallsFound < 1)
+                    {
+                        Page.ErrorMessage("No Marshalls", "could be found");
+                    }
+
+                    break;
+
+                case 2:
+
+                    Page.Header(title);
+                    Console.Write("Enter Brand: ");
                     string brandInput = Console.ReadLine();
-                    var BrandList = Marschalls.Where(item => item._brand == brandInput);
-                    
+                    var BrandList = Marschalls.Where(item => item._brand.ToLower() == brandInput.ToLower());
+                    marshallsFound = 0;
+                    Page.Header(title);
                     foreach (var item in BrandList)
                     {
-                        Console.WriteLine("Resultat: {0}", item._brand);
+                        if (item.IsActive())
+                        {
+                            item.DisplayMarsachall();
+                            SymbolPrint.Line();
+                            marshallsFound++;
+                        }
                     }
+                    if (marshallsFound < 1)
+                    {
+                        Page.ErrorMessage("No Marshalls", "could be found");
+                    }
+
                     break;
-                case 2:
-                    Console.WriteLine("Enter ZipCode:");
-                    int zipInput = Convert.ToInt32(Console.ReadLine());
+
+                case 3:
+                    int zipInput = 0;
+                    while (true)
+                    {
+                        Page.Header(title);
+                        Console.Write("Enter ZipCode: ");
+                        if (int.TryParse(Console.ReadLine(), out zipInput))
+                        {
+                            break;
+                        }
+                        Page.Header(title);
+                        Page.ErrorMessage("Input");
+                    }
+
                     var zipList = Marschalls.Where(item => item._marschallAdress.ZipCode == zipInput);
-                    
+                    marshallsFound = 0;
+                    Page.Header(title);
+
                     foreach (var item in zipList)
                     {
-                        Console.WriteLine("Resultat: {0}", item._marschallAdress.ZipCode);
+                        if (item.IsActive())
+                        {
+                            item.DisplayMarsachall();
+                            marshallsFound++;
+                            SymbolPrint.Line();
+                        }
                     }
-                    break;
-                case 3:
-                    Console.WriteLine("Enter Street Name:");
-                    string streetInput = Console.ReadLine();
-                    var streetList = Marschalls.Where(item => item._marschallAdress.StreetName == streetInput);
+                    if (marshallsFound < 1)
+                    {
+                        Page.ErrorMessage("No Marshalls", "could be found");
+                    }
 
+                    break;
+
+                case 4:
+                    Page.Header(title);
+                    Console.Write("Enter Street Name: ");
+                    string streetInput = Console.ReadLine();
+                    var streetList = Marschalls.Where(item => item._marschallAdress.StreetName.ToLower() == streetInput.ToLower());
+                    marshallsFound = 0;
+                    Page.Header(title);
                     foreach (var item in streetList)
                     {
-                        Console.WriteLine("Resultat: {0}", item._marschallAdress.StreetName);
+                        if (item.IsActive())
+                        {
+                            item.DisplayMarsachall();
+                            marshallsFound++;
+                            SymbolPrint.Line();
+                        }
                     }
-                    break;
-                case 4:
-                    Console.WriteLine("Enter City:");
-                    string cityInput = Console.ReadLine();
-                    var cityList = Marschalls.Where(item => item._marschallAdress.City == cityInput);
+                    if (marshallsFound < 1)
+                    {
+                        Page.ErrorMessage("No Marshalls", "could be found");
+                    }
 
+                    break;
+
+                case 5:
+                    Page.Header(title);
+                    Console.Write("Enter City: ");
+                    string cityInput = Console.ReadLine();
+                    var cityList = Marschalls.Where(item => item._marschallAdress.City.ToLower() == cityInput.ToLower());
+                    marshallsFound = 0;
+                    Page.Header(title);
                     foreach (var item in cityList)
                     {
-                        Console.WriteLine("Resultat: {0}", item._marschallAdress.City);
+                        if (item.IsActive())
+                        {
+                            item.DisplayMarsachall();
+                            marshallsFound++;
+                            SymbolPrint.Line();
+                        }
                     }
+                    if (marshallsFound < 1)
+                    {
+                        Page.ErrorMessage("No Marshalls", "could be found");
+                    }
+
                     break;
-                case 5:
-                    Console.WriteLine("All active: ");
+
+                case 6:
+                    Page.Header(title);
+                    Console.WriteLine("All active: \n");
                     foreach (Marschall item in Marschalls)
                     {
                         if (item.IsActive())
                         {
                             item.DisplayMarsachall();
                         }
-
                     }
+                    SymbolPrint.Line();
                     break;
-                case 6:
+
+                case 7:
+                    Page.Header(title);
+                    Console.WriteLine("All registered marschalls: \n");
                     DisplayAllMarschaller();
+                    SymbolPrint.Line();
                     break;
             }
-
         }
-        public static void AddMarschall()
+
+        public static void AddMarschall(User user)
         {
             string brand;
             int burnTime;
 
             Console.Write("Enter brand: ");
             brand = Console.ReadLine();
-            Adress adress = Adress.CreateAdress();    
+            Adress adress = Adress.CreateAdress();
 
             while (true)
             {
@@ -148,42 +252,28 @@ namespace LostMyLighter.Classes
                 {
                     break;
                 }
-
+                Console.WriteLine("Invalid Input..");
             }
 
-            new Marschall(brand, burnTime, adress);
-
-
+            new Marschall(user, brand, burnTime, adress);
         }
 
         public bool IsActive()
         {
-
-           return DateTime.Now < _timeRegistered.AddHours(BurnTime);
-
+            return DateTime.Now < _timeRegistered.AddHours(BurnTime);
         }
+
         public void DisplayMarsachall()
         {
             Console.WriteLine("ID: {0}", _IdMarschall);
+            Console.WriteLine("User: {0}", _user.UserName);
             Console.WriteLine("Brand: {0}", _brand);
             Console.WriteLine("Time Registered: {0}", _timeRegistered);
-            Console.WriteLine("Burn out time: {0}", _timeRegistered.AddHours(BurnTime));
+            Console.WriteLine("BurnTime (hours): {0}", _burnTime);
+            Console.WriteLine("Expected burn out time: {0}", _expectedBurnOutTime);
             _marschallAdress.DisplayAdress();
             Console.WriteLine("Is active: {0}", IsActive() ? "Yes" : "No");
+            Console.WriteLine();
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

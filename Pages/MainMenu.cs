@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
 
-
-namespace LostMyLighter.Pages
+namespace LostMyLighter
 {
-    class MainMenu : Page
+    internal class MainMenu : Page
     {
         public MainMenu()
         {
@@ -20,17 +14,14 @@ namespace LostMyLighter.Pages
             while (true)
             {
                 Header(_title);
-                //Symbols(1);
-                //Symbols(2);
-                Console.WriteLine();
                 Console.WriteLine("1. Find marschalls.");
                 Console.WriteLine("2. Add marschall.");
                 Console.WriteLine("3. Add a lost/found lighter.");
                 Console.WriteLine("4. View profile.");
                 Console.WriteLine("5. Log Out");
                 Console.WriteLine("6. Quit App.");
-                Console.WriteLine();
-                Console.WriteLine("------------------------------------------------");
+                SymbolPrint.Line();
+                Console.Write("Please enter the number corresponding with what you would like to do: ");
 
                 if (int.TryParse(Console.ReadLine(), out int userInput))
                 {
@@ -40,34 +31,38 @@ namespace LostMyLighter.Pages
                             //SearchMarschalls();
                             nextPage = PageName.FindMarschalls;
                             return;
+
                         case 2:
                             //AddMarschall();
                             nextPage = PageName.AddMarschall;
                             return;
+
                         case 3:
 
                             //Add/RemoveLIghter
-                            nextPage = PageName.AddRemoveLighter;
+                            nextPage = PageName.EditLightersMenu;
                             return;
+
                         case 4:
                             // ViewProfile();
                             nextPage = PageName.ViewProfile;
                             return;
+
                         case 5:
-                            
+
                             nextPage = PageName.StartMenu;
                             PageManager.LogOut();
-                           
-                            return;   
+
+                            return;
+
                         case 6:
                             // QuitApp();
                             nextPage = PageName.None;
                             PageManager.LogOut();
-                            return;   
-                            
+                            return;
                     }
                 }
-                
+
                 Header(_title);
                 ErrorMessage("Number chosen");
             }

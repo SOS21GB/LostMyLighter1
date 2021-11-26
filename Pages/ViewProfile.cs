@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
 
-
-namespace LostMyLighter.Pages
+namespace LostMyLighter
 {
-    class ViewProfile : Page
+    internal class ViewProfile : Page
     {
         public ViewProfile()
         {
@@ -23,6 +17,8 @@ namespace LostMyLighter.Pages
                 PageManager.CurrUser.DisplayUserInfo();
                 Console.WriteLine("1. Edit Profile.");
                 Console.WriteLine("2. Go Back to Main Menu.");
+                SymbolPrint.Line();
+                Console.Write("Please enter the number corresponding with what you would like to do: ");
 
                 if (int.TryParse(Console.ReadLine(), out int choice))
                 {
@@ -31,6 +27,7 @@ namespace LostMyLighter.Pages
                         case 1:
                             nextPage = PageName.EditUser;
                             return;
+
                         case 2:
                             nextPage = PageName.MainMenu;
                             return;

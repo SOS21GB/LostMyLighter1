@@ -1,19 +1,13 @@
+using LostMyLighter.Pages;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
-using LostMyLighter.Pages;
 
-
-namespace LostMyLighter.Classes
+namespace LostMyLighter
 {
-    static class PageManager
+    internal static class PageManager
     {
         public static User CurrUser;
-
-        public static Marschall CurrMarschall;
 
         public static Dictionary<PageName, Page> AllPages = new()
         {
@@ -23,14 +17,12 @@ namespace LostMyLighter.Classes
             { PageName.CreateUser, new CreateUser() },
             { PageName.EditUser, new EditUser() },
             { PageName.LogIn, new LogInMenu() },
-            { PageName.AddRemoveLighter, new EditLightersMenu() },
+            { PageName.EditLightersMenu, new EditLightersMenu() },
             { PageName.AddMarschall, new AddMarschall() },
-            { PageName.FindMarschalls, new FindMarschalls() }
-
+            { PageName.FindMarschalls, new FindMarschalls() },
+            { PageName.FoundLighter, new FoundLighter() },
+            { PageName.LostLighter, new LostLighter() }
         };
-
-
-
 
         public static void RunApp()
         {
@@ -41,17 +33,15 @@ namespace LostMyLighter.Classes
             {
                 AllPages[PageName.MainMenu].LoadPage(out nextPage);
             }
-
             else
             {
                 AllPages[PageName.StartMenu].LoadPage(out nextPage);
             }
-            
+
             while (true)
             {
                 if (nextPage != PageName.None)
                 {
-
                     AllPages[nextPage].LoadPage(out nextPage);
                 }
                 else
@@ -62,20 +52,19 @@ namespace LostMyLighter.Classes
             }
         }
 
-
         public static void LogOut()
         {
             Console.Clear();
-            SymbolPrint.Symbols(5);
+            SymbolPrint.Symbols(7);
             Console.WriteLine("Logging out...");
             CurrUser = null;
             PausSleep(3);
         }
 
-        static void QuitApp()
+        private static void QuitApp()
         {
             Console.Clear();
-            SymbolPrint.Symbols(5);
+            SymbolPrint.Symbols(7);
             Console.WriteLine("Exiting App...");
             PausSleep(3);
             Console.Clear();
@@ -83,14 +72,11 @@ namespace LostMyLighter.Classes
 
         public static void PausSleep(int paus)
         {
-            
             Thread.Sleep(TimeSpan.FromSeconds(paus));
             while (Console.KeyAvailable)
             {
                 Console.ReadKey(false);
             }
-            
         }
-        
     }
 }

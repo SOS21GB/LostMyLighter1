@@ -1,19 +1,13 @@
-using System;
-using LostMyLighter.Classes;
-
-
 namespace LostMyLighter
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Testing.PremadeUsers();
             Testing.PremadeActiveMarchallers();
             Testing.PremadeInactiveMarchallers();
             PageManager.RunApp();
         }
-
     }
 }
-

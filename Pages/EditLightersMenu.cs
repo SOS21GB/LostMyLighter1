@@ -1,42 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LostMyLighter.Classes;
 
-namespace LostMyLighter.Pages
+namespace LostMyLighter
 {
-    class EditLightersMenu : Page
+    internal class EditLightersMenu : Page
     {
         public EditLightersMenu()
         {
-            _title = "Add/Remove Lighters";
+            _title = "Add or Remove Lighters";
         }
 
         public override void LoadPage(out PageName nextPage)
         {
-
-           
             while (true)
             {
                 Header(_title);
-                Console.WriteLine("So you've found a lighter have you? Good work dumdum. \nPlease enter the amount of lighters you've \nfound below my friend: ");
-                
-                if (int.TryParse(Console.ReadLine(), out int lightersfound))
+                Console.WriteLine("1. Found a Lighter");
+                Console.WriteLine("2. Lost a Lighter");
+                Console.WriteLine("3. Lighter Statistics");
+                Console.WriteLine("4. Back to Main Menu");
+                SymbolPrint.Line();
+                Console.Write("Please choose an action to take: ");
+                if (int.TryParse(Console.ReadLine(), out int choice))
                 {
-                    PageManager.CurrUser.LostLighters += lightersfound;
-                    Console.WriteLine("You have successfully added {0} lighters pal! GJ!", lightersfound);
-                    nextPage = PageName.MainMenu;
-                    return;
+                    switch (choice)
+                    {
+                        case 1:
+                            nextPage = PageName.FoundLighter;
+                            return;
+
+                        case 2:
+                            nextPage = PageName.LostLighter;
+                            return;
+
+                        case 3:
+                            Header(_title);
+                            Console.WriteLine("1. Found a Lighter");
+                            Console.WriteLine("2. Lost a Lighter");
+                            Console.WriteLine("3. Lighter Statistics");
+                            Console.WriteLine("4. Back to Main Menu");
+                            SymbolPrint.Line();
+                            PageManager.CurrUser.LighterStats();
+                            PageManager.PausSleep(4);
+                            nextPage = PageName.EditLightersMenu;
+                            return;
+
+                        case 4:
+                            nextPage = PageName.MainMenu;
+                            return;
+                    }
                 }
-                ErrorMessage("Wrong input friend,try again!");
 
-
-
+                Header(_title);
+                ErrorMessage("Input");
+                PageManager.PausSleep(2);
             }
-           
         }
-
     }
 }
